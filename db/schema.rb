@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101035728) do
+ActiveRecord::Schema.define(version: 20141110150455) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -45,6 +45,46 @@ ActiveRecord::Schema.define(version: 20141101035728) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "clubs", force: true do |t|
+    t.string   "name"
+    t.string   "nick_name"
+    t.string   "coach"
+    t.integer  "year"
+    t.string   "stadium"
+    t.integer  "volume"
+    t.string   "location"
+    t.string   "president"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "histories", force: true do |t|
+    t.string   "name"
+    t.string   "year"
+    t.integer  "club_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "histories", ["club_id"], name: "index_histories_on_club_id", using: :btree
+
+  create_table "players", force: true do |t|
+    t.string   "name"
+    t.integer  "age"
+    t.date     "dob"
+    t.string   "nation"
+    t.decimal  "height",     precision: 10, scale: 0
+    t.decimal  "weight",     precision: 10, scale: 0
+    t.string   "position"
+    t.string   "leg"
+    t.decimal  "level",      precision: 10, scale: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "club_id"
+  end
+
+  add_index "players", ["club_id"], name: "index_players_on_club_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
