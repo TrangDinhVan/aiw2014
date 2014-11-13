@@ -45,11 +45,11 @@ body {
 .page-wrapper {
   margin: 0 auto;
 }
-.page-wrapper main .item-club img {
+.page-wrapper main img {
   -webkit-transition: all 0.7s ease;
   transition: all 0.4s ease;
 }
-.page-wrapper main .item-club img:hover {
+.page-wrapper main img:hover {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
