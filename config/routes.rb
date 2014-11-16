@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  resources :clubs
+  get 'club/index'
+  get 'club/single/:id' => 'club#single'
 
+  root 'club#index'
   get 'home/index'
   get 'home/sample'
 
