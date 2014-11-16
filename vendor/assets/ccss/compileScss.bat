@@ -1,1 +1,0 @@
-scss front.scss:../stylesheets/front.css -w --style expanded -C
