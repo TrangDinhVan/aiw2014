@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/sample'
 
+  get 'player/single' => 'player#single', :as => :single
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users

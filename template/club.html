@@ -12,8 +12,7 @@
 <body class="muzik">
 	<div class="page-wrapper">
 		<header>
-			<img src="images/la_liga_banner2.jpg" alt="" class="img-responsive">
-			<div class="top-space"></div>
+			<img src="images/la_liga_banner.jpg" alt="" class="img-responsive">
 			<nav class="navbar navbar-default" role="navigation">
 				<div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
@@ -26,18 +25,23 @@
 						</button>
 						<a class="navbar-brand" href="index.html"><span class="label label-success"><i class="fa fa-home"></i></span></a>
 						<a class="navbar-brand" href="search.html"><span class="label label-success">Tìm kiếm</span></a>
-						<a class="navbar-brand" href="club.html"><span class="label label-success">CLB</span></a>
-						<a class="navbar-brand" href="#"><span class="label label-success">Dịch vụ trang</span></a>
 						<a class="navbar-brand" href="about.html"><span class="label label-success">Về nhóm 1</span></a>	
 					</div>
-					<form class="navbar-form navbar-right" role="search">
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					    <ul class="nav navbar-nav">
+					        <li class=""><a class="navbar-brand" href="club.html"><span class="label label-success">CLB</span></a></li>
+					        <li><a class="navbar-brand" href="#"><span class="label label-success">Dịch vụ trang</span></a></li>
+					    </ul>
+					    <form class="navbar-form navbar-right" role="search">
 						    <div class="input-group">
 								<input type="text" class="form-control">
 								<span class="input-group-btn">
 									<button class="btn btn-default" type="button">Tìm!</button>
 								</span>
 						    </div><!-- /input-group -->
-					</form>		
+						</form>		
+					</div>
+					
 				</div><!-- /.container-fluid -->
 			</nav>
 		</header>
