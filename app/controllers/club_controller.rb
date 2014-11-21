@@ -6,7 +6,7 @@ class ClubController < ApplicationController
   	@club = Club.find(params[:id])
   end
   def show
-  	@club = Club.find(params[:id])
+  	@player = Player.find(params[:id])
   	respond_to do |format|
       format.html
       format.js

@@ -2,27 +2,37 @@
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <h4 class="modal-title" id="myModalLabel"><%= @club.name %></h4>
+      <h4 class="modal-title" id="myModalLabel">Chi tiết cầu thủ <%= @player.name %></h4>
     </div>
     <div class="modal-body">
     <div class="row">
       <div class="col-md-6 col-sm-8 player-info">
-      <p class="name"></p>
-      <p class="team"></p>
-      <p class="no"></p>
-      <p class="position"></p>
-      <p class="dob"></p>
-      <p class="nation"></p>
-      <p class="height"></p>
-      <p class="weight"></p>
-      <p class="leg"></p>
-      <p class="index"></p>
+
+      <p class="name">Tên <span class="label label-primary"><%= @player.name %></span></p>
+      <p class="team">Câu lạc bộ <span class="label label-danger"><%= @player.club.name %></span></p>
+
+      <p class="no">Áo số <span class="label label-success"><%= @player.id %></span></p>
+
+      <p class="position">Vị trí <span class="label label-info"><%= @player.position %></span></p>
+
+      <p class="dob">Ngày sinh <span class="label label-warning"><%= @player.dob %></span></p>
+
+      <p class="nation">Quốc tịch <span class="label label-primary"><%= @player.nation %></span></p>
+
+      <p class="height">Chiều cao <span class="label label-primary"><%= @player.height %></span></p>
+
+      <p class="weight">Cân nặng <span class="label label-primary"><%= @player.weight %></span></p>
+
+      <p class="weight">Thuận chân <span class="label label-info"><%= @player.leg %></span></p>
+
+      <p class="weight">Chỉ số <span class="label label-success"><%= @player.level %></span></p>
+
       </div>
       <div class="col-md-6 col-sm-4">
         <img class="img-responsive avatar" src="" alt="">
         <div class="top-space"></div>
         <div class="progress">
-        <div class="index progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+        <div class="index progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="<%= @player.level %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @player.level %>%">
         </div>
       </div>
       </div>

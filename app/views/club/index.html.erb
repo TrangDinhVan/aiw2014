@@ -6,22 +6,23 @@
 		</div>
 		<div class="panel-body bkg">
 			<div class="row">
+				<% @clubs.each do |club| %>
 				<div class="col-md-4 col-sm-3 item-club">
 					<div class="panel panel-success">
 						<div class="panel-heading">
-							<a href="club/single/1"><h3 class="panel-title">Bánh Bao</h3></a>
+							<a href="club/single/<%= club.id %>"><h3 class="panel-title"><%= club.name %></h3></a>
 						</div>
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-md-6">
-									<a href="club/single/1">
+									<a href="club/single/<%= club.id %>">
 										<img src="images/clubs/Athletic-Bilbao-icon.png" alt="" class="img-responsive">
 									</a>
 								</div>
 								<div class="col-md-6 meta-data">
-									<p><span class="label label-danger">Biệt danh:</span> Đá toàn thua</p>
-									<p><span class="label label-info">HLV:</span> Mr. Trang dv</p>
-									<p><span class="label label-primary">SVD:</span> Công viên Quảng Yên</p><p><span class="label label-default">Địa điểm:</span> Quảng Yên</p>
+									<p><span class="label label-danger">Biệt danh:</span> <%= club.nick_name %></p>
+									<p><span class="label label-info">HLV:</span> <%= club.coach %></p>
+									<p><span class="label label-primary">SVD:</span> <%= club.stadium %></p><p><span class="label label-default">Địa điểm:</span> <%= club.location %></p>
 
 								</div>
 							</div>
@@ -29,167 +30,7 @@
 					</div>
 				</div>
 				<!-- /single club -->
-				<div class="col-md-4 col-sm-3 item-club">
-					<div class="panel panel-success">
-						<div class="panel-heading">
-							<a href="club/single/1"><h3 class="panel-title">Bánh Bao</h3></a>
-						</div>
-						<div class="panel-body">
-							<div class="row">
-								<div class="col-md-6">
-									<a href="club/single/1">
-										<img src="images/clubs/Athletic-Bilbao-icon.png" alt="" class="img-responsive">
-									</a>
-								</div>
-								<div class="col-md-6 meta-data">
-									<p><span class="label label-danger">Biệt danh:</span> Đá toàn thua</p>
-									<p><span class="label label-info">HLV:</span> Mr. Trang dv</p>
-									<p><span class="label label-primary">SVD:</span> Công viên Quảng Yên</p><p><span class="label label-default">Địa điểm:</span> Quảng Yên</p>
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- /single club -->
-				<div class="col-md-4 col-sm-3 item-club">
-					<div class="panel panel-success">
-						<div class="panel-heading">
-							<a href="club/single/1"><h3 class="panel-title">Bánh Bao</h3></a>
-						</div>
-						<div class="panel-body">
-							<div class="row">
-								<div class="col-md-6">
-									<a href="club/single/1">
-										<img src="images/clubs/Athletic-Bilbao-icon.png" alt="" class="img-responsive">
-									</a>
-								</div>
-								<div class="col-md-6 meta-data">
-									<p><span class="label label-danger">Biệt danh:</span> Đá toàn thua</p>
-									<p><span class="label label-info">HLV:</span> Mr. Trang dv</p>
-									<p><span class="label label-primary">SVD:</span> Công viên Quảng Yên</p><p><span class="label label-default">Địa điểm:</span> Quảng Yên</p>
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- /single club -->
-				<div class="col-md-4 col-sm-3 item-club">
-					<div class="panel panel-success">
-						<div class="panel-heading">
-							<a href="club/single/1"><h3 class="panel-title">Bánh Bao</h3></a>
-						</div>
-						<div class="panel-body">
-							<div class="row">
-								<div class="col-md-6">
-									<a href="club/single/1">
-										<img src="images/clubs/Athletic-Bilbao-icon.png" alt="" class="img-responsive">
-									</a>
-								</div>
-								<div class="col-md-6 meta-data">
-									<p><span class="label label-danger">Biệt danh:</span> Đá toàn thua</p>
-									<p><span class="label label-info">HLV:</span> Mr. Trang dv</p>
-									<p><span class="label label-primary">SVD:</span> Công viên Quảng Yên</p><p><span class="label label-default">Địa điểm:</span> Quảng Yên</p>
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- /single club -->
-				<div class="col-md-4 col-sm-3 item-club">
-					<div class="panel panel-success">
-						<div class="panel-heading">
-							<a href="club/single/1"><h3 class="panel-title">Bánh Bao</h3></a>
-						</div>
-						<div class="panel-body">
-							<div class="row">
-								<div class="col-md-6">
-									<a href="club/single/1">
-										<img src="images/clubs/Athletic-Bilbao-icon.png" alt="" class="img-responsive">
-									</a>
-								</div>
-								<div class="col-md-6 meta-data">
-									<p><span class="label label-danger">Biệt danh:</span> Đá toàn thua</p>
-									<p><span class="label label-info">HLV:</span> Mr. Trang dv</p>
-									<p><span class="label label-primary">SVD:</span> Công viên Quảng Yên</p><p><span class="label label-default">Địa điểm:</span> Quảng Yên</p>
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- /single club -->
-				<div class="col-md-4 col-sm-3 item-club">
-					<div class="panel panel-success">
-						<div class="panel-heading">
-							<a href="club/single/1"><h3 class="panel-title">Bánh Bao</h3></a>
-						</div>
-						<div class="panel-body">
-							<div class="row">
-								<div class="col-md-6">
-									<a href="club/single/1">
-										<img src="images/clubs/Athletic-Bilbao-icon.png" alt="" class="img-responsive">
-									</a>
-								</div>
-								<div class="col-md-6 meta-data">
-									<p><span class="label label-danger">Biệt danh:</span> Đá toàn thua</p>
-									<p><span class="label label-info">HLV:</span> Mr. Trang dv</p>
-									<p><span class="label label-primary">SVD:</span> Công viên Quảng Yên</p><p><span class="label label-default">Địa điểm:</span> Quảng Yên</p>
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- /single club -->
-				<div class="col-md-4 col-sm-3 item-club">
-					<div class="panel panel-success">
-						<div class="panel-heading">
-							<a href="club/single/1"><h3 class="panel-title">Bánh Bao</h3></a>
-						</div>
-						<div class="panel-body">
-							<div class="row">
-								<div class="col-md-6">
-									<a href="club/single/1">
-										<img src="images/clubs/Athletic-Bilbao-icon.png" alt="" class="img-responsive">
-									</a>
-								</div>
-								<div class="col-md-6 meta-data">
-									<p><span class="label label-danger">Biệt danh:</span> Đá toàn thua</p>
-									<p><span class="label label-info">HLV:</span> Mr. Trang dv</p>
-									<p><span class="label label-primary">SVD:</span> Công viên Quảng Yên</p><p><span class="label label-default">Địa điểm:</span> Quảng Yên</p>
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- /single club -->
-				<div class="col-md-4 col-sm-3 item-club">
-					<div class="panel panel-success">
-						<div class="panel-heading">
-							<a href="club/single/1"><h3 class="panel-title">Bánh Bao</h3></a>
-						</div>
-						<div class="panel-body">
-							<div class="row">
-								<div class="col-md-6">
-									<a href="club/single/1">
-										<img src="images/clubs/Athletic-Bilbao-icon.png" alt="" class="img-responsive">
-									</a>
-								</div>
-								<div class="col-md-6 meta-data">
-									<p><span class="label label-danger">Biệt danh:</span> Đá toàn thua</p>
-									<p><span class="label label-info">HLV:</span> Mr. Trang dv</p>
-									<p><span class="label label-primary">SVD:</span> Công viên Quảng Yên</p><p><span class="label label-default">Địa điểm:</span> Quảng Yên</p>
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- /single club -->
+				<% end %>
 			</div>
 		</div>
 		<div class="panel-footer">
