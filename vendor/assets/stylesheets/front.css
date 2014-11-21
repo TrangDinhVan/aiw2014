@@ -1,0 +1,108 @@
+/*Reset style
+****************************************************************/
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-image: url(../images/bb.jpg);
+}
+
+.top-space {
+  margin-top: 5px;
+}
+
+.img-responsive {
+  width: 100%;
+}
+
+.muzik, .panel-body, .modal-body {
+  background-image: url(../images/tn_muzik.gif);
+}
+
+.bkg {
+  background-image: url(../images/bodybkg.gif);
+}
+
+.page-wrapper {
+  margin: 0 auto;
+}
+.page-wrapper main img {
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.4s ease;
+}
+.page-wrapper main img:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.page-wrapper main .club-kit p {
+  text-align: center;
+}
+.page-wrapper footer {
+  border-bottom: 2px solid green;
+  line-height: 20px;
+}
+.page-wrapper footer .btn-social-icon {
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 5px 8px;
+  font-size: 140%;
+  float: right;
+  margin: -5px 0 0 15px;
+}
+.page-wrapper footer .btn-social-icon:hover {
+  font-weight: bolder;
+}
+.page-wrapper footer .btn-social-icon.facebook {
+  background-color: #30487B;
+}
+.page-wrapper footer .btn-social-icon.twitter {
+  background-color: #1C92C7;
+}
+.page-wrapper footer .btn-social-icon.google {
+  background-color: red;
+}
+.page-wrapper footer p {
+  margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+  .page-wrapper {
+    width: 100%;
+  }
+}
+@media (min-width: 768px) {
+  .page-wrapper {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .page-wrapper {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-wrapper {
+    width: 1170px;
+  }
+}
+
+/*# sourceMappingURL=front.css.map */
