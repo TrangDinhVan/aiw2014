@@ -1,4 +1,9 @@
 <%= render "layouts/header" %>
+
+<%= link_to 'Add release', show_path('1'),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
+
+<div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
 <main class="">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
@@ -176,7 +181,7 @@
 			<!-- /left panel -->
 		</div>
 		<!-- Modal -->
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal fade" id="myModall" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">

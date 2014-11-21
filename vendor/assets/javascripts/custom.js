@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-    $('#myModal').on('show.bs.modal', function (event) {
+	$('#myModall').on('show.bs.modal', function (event) {
 		var button = $(event.relatedTarget);
 		var recipient = button.data('name');
 		var modal = $(this);
@@ -21,6 +21,13 @@ jQuery(document).ready(function($) {
 		modal.find('.index.progress-bar').text(button.data('index'));
 		modal.find('.avatar').attr('src', 'images/players/'+button.data('avatar'));
 	});
+var clickOnPopupLink = function(){
+    $('body').on('click', '.static-popup-link', function(){
+      $('#myModal').modal('show');
+    });
+  }
+
+  clickOnPopupLink();
 });
 
 
