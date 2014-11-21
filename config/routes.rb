@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
-  resources :clubs
-  get 'club/index'
-  get 'club/single/:id' => 'club#single'
-
   root 'club#index'
+
   get 'home/index'
   get 'home/sample'
 
   get 'club/show/:id' => 'club#show', :as => :show
+  get 'club/single/:id' => 'club#single', :as => :single
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
