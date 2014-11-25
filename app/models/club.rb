@@ -8,4 +8,10 @@ class Club < ActiveRecord::Base
 	# validates_attachment_content_type :photo, :content_type => ["image/jpeg", "image/png","image/jpg","image/gif"]
 	#validates_attachment :small, content_type: { content_type:     ["image/jpg", "image/jpeg", "image/png","image/gif"] }
 	validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
+
+	has_attached_file :host, :styles => { :small => "180x180>" }, :url  => "/assets/clubs/:id/host_:basename.:extension", :path => ":rails_root/public/assets/clubs/:id/host_:basename.:extension"
+	validates_attachment_content_type :host, :content_type => /\Aimage\/.*\Z/
+
+	has_attached_file :away, :styles => { :small => "180x180>" }, :url  => "/assets/clubs/:id/away_:basename.:extension", :path => ":rails_root/public/assets/clubs/:id/away_:basename.:extension"
+	validates_attachment_content_type :away, :content_type => /\Aimage\/.*\Z/
 end

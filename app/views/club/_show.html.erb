@@ -29,7 +29,7 @@
 
       </div>
       <div class="col-md-6 col-sm-4">
-        <img class="img-responsive avatar" src="" alt="">
+      <%= image_tag(@player.photo.url(:small), :class => "img-responsive") %>
         <div class="top-space"></div>
         <div class="progress">
         <div class="index progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="<%= @player.level %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @player.level %>%">

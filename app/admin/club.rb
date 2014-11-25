@@ -5,7 +5,7 @@ ActiveAdmin.register Club do
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # permit_params :list, :of, :attributes, :on, :model
-  permit_params :name, :nick_name, :coach, :year, :stadium, :volume, :location, :president, :photo
+  permit_params :name, :nick_name, :coach, :year, :stadium, :volume, :location, :president, :photo, :host, :away
   #
   # or
   #
@@ -24,6 +24,8 @@ ActiveAdmin.register Club do
     f.input :volume
     f.input :location
     f.input :photo, :as => :file
+    f.input :host, :as => :file
+    f.input :away, :as => :file
   end
   f.actions
   end
@@ -37,6 +39,12 @@ ActiveAdmin.register Club do
     row :stadium
     row :volume
     row :location
+    row :host do
+      image_tag(ad.host.url(:small))
+    end
+    row :away do
+      image_tag(ad.away.url(:small))
+    end
     row :photo do
       image_tag(ad.photo.url(:small))
     end

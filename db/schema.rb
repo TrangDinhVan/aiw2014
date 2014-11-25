@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141121183503) do
+ActiveRecord::Schema.define(version: 20141125161445) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -61,6 +61,14 @@ ActiveRecord::Schema.define(version: 20141121183503) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.string   "host_file_name"
+    t.string   "host_content_type"
+    t.integer  "host_file_size"
+    t.datetime "host_updated_at"
+    t.string   "away_file_name"
+    t.string   "away_content_type"
+    t.integer  "away_file_size"
+    t.datetime "away_updated_at"
   end
 
   create_table "histories", force: true do |t|
@@ -78,15 +86,19 @@ ActiveRecord::Schema.define(version: 20141121183503) do
     t.integer  "age"
     t.date     "dob"
     t.string   "nation"
-    t.decimal  "height",     precision: 10, scale: 0
-    t.decimal  "weight",     precision: 10, scale: 0
+    t.decimal  "height",             precision: 10, scale: 0
+    t.decimal  "weight",             precision: 10, scale: 0
     t.string   "position"
     t.string   "leg"
-    t.decimal  "level",      precision: 10, scale: 0
+    t.decimal  "level",              precision: 10, scale: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "club_id"
     t.integer  "number"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "players", ["club_id"], name: "index_players_on_club_id", using: :btree
