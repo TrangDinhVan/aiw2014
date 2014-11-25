@@ -31,6 +31,13 @@ gem 'devise'
 # ActiveAdmin
 gem 'activeadmin', github: 'activeadmin'
 
+# Upload Image with Paper clip
+# gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem "paperclip", "~> 4.2"
+
+#gem "rmagick"
+gem "carrierwave"
+
 gem 'tzinfo-data'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 
@@ -45,4 +52,5 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
 
