@@ -19,7 +19,7 @@ class Club < ActiveRecord::Base
 	def self.search(search)
 	  if search
 	    # find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
-	    Club.where("name LIKE ? OR location LIKE? OR stadium LIKE? OR coach LIKE?", "%#{search}%","%#{search}%","%#{search}%","%#{search}%").all
+	    Club.where("name LIKE ? OR location LIKE? OR stadium LIKE? OR coach LIKE? OR nick_name LIKE?", "%#{search}%","%#{search}%","%#{search}%","%#{search}%","%#{search}%").all
 	  else
 	    Club.all
 	  end

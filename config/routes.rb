@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/sample'
 
-  get 'club/show/:id' => 'club#show', :as => :show
+  get 'club/show/:id' => 'clubs#show', :as => :show
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
