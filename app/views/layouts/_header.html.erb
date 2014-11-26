@@ -28,17 +28,13 @@
 					        <li class=""><a class="navbar-brand" href="club.html"><span class="label label-success">CLB</span></a></li>
 					        <li><a class="navbar-brand" href="#"><span class="label label-success">Dịch vụ trang</span></a></li>
 					    </ul>
-					    <form class="navbar-form navbar-right" role="search">
-						    <div class="input-group">
-								<input type="text" class="form-control">
+						<form action="<%= search_path %>" method="get" class="navbar-form navbar-right">
+							<div class="input-group">
+								<%= text_field_tag :search, params[:search], :class => "form-control" %>
 								<span class="input-group-btn">
-									<button class="btn btn-default" type="button">Tìm!</button>
+									<%= submit_tag "Tìm!", :name => nil, :class => "btn btn-default" %>
 								</span>
-						    </div><!-- /input-group -->
-						</form>		
-						<form action="<%= search_path %>" method="get">
-						  <%= text_field_tag :search, params[:search] %>
-						  <%= submit_tag "search", :name => nil %>
+							</div>
 						</form>
 					</div>
 					
