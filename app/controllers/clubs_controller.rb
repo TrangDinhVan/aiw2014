@@ -1,4 +1,4 @@
-class ClubController < ApplicationController
+class ClubsController < ApplicationController
   def index
   	@clubs = Club.all
   end
@@ -12,4 +12,10 @@ class ClubController < ApplicationController
       format.js
     end
   end
+
+  def search
+    @clubs = Club.search(params[:search])
+    @players = Player.search(params[:search])
+  end
+    
 end

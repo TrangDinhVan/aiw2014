@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  resources :clubs
-  get 'club/index'
-  get 'club/single/:id' => 'club#single'
+  resources :clubs do
+    collection do
+      get 'search'
+    end
+  end
+  get 'club/search' => 'clubs#search', :as => :search
+  #get 'clubs/index'
+  get 'club/single/:id' => 'clubs#single'
 
-  root 'club#index'
+  root 'clubs#index'
   get 'home/index'
   get 'home/sample'
 

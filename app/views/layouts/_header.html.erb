@@ -8,7 +8,7 @@
 <body class="muzik">
 	<div class="page-wrapper">
 		<header>
-			<img src="images/la_liga_banner.jpg" alt="" class="img-responsive">
+			<%= image_tag("la_liga_banner.jpg", :class => "img-responsive") %>
 			<nav class="navbar navbar-default" role="navigation">
 				<div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
@@ -36,6 +36,10 @@
 								</span>
 						    </div><!-- /input-group -->
 						</form>		
+						<form action="<%= search_path %>" method="get">
+						  <%= text_field_tag :search, params[:search] %>
+						  <%= submit_tag "search", :name => nil %>
+						</form>
 					</div>
 					
 				</div><!-- /.container-fluid -->

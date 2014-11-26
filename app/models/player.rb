@@ -7,4 +7,13 @@ class Player < ActiveRecord::Base
 	# validates_attachment_content_type :photo, :content_type => ["image/jpeg", "image/png","image/jpg","image/gif"]
 	#validates_attachment :small, content_type: { content_type:     ["image/jpg", "image/jpeg", "image/png","image/gif"] }
 	validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
+
+	def self.search(search)
+	  if search
+	    # find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+	    Player.where("name LIKE ?", "%#{search}%").all
+	  else
+	    Club.all
+	  end
+	end
 end

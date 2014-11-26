@@ -14,4 +14,15 @@ class Club < ActiveRecord::Base
 
 	has_attached_file :away, :styles => { :small => "180x180>" }, :url  => "/assets/clubs/:id/away_:basename.:extension", :path => ":rails_root/public/assets/clubs/:id/away_:basename.:extension"
 	validates_attachment_content_type :away, :content_type => /\Aimage\/.*\Z/
+
+
+	def self.search(search)
+	  if search
+	    # find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+	    Club.where("name LIKE ? OR location LIKE? OR stadium LIKE? OR coach LIKE?", "%#{search}%","%#{search}%","%#{search}%","%#{search}%").all
+	  else
+	    Club.all
+	  end
+	end
+
 end
