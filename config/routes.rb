@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'information' => 'information'
   resources :clubs do
     collection do
       get 'search'

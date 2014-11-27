@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125161445) do
+ActiveRecord::Schema.define(version: 20141127103044) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -102,6 +102,16 @@ ActiveRecord::Schema.define(version: 20141125161445) do
   end
 
   add_index "players", ["club_id"], name: "index_players_on_club_id", using: :btree
+
+  create_table "settings", force: true do |t|
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "googleplus"
+    t.string   "footer_text"
+    t.string   "data_source"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

@@ -1,9 +1,17 @@
 		<footer class="">
 			<p class="">
-				<span class="label label-success">Bởi Trangdv @ 2014 - Mọi quyền không được bảo lưu</span>
-				<a class="btn-social-icon facebook" href="#"><i class="fa fa-facebook"></i></a>
-				<a class="btn-social-icon google" href="#"><i class="fa fa-google-plus"></i></a>
-				<a class="btn-social-icon twitter" href="#"><i class="fa fa-twitter"></i></a>
+				<% if( not(@site_meta.footer_text.empty?) ) %>
+					<span class="label label-success"><%= @site_meta.footer_text %></span>
+				<% end %>
+				<% if( not(@site_meta.facebook.empty?) ) %>
+					<a class="btn-social-icon facebook" href="<%= @site_meta.facebook %>"><i class="fa fa-facebook"></i></a>
+				<% end %>
+				<% if( not(@site_meta.googleplus.empty?) ) %>
+					<a class="btn-social-icon google" href="<%= @site_meta.googleplus %>"><i class="fa fa-google-plus"></i></a>
+				<% end %>
+				<% if( not(@site_meta.twitter.empty?) ) %>
+					<a class="btn-social-icon twitter" href="<%= @site_meta.twitter %>"><i class="fa fa-twitter"></i></a>
+				<% end %>
 			</p>
 		</footer>
 	</div><!-- /page-wrapper -->
