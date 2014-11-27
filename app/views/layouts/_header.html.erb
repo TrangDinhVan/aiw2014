@@ -1,3 +1,14 @@
+<% 
+	if( controller.controller_name == "clubs" && controller.action_name == "single" && not(@site_meta.banner_single.url(:small).empty?) )
+		@banner = @site_meta.banner_single.url(:small)
+	else
+		if( controller.controller_name == "clubs" && controller.action_name == "search" && not(@site_meta.banner_search.url(:small).empty?) )
+			@banner = @site_meta.banner_search.url(:small)
+		else
+			@banner = @site_meta.banner_home.url(:small)
+		end
+	end
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +19,7 @@
 <body class="muzik">
 	<div class="page-wrapper">
 		<header>
-			<%= image_tag("la_liga_banner.jpg", :class => "img-responsive") %>
+			<%= image_tag(@banner, :class => "img-responsive") %>
 			<nav class="navbar navbar-default" role="navigation">
 				<div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
