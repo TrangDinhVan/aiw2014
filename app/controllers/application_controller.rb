@@ -5,16 +5,6 @@ class ApplicationController < ActionController::Base
 
   before_action :init
 
-  def information
-  end
-
-  def set_up_header
-  end
-
-  def setup_social
-
-  end
-
   def init
   	@site_meta = Setting.first
   end

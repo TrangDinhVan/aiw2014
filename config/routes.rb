@@ -1,19 +1,21 @@
 Rails.application.routes.draw do
-  get 'information' => 'information'
+  # Club
   resources :clubs do
     collection do
       get 'search'
     end
   end
-  get 'club/search' => 'clubs#search', :as => :search
-  #get 'clubs/index'
   get 'club/single/:id' => 'clubs#single'
+  get 'club/show_modal/:id' => 'clubs#show_modal', :as => :show_modal
+  get 'club/show/:id' => 'clubs#show'
+  get 'club/search' => 'clubs#search', :as => :search
+
+  # Player
+  resources :players
+  get 'player/show/:id' => 'players#show'
 
   root 'clubs#index'
-  get 'home/index'
-  get 'home/sample'
 
-  get 'club/show/:id' => 'clubs#show', :as => :show
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users

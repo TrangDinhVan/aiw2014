@@ -30,11 +30,11 @@
 										<tr>
 									  <td><%= player.id %></td>							
 									  <td>
-									  	 <%= link_to image_tag(player.photo.url(:small), :class => "img-responsive"), show_path("#{player.id}"),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'} 
+									  	 <%= link_to image_tag(player.photo.url(:small), :class => "img-responsive"), show_modal_path("#{player.id}"),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'} 
 									  	 %>    
 									  </td>
 									  <td>
-									  	<%= link_to "#{player.name}", show_path("#{player.id}"),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
+									  	<%= link_to "#{player.name}", show_modal_path("#{player.id}"),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
 									  </td>
 									  <td><%= player.position %></td>
 									  <td><%= player.nation %></td>

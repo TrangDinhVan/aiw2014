@@ -67,6 +67,8 @@ body {
   font-size: 140%;
   float: right;
   margin: -5px 0 0 15px;
+  text-align: center;
+  min-width: 40px;
 }
 .page-wrapper footer .btn-social-icon:hover {
   font-weight: bolder;

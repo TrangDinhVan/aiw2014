@@ -17,22 +17,21 @@
 
       <p class="dob">Ngày sinh <span class="label label-warning"><%= @player.dob %></span></p>
 
-      <p class="nation">Quốc tịch <span class="label label-primary"><%= @player.nation %></span></p>
+      <p class="nation">Quốc tịch <span class="label label-danger"><%= @player.nation %></span></p>
 
-      <p class="height">Chiều cao <span class="label label-primary"><%= @player.height %></span></p>
+      <p class="height">Chiều cao <span class="label label-info"><%= @player.height %></span></p>
 
       <p class="weight">Cân nặng <span class="label label-primary"><%= @player.weight %></span></p>
 
-      <p class="weight">Thuận chân <span class="label label-info"><%= @player.leg %></span></p>
-
-      <p class="weight">Chỉ số <span class="label label-success"><%= @player.level %></span></p>
+      <p class="weight">Thuận chân <span class="label label-default"><%= @player.leg %></span></p>
 
       </div>
       <div class="col-md-6 col-sm-4">
       <%= image_tag(@player.photo.url(:small), :class => "img-responsive") %>
         <div class="top-space"></div>
         <div class="progress">
-        <div class="index progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="<%= @player.level %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @player.level %>%">
+        <div class="index progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="<%= @player.level %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @player.level %>%; color: #000;">
+        Chỉ số: <%= @player.level %>
         </div>
       </div>
       </div>
