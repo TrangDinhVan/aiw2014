@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141127111936) do
+ActiveRecord::Schema.define(version: 20141128033706) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -80,6 +80,20 @@ ActiveRecord::Schema.define(version: 20141127111936) do
   end
 
   add_index "histories", ["club_id"], name: "index_histories_on_club_id", using: :btree
+
+  create_table "members", force: true do |t|
+    t.string   "name"
+    t.string   "student_id"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "idol"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
 
   create_table "players", force: true do |t|
     t.string   "name"
