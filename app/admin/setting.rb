@@ -1,4 +1,4 @@
-ActiveAdmin.register Setting, as: "Site Meta" do
+ActiveAdmin.register Setting, as: "Site Setting" do
 
 
   # See permitted parameters documentation:
@@ -45,8 +45,5 @@ ActiveAdmin.register Setting, as: "Site Meta" do
     end
   end
  end
-
-
-
 
 end
