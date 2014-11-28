@@ -1,6 +1,6 @@
 class Player < ActiveRecord::Base
 	belongs_to :club
-	has_attached_file :photo, :styles => { :small => "256x256>" }, :url  => "/assets/players/:id/:basename.:extension", :path => ":rails_root/public/assets/players/:id/:basename.:extension"
+	has_attached_file :photo, :styles => { :small => "256x256>" }, :url  => "/images/players/:basename.:extension", :path => ":rails_root/public/images/players/:basename.:extension"
 
 	# validates_attachment_presence :photo
 	# validates_attachment_size :photo, :less_than => 5.megabytes
