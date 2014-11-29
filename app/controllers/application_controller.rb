@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   def init
   	@site_meta = Setting.first
+    @members = Member.all
   end
 
   def get_controller

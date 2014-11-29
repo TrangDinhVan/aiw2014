@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'members/index'
+
   # Club
   resources :clubs do
     collection do

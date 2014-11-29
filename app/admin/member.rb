@@ -1,5 +1,14 @@
-ActiveAdmin.register Member do
-
+ActiveAdmin.register Member, as: "Group" do
+  index do
+    column :photo do |r|
+        image_tag(r.photo.url(:small), width: "50", height: "50")
+    end
+    column :name
+    column :student_id
+    column :email
+    column :idol
+    actions
+  end
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

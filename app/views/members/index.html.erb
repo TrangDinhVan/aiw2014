@@ -1,0 +1,42 @@
+<%= render "layouts/header" %>
+<main class="">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">Thông tin nhóm</h3>
+		</div>
+		<div class="panel-body bkg">
+			<div class="row">
+			<% @members.each do |member| %>
+				<div class="col-md-4 col-sm-3 item-member">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<a href="#"><h3 class="panel-title"><%= member.name %></h3></a>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<a href="#">
+										<%= image_tag(member.photo.url(:small), :class => "img-responsive") %>
+									</a>
+								</div>
+								<div class="col-md-6 meta-data">
+									<p>Mã SV: <span class="label label-danger"><%= member.student_id %></span></p>
+									<p>Email: <span class="label label-info"><%= member.email %></span> </p>
+									<p>Điện thoại: <span class="label label-primary"><%= member.phone %></span> </p>
+									<p>Hâm mộ: <span class="label label-success"><%= member.idol %></span></p>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /single club -->
+			<% end %>
+			</div>
+		</div>
+		<div class="panel-footer">
+			<%= @site_meta.data_source %>
+		</div>
+	</div>
+</main>
+<%= render "layouts/footer" %>

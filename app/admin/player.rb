@@ -1,5 +1,16 @@
 ActiveAdmin.register Player do
-
+  index do
+    column :photo do |r|
+        image_tag(r.photo.url(:small), width: "50", height: "50")
+    end
+    column :name
+    column :club
+    column :number
+    column :dob
+    column :position
+    column :nation
+    actions
+  end
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

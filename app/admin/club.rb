@@ -1,6 +1,15 @@
 ActiveAdmin.register Club do
-
-
+  index do
+    column :photo do |r|
+        image_tag(r.photo.url(:small), width: "50", height: "50")
+    end
+    column :name
+    column :nick_name
+    column :coach
+    column :stadium
+    column :location
+    actions
+  end
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
