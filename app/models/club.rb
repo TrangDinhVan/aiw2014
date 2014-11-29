@@ -16,11 +16,24 @@ class Club < ActiveRecord::Base
 
 	def self.search(search)
 	  if search
-	    # find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
 	    Club.where("name LIKE ? OR location LIKE? OR stadium LIKE? OR coach LIKE? OR nick_name LIKE?", "%#{search}%","%#{search}%","%#{search}%","%#{search}%","%#{search}%").all
 	  else
 	    Club.all
 	  end
+	end
+
+	def self.get_query(params)
+		if params
+			@clubs = Club.where("name like ?", "%" + params[:name] + "%") if params[:name]
+			@clubs = Club.where("location like ?", "%" + params[:location] + "%") if params[:location]
+			@clubs = Club.where("stadium like ?", "%" + params[:stadium] + "%") if params[:stadium]
+			@clubs = Club.where("coach like ?", "%" + params[:coach] + "%") if params[:coach]
+			@clubs = Club.where("president like ?", "%" + params[:president] + "%") if params[:president]
+			@clubs = Club.where("nick_name like ?", "%" + params[:nick_name] + "%") if params[:nick_name]
+			@clubs
+		else
+			@clubs = Club.all
+		end
 	end
 
 end

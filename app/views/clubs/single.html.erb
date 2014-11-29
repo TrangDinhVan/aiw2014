@@ -28,7 +28,7 @@
 									<tbody>
 									<% @club.players.each do |player| %>
 										<tr>
-									  <td><%= player.id %></td>							
+									  <td><%= player.number %></td>							
 									  <td>
 									  	 <%= link_to image_tag(player.photo.url(:small), :class => "img-responsive"), show_modal_path("#{player.id}"),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'} 
 									  	 %>    
@@ -58,6 +58,23 @@
 						</div>
 					</div>
 					<!-- /Club logo -->
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Thông tin đội</h3>
+						</div>
+						<div class="panel-body">
+							<div>
+								<p><span class="label label-danger">Biệt danh:</span> <%= @club.nick_name %></p>
+								<p><span class="label label-success">Thành lập:</span> <%= @club.year %></p>
+								<p><span class="label label-primary">Chủ tịch:</span> <%= @club.president %></p>
+								<p><span class="label label-info">HLV:</span> <%= @club.coach %></p>
+								<p><span class="label label-primary">SVD:</span> <%= @club.stadium %></p>
+								<p><span class="label label-warning">Sức chứa:</span> <%= @club.volume %></p>
+								<p><span class="label label-default">Địa điểm:</span> <%= @club.location %></p>
+							</div>
+						</div>
+					</div>
+					<!-- /Club Info -->
 					<div class="panel panel-success club-kit">
 						<div class="panel-heading">
 							<h3 class="panel-title">Màu áo</h3>
@@ -76,23 +93,6 @@
 						</div>
 					</div>
 					<!-- /Kit -->
-					<div class="panel panel-primary">
-						<div class="panel-heading">
-							<h3 class="panel-title">Thông tin đội</h3>
-						</div>
-						<div class="panel-body">
-							<div>
-								<p><span class="label label-danger">Biệt danh:</span> <%= @club.nick_name %></p>
-								<p><span class="label label-success">Thành lập:</span> <%= @club.year %></p>
-								<p><span class="label label-primary">Chủ tịch:</span> <%= @club.president %></p>
-								<p><span class="label label-info">HLV:</span> <%= @club.coach %></p>
-								<p><span class="label label-primary">SVD:</span> <%= @club.stadium %></p>
-								<p><span class="label label-warning">Sức chứa:</span> <%= @club.volume %></p>
-								<p><span class="label label-default">Địa điểm:</span> <%= @club.location %></p>
-							</div>
-						</div>
-					</div>
-					<!-- /Club Info -->
 					<div class="panel panel-info">
 						<div class="panel-heading">
 							<h3 class="panel-title">Lịch sử</h3>

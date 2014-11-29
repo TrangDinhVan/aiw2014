@@ -15,7 +15,7 @@ ActiveAdmin.register Player do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :name, :age, :dob, :nation, :number, :height, :weight, :position, :leg, :level, :club_id, :photo
+  permit_params :name, :dob, :nation, :number, :height, :weight, :position, :leg, :level, :club_id, :photo
   #
   # or
   #
@@ -29,7 +29,7 @@ ActiveAdmin.register Player do
     f.input :name
     f.input :number
     f.input :position
-    f.input :dob
+    f.input :dob, as: :datepicker, start_year: 150, end_year: 2000
     f.input :nation
     f.input :height
     f.input :weight

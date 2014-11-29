@@ -1,13 +1,13 @@
 class ClubsController < ApplicationController
   def index
-  	@clubs = Club.all
+    @clubs = Club.all
   end
   def single
-  	@club = Club.find(params[:id])
+    @club = Club.find(params[:id])
   end
   def show_modal
-  	@player = Player.find(params[:id])
-  	respond_to do |format|
+    @player = Player.find(params[:id])
+    respond_to do |format|
       format.html
       format.js
     end
@@ -18,7 +18,6 @@ class ClubsController < ApplicationController
     @players = Player.search(params[:search])
   end
   # API service
-  respond_to :html, :xml, :json, :js
   def show
     @club = Club.find(params[:id])
     respond_with(@club) do |format|

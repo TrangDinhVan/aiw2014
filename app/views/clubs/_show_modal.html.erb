@@ -11,11 +11,11 @@
       <p class="name">Tên <span class="label label-primary"><%= @player.name %></span></p>
       <p class="team">Câu lạc bộ <span class="label label-danger"><%= @player.club.name %></span></p>
 
-      <p class="no">Áo số <span class="label label-success"><%= @player.id %></span></p>
+      <p class="no">Áo số <span class="label label-success"><%= @player.number %></span></p>
 
       <p class="position">Vị trí <span class="label label-info"><%= @player.position %></span></p>
 
-      <p class="dob">Ngày sinh <span class="label label-warning"><%= @player.dob %></span></p>
+      <p class="dob">Ngày sinh <span class="label label-warning"><%= @player.dob %></span> <span class="label label-default"><%= Time.now.year - @player.dob.year %> tuổi</span></p>
 
       <p class="nation">Quốc tịch <span class="label label-danger"><%= @player.nation %></span></p>
 
