@@ -7,11 +7,11 @@ class Club < ActiveRecord::Base
 	validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 
 	# host kit
-	has_attached_file :host, :styles => { :small => "180x180>" }, :url  => "/images/clubs/kit/host_:basename.:extension", :path => ":rails_root/public/images/clubs/kit/host_:basename.:extension"
+	has_attached_file :host, :styles => { :small => "180x180>" }, :url  => "/images/clubs/kit/:basename.:extension", :path => ":rails_root/public/images/clubs/kit/:basename.:extension"
 	validates_attachment_content_type :host, :content_type => /\Aimage\/.*\Z/
 
 	# away kit
-	has_attached_file :away, :styles => { :small => "180x180>" }, :url  => "/images/clubs/kit/away_:basename.:extension", :path => ":rails_root/public/images/clubs/kit/away_:basename.:extension"
+	has_attached_file :away, :styles => { :small => "180x180>" }, :url  => "/images/clubs/kit/:basename.:extension", :path => ":rails_root/public/images/clubs/kit/:basename.:extension"
 	validates_attachment_content_type :away, :content_type => /\Aimage\/.*\Z/
 
 	def self.search(search)

@@ -1,10 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-aleticomadrid = Club.create! :name => 'Aletico Madrid', :year => '1903'
-bilbao_history = History.create! :name => "La Liga", :year => "1978, 1999, 2005, 2008, 2009", :club => aleticomadrid
-player1 = Player.create! :name => 'Miguel Angel Moya Rumbo', :leg => 'Phải', :club => aleticomadrid
+Club1 = Club.create! name: "Athletic Club", nick_name: "Los Leones", coach: "Ernesto Valverde", year: "1898", stadium: "San Mames", volume: "53332", location: "Bilbao"
+Club1.photo = File.open("#{Rails.root}/public/images/clubs/logo/Athletic Club.png")
+Club1.host = File.open("#{Rails.root}/public/images/clubs/kit/Athletic Club - home_kit.png")
+Club1.away = File.open("#{Rails.root}/public/images/clubs/kit/Athletic Club - away_kit.png")
+Club1.save!
+History1 = History.create! name: "La Liga", year: "1984, 1983, 1956, 1943, 1936, 1934, 1931, 1930", club: Club1
+History2 = History.create! name: "Copa del Rey", year: "1984, 1973, 1969, 1958, 1956, 1955, 1950, 1945, 1944, 1943, 1933, 1932, 1931, 1930, 1923, 1921, 1916, 1915, 1914, 1904, 1903", club: Club1
+Player1 = Player.create! name: "Gorka IRAIZOZ", number: "1", position: "Thủ môn", dob: "03-06-1981", nation: "Tây Ban Nha", height: "191", weight: "92", leg: "Phải", level: "88", club: Club1
+Player1.photo = File.open("#{Rails.root}/public/images/players/Gorka IRAIZOZ.jpg")
+Player1.save!
