@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # Root
+  root 'clubs#index'
+
+  # Members
   get 'members/index'
 
   # Club
@@ -14,9 +18,9 @@ Rails.application.routes.draw do
 
   # Player
   resources :players
-  get 'player/show/:id' => 'players#show'
 
-  root 'clubs#index'
+  # Applicatio
+  get "/query" => 'application#query', :as => :query
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
