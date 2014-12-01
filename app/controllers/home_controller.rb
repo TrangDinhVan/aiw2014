@@ -1,20 +1,12 @@
 class HomeController < ApplicationController
-  def index
+  respond_to :html, :xml, :json, :js
+  def query
+    if( params[:q] == 'clubs' )
+      render json: Club.get_query(params)
+    elsif (params[:q] == 'players')
+      render json: Player.get_query(params)
+    end
   end
-
-  def categories
-
-  end
-
-  def details
-
-  end
-
-  def search
-
-  end
-
-  def sample
-    
+  def service
   end
 end

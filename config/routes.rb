@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :players
 
   # Applicatio
-  get "/query" => 'application#query', :as => :query
+  get "/query" => 'home#query', :as => :query
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

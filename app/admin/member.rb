@@ -13,7 +13,7 @@ ActiveAdmin.register Member, as: "Group" do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :name, :student_id, :email, :phone, :idol, :photo
+  permit_params :name, :student_id, :email, :phone, :idol, :role, :photo
   #
   # or
   #
@@ -26,6 +26,7 @@ ActiveAdmin.register Member, as: "Group" do
    f.inputs "Details" do
     f.input :name
     f.input :student_id
+    f.input :role
     f.input :email
     f.input :phone
     f.input :idol
@@ -38,6 +39,7 @@ ActiveAdmin.register Member, as: "Group" do
   attributes_table do
     row :name
     row :student_id
+    row :role
     row :email
     row :phone
     row :idol
