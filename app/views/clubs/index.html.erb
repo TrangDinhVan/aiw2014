@@ -15,12 +15,12 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<div class="col-md-6">
+								<div class="col-md-6 col-sm-6 col-xs-12">
 									<a href="club/single/<%= club.id %>">
 									<%= image_tag(club.photo.url(:small), :class => "img-responsive") %>
 									</a>
 								</div>
-								<div class="col-md-6 meta-data">
+								<div class="col-md-6 col-sm-6 col-xs-12 meta-data">
 									<p><span class="label label-danger">Biệt danh:</span> <%= club.nick_name %></p>
 									<p><span class="label label-info">HLV:</span> <%= club.coach %></p>
 									<p><span class="label label-primary">SVD:</span> <%= club.stadium %></p><p><span class="label label-default">Địa điểm:</span> <%= club.location %></p>

@@ -53,6 +53,9 @@ body {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+.page-wrapper main .meta-data {
+  overflow: hidden;
+}
 .page-wrapper main .club-kit p {
   text-align: center;
 }

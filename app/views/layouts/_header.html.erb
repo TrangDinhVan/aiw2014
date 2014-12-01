@@ -14,13 +14,16 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Thông tin các đội bóng và cầu thủ giải La Liga mùa 2014 - 2015">
+	<meta name="keywords" content="La Liga, bóng đá, Tây Ban Nha">
+	<meta name="author" content="Trang Đinh Văn">
 	<title><%= yield(:title) %>La Liga</title>
 </head>
 <body class="muzik">
 	<div class="page-wrapper">
 		<header>
 			<%= image_tag(@banner, :class => "img-responsive") %>
-			<nav class="navbar navbar-default" role="navigation">
+			<nav class="navbar navbar-default bkg" role="navigation">
 				<div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<div class="navbar-header">
@@ -30,7 +33,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="/"><span class="label label-success"><i class="fa fa-home"></i> Trang chủ</span></a>	
+						<a class="navbar-brand" href="/"><span class="label label-danger"><i class="fa fa-home <%= is_active?('/') %>"></i> Trang chủ</span></a>	
 					</div>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<form action="<%= search_path %>" method="get" class="navbar-form navbar-right">
@@ -43,10 +46,10 @@
 						</form>
 					    <ul class="nav navbar-nav">
 					    	<li>
-					    		<a class="navbar-brand" href="/members/index"><span class="label label-success">Thông tin</span></a>
+					    		<a class="navbar-brand" href="/members/index"><span class="label label-success"><i class="fa fa-info-circle <%= is_active?('/members/index') %>"></i> Thông tin</span></a>
 					    	</li>
 					        <li>
-					        	<a class="navbar-brand" href="/service"><span class="label label-success">Dịch vụ trang</span></a>
+					        	<a class="navbar-brand" href="/service"><span class="label label-primary"><i class="fa fa fa-refresh <%= is_active?('/service') %>"></i> Dịch vụ trang</span></a>
 					        </li>
 					    </ul>
 					</div>

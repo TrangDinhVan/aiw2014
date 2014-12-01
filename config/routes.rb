@@ -12,11 +12,11 @@ Rails.application.routes.draw do
     end
   end
   get 'club/single/:id' => 'clubs#single'
-  get 'club/show_modal/:id' => 'clubs#show_modal', :as => :show_modal
   get 'club/show/:id' => 'clubs#show'
 
   # Player
   resources :players
+  get 'player/show_modal/:id' => 'players#show_modal', :as => :show_modal
 
   # Home
   get "/query" => 'home#query', :as => :query

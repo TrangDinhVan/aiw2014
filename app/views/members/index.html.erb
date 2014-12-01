@@ -15,12 +15,12 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<div class="col-md-6">
+								<div class="col-md-6 col-sm-6 col-xs-12">
 									<%= image_tag(member.photo.url(:small), :class => "img-responsive") %>
 									<br />
 									<%= member.role %>
 								</div>
-								<div class="col-md-6 meta-data">
+								<div class="col-md-6 col-sm-6 col-xs-12 meta-data">
 									<p>Mã SV: <span class="label label-danger"><%= member.student_id %></span></p>
 									<p>Email: <span class="label label-info"><%= member.email %></span> </p>
 									<p>Điện thoại: <span class="label label-primary"><%= member.phone %></span> </p>
