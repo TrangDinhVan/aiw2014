@@ -1,0 +1,22 @@
+<% content_for :title, "Dịch vụ  | " %>
+<%= render "layouts/header" %>
+<main class="">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">Cú pháp yêu cầu tập đối tượng định dạng .json</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-9" style="font-size: 120%">
+					<p><strong>Câu lạc bộ:</strong> <i>http://localhost:3000/query?q=<strong>clubs</strong>&stadium=San&name=Athletic&...</i></p>
+					<p><strong>Cầu thủ:</strong> <i>http://localhost:3000/query?q=<strong>players</strong>&nation=Tây&position=Thủ+môn&...</i></p>
+				</div>
+			</div>
+		</div>
+		<div class="panel-footer">
+		<%= @site_meta.data_source %>
+		</div>
+	</div>
+</main>
+<!-- /main -->
+<%= render "layouts/footer" %>

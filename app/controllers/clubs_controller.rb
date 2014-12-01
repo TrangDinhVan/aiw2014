@@ -13,10 +13,6 @@ class ClubsController < ApplicationController
     end
   end
 
-  def search
-    @clubs = Club.search(params[:search])
-    @players = Player.search(params[:search])
-  end
   # API service
   def show
     @club = Club.find(params[:id])

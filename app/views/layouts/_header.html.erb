@@ -14,7 +14,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>La Liga - <%= yield(:title) || "Tất cả về giải La Liga" %></title>
+	<title><%= yield(:title) %>La Liga</title>
 </head>
 <body class="muzik">
 	<div class="page-wrapper">
@@ -30,13 +30,9 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="/"><span class="label label-success"><i class="fa fa-home"></i></span></a>
-						<a class="navbar-brand" href="/members/index"><span class="label label-success">Thông tin</span></a>	
+						<a class="navbar-brand" href="/"><span class="label label-success"><i class="fa fa-home"></i> Trang chủ</span></a>	
 					</div>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					    <ul class="nav navbar-nav">
-					        <li><a class="navbar-brand" href="#"><span class="label label-success">Dịch vụ trang</span></a></li>
-					    </ul>
 						<form action="<%= search_path %>" method="get" class="navbar-form navbar-right">
 							<div class="input-group">
 								<%= text_field_tag :search, params[:search], :class => "form-control" %>
@@ -45,6 +41,14 @@
 								</span>
 							</div>
 						</form>
+					    <ul class="nav navbar-nav">
+					    	<li>
+					    		<a class="navbar-brand" href="/members/index"><span class="label label-success">Thông tin</span></a>
+					    	</li>
+					        <li>
+					        	<a class="navbar-brand" href="/service"><span class="label label-success">Dịch vụ trang</span></a>
+					        </li>
+					    </ul>
 					</div>
 					
 				</div><!-- /.container-fluid -->

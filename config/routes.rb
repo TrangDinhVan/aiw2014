@@ -14,13 +14,14 @@ Rails.application.routes.draw do
   get 'club/single/:id' => 'clubs#single'
   get 'club/show_modal/:id' => 'clubs#show_modal', :as => :show_modal
   get 'club/show/:id' => 'clubs#show'
-  get 'club/search' => 'clubs#search', :as => :search
 
   # Player
   resources :players
 
-  # Applicatio
+  # Home
   get "/query" => 'home#query', :as => :query
+  get "/service" => 'home#service', :as => :service
+  get '/search' => 'home#search', :as => :search
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
