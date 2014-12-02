@@ -30,7 +30,7 @@
                                             	<%= link_to "<span class='label label-primary'>#{player.name}</span>".html_safe, show_modal_path("#{player.id}"),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
                                             </td>
                                             <td><span class="label label-danger"><%= player.number %></span></td>
-                                            <td><a href="single/<%= player.club.id %>"><span class="label label-success"><%= player.club.name %></span></a></td>
+                                            <td><a href="club/single/<%= player.club.id %>"><span class="label label-success"><%= player.club.name %></span></a></td>
                                             <td><span class="label label-info"><%= player.position %></span></td>
                                         </tr>
                                     <% end %>
@@ -60,7 +60,7 @@
                                     <% @clubs.each do |club| %>
                                         <tr>
                                             <td>
-                                            	<a href="single/<%= club.id %>"><span class="label label-success"><%= club.name %></span></a>
+                                            	<a href="club/single/<%= club.id %>"><span class="label label-success"><%= club.name %></span></a>
                                             </td>
                                             <td><span class="label label-danger"><%= club.coach %></span></td>
                                             <td><span class="label label-success"><%= club.location %></span></td>
