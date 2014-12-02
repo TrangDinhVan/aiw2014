@@ -11,7 +11,7 @@ class PlayersController < ApplicationController
   end
   
   def show_modal
-    @player = Player.find(params[:id])
+    @player = Player.find_all_by_id(params[:id])
     respond_to do |format|
       format.html
       format.js
