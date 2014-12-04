@@ -48,10 +48,10 @@ body{
 		}
 		.item-club{
 			&:hover{
-				.meta-date{
-					margin-left: -15px;
-				}
 				color: green;
+			}
+			.meta-data{
+				margin-left: -15px;
 			}
 		}
 		.meta-data{
@@ -96,7 +96,12 @@ body{
 
 @media (max-width: 767px) {
 	.page-wrapper {
-		width: 100%;
+		width: 99%;
+		.item-club{
+			.meta-data{
+				margin-left: 15px !important;
+			}
+		}
 	}
 }
 @media (min-width: 768px) {

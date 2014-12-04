@@ -56,7 +56,7 @@ body {
 .page-wrapper main .item-club:hover {
   color: green;
 }
-.page-wrapper main .item-club:hover .meta-date {
+.page-wrapper main .item-club .meta-data {
   margin-left: -15px;
 }
 .page-wrapper main .meta-data {
@@ -97,7 +97,10 @@ body {
 
 @media (max-width: 767px) {
   .page-wrapper {
-    width: 100%;
+    width: 99%;
+  }
+  .page-wrapper .item-club .meta-data {
+    margin-left: 15px !important;
   }
 }
 @media (min-width: 768px) {
