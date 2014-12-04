@@ -53,6 +53,12 @@ body {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+.page-wrapper main .item-club:hover {
+  color: green;
+}
+.page-wrapper main .item-club:hover .meta-date {
+  margin-left: -15px;
+}
 .page-wrapper main .meta-data {
   overflow: hidden;
 }
