@@ -37,6 +37,9 @@ body{
 }
 .page-wrapper {
 	margin: 0 auto;
+	nav{
+		margin: 5px 0;
+	}
 	main{
 		img{
 			&:hover{
@@ -61,6 +64,11 @@ body{
 			p{
 				text-align: center;
 			}
+		}
+		img.table-player{
+			max-width: 80px;
+			max-height: 80px;
+			text-align: center;
 		}
 	}
 	footer{
@@ -93,10 +101,15 @@ body{
 		}
 	}
 }
+@media (max-width: 467px){
+	.page-wrapper{
+		width: 100%;
+	}
+}
 
 @media (max-width: 767px) {
 	.page-wrapper {
-		width: 99%;
+		width: 95%;
 		.item-club{
 			.meta-data{
 				margin-left: 15px !important;

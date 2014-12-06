@@ -1,4 +1,8 @@
 class HomeController < ApplicationController
+  # La Liga Page
+  def laliga
+  end
+
   # Site Service
   respond_to :html, :xml, :json, :js
   def query

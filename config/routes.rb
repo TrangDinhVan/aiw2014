@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get "/query" => 'home#query', :as => :query
   get "/service" => 'home#service', :as => :service
   get '/search' => 'home#search', :as => :search
+  get '/laliga' => 'home#laliga', :as => :laliga
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
