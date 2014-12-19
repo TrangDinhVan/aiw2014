@@ -25,17 +25,10 @@ class Club < ActiveRecord::Base
 	def self.get_query(params)
 		if params
 			params.each do |k,v|
-				puts k + " = " + v
 				if ( (k != "controller") && (k != "action") )
 					@clubs = Club.where( k+" like ?", "%" + v + "%")				
 				end
 			end
-			# @clubs = Club.where("name like ?", "%" + params[:name] + "%") if params[:name]
-			# @clubs = Club.where("location like ?", "%" + params[:location] + "%") if params[:location]
-			# @clubs = Club.where("stadium like ?", "%" + params[:stadium] + "%") if params[:stadium]
-			# @clubs = Club.where("coach like ?", "%" + params[:coach] + "%") if params[:coach]
-			# @clubs = Club.where("president like ?", "%" + params[:president] + "%") if params[:president]
-			# @clubs = Club.where("nick_name like ?", "%" + params[:nick_name] + "%") if params[:nick_name]
 			@clubs
 		else
 			@clubs = Club.all
