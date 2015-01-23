@@ -1,0 +1,845 @@
+-- phpMyAdmin SQL Dump
+-- version 4.1.14
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Dec 11, 2014 at 08:02 AM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `aiw2014`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `active_admin_comments`
+--
+
+CREATE TABLE IF NOT EXISTS `active_admin_comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `namespace` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `body` text COLLATE utf8_unicode_ci,
+  `resource_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `resource_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `author_id` int(11) DEFAULT NULL,
+  `author_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_active_admin_comments_on_namespace` (`namespace`),
+  KEY `index_active_admin_comments_on_author_type_and_author_id` (`author_type`,`author_id`),
+  KEY `index_active_admin_comments_on_resource_type_and_resource_id` (`resource_type`,`resource_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_users`
+--
+
+CREATE TABLE IF NOT EXISTS `admin_users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `encrypted_password` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `reset_password_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `reset_password_sent_at` datetime DEFAULT NULL,
+  `remember_created_at` datetime DEFAULT NULL,
+  `sign_in_count` int(11) NOT NULL DEFAULT '0',
+  `current_sign_in_at` datetime DEFAULT NULL,
+  `last_sign_in_at` datetime DEFAULT NULL,
+  `current_sign_in_ip` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_sign_in_ip` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_admin_users_on_email` (`email`),
+  UNIQUE KEY `index_admin_users_on_reset_password_token` (`reset_password_token`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `admin_users`
+--
+
+INSERT INTO `admin_users` (`id`, `email`, `encrypted_password`, `reset_password_token`, `reset_password_sent_at`, `remember_created_at`, `sign_in_count`, `current_sign_in_at`, `last_sign_in_at`, `current_sign_in_ip`, `last_sign_in_ip`, `created_at`, `updated_at`) VALUES
+(1, 'trangdv@outlook.com', '$2a$10$qQSrqpSlCjMHl8qAAqdCBeC21vIUNE5U9o3DjWjnAaoYzu.927pWG', NULL, NULL, '2014-11-24 16:21:27', 26, '2014-12-05 01:34:09', '2014-12-04 07:57:01', '127.0.0.1', '127.0.0.1', '2014-11-07 03:33:29', '2014-12-05 01:34:09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clubs`
+--
+
+CREATE TABLE IF NOT EXISTS `clubs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nick_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `coach` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `year` int(11) DEFAULT NULL,
+  `stadium` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `volume` int(11) DEFAULT NULL,
+  `location` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `president` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `photo_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `photo_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `photo_file_size` int(11) DEFAULT NULL,
+  `photo_updated_at` datetime DEFAULT NULL,
+  `host_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `host_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `host_file_size` int(11) DEFAULT NULL,
+  `host_updated_at` datetime DEFAULT NULL,
+  `away_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `away_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `away_file_size` int(11) DEFAULT NULL,
+  `away_updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=25 ;
+
+--
+-- Dumping data for table `clubs`
+--
+
+INSERT INTO `clubs` (`id`, `name`, `nick_name`, `coach`, `year`, `stadium`, `volume`, `location`, `president`, `created_at`, `updated_at`, `photo_file_name`, `photo_content_type`, `photo_file_size`, `photo_updated_at`, `host_file_name`, `host_content_type`, `host_file_size`, `host_updated_at`, `away_file_name`, `away_content_type`, `away_file_size`, `away_updated_at`) VALUES
+(1, 'Athletic Club', 'Los Leones', 'Ernesto Valverde', 1898, 'San Mames', 53332, 'Bilbao', 'Josu Urrutia', '2014-12-04 12:41:42', '2014-12-04 12:41:42', 'Athletic Club.png', NULL, NULL, NULL, 'Athletic Club-home_kit.png', NULL, NULL, NULL, 'Athletic Club-away_kit.png', NULL, NULL, NULL),
+(2, 'Atletico Madrid', 'Los Colchoneros, Los Rojiblancos', 'Diego Pablo Simeone', 1903, 'Vicente Calderon', 54960, 'Madrid', 'Enrique Cerezo', '2014-12-04 12:42:03', '2014-12-04 12:42:03', 'Atletico Madrid.png', NULL, NULL, NULL, 'Atletico Madrid-home_kit.png', NULL, NULL, NULL, 'Atletico Madrid-away_kit.png', NULL, NULL, NULL),
+(3, 'Barcelona', 'Cules, \nBarca', 'Luis Enrique', 1899, 'Camp Nou', 99354, 'Barcelona', 'Josep Maria Bartomeu', '2014-12-04 12:44:02', '2014-12-04 12:44:02', 'Barcelona.png', NULL, NULL, NULL, 'Barcelona-home_kit.png', NULL, NULL, NULL, 'Barcelona-away_kit.png', NULL, NULL, NULL),
+(4, 'Celta Vigo', 'Celtinas, \nCelestes', 'Eduardo Berizzo', 1923, 'Balaidos', 31800, 'Vigo', 'Carlos Mourino', '2014-12-04 12:49:31', '2014-12-04 12:49:31', 'Celta Vigo.png', NULL, NULL, NULL, 'Celta Vigo-home_kit.png', NULL, NULL, NULL, 'Celta Vigo-away_kit.png', NULL, NULL, NULL),
+(7, 'Cordoba CF', 'Cordoba', 'Miroslav Djukic', 1954, 'Nuevo Arcangel', 21822, 'Cordoba', 'Carlos Gonzalez Gonzalez', '2014-12-04 13:30:15', '2014-12-04 13:30:15', 'Cordoba CF.png', NULL, NULL, NULL, 'Cordoba CF-home_kit.png', NULL, NULL, NULL, 'Cordoba CF-away_kit.png', NULL, NULL, NULL),
+(8, 'Elche CF', 'Elche', 'Fran Escriba', 1923, 'Martinez Valero', 38750, 'Elche', 'Jose Sepulcre Coves', '2014-12-04 13:42:08', '2014-12-04 13:42:08', 'Elche CF.png', NULL, NULL, NULL, 'Elche CF-home_kit.png', NULL, NULL, NULL, 'Elche CF-away_kit.png', NULL, NULL, NULL),
+(11, 'Getafe CF', 'Azulones\nGetafenses', 'Cosmin Contra', 1983, 'Coliseum Alfonso Perez', 16300, 'Madrid', 'Angel Torres', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 'Getafe CF.png', NULL, NULL, NULL, 'Getafe CF-home_kit.png', NULL, NULL, NULL, 'Getafe CF-away_kit.png', NULL, NULL, NULL),
+(12, 'Granada CF', 'Granada', 'Joaquin Caparros', 1974, 'Nuevo Los Carmenes', 22000, 'Granada', 'Enrique Pina Campuzano', '2014-12-04 13:55:01', '2014-12-04 13:55:01', 'Granada CF.png', NULL, NULL, NULL, 'Granada CF-home_kit.png', NULL, NULL, NULL, 'Granada CF-away_kit.png', NULL, NULL, NULL),
+(13, 'Levante UD', 'Granotes', 'Lucas Alcaraz', 1909, 'Ciudad de Valencia', 25354, 'Valencia', 'Francisco Javier Catalan Vena', '2014-12-04 13:57:05', '2014-12-04 13:57:05', 'Levante UD.png', NULL, NULL, NULL, 'Levante UD-home_kit.png', NULL, NULL, NULL, 'Levante UD-away_kit.png', NULL, NULL, NULL),
+(14, 'Malaga CF', 'Boquerones', 'Javier Gracia', 1948, 'La Rosaleda', 30044, 'Malaga', 'Abdullah Ben Nasser Al Thani', '2014-12-04 13:59:05', '2014-12-04 13:59:05', 'Malaga CF.png', NULL, NULL, NULL, 'Malaga CF-home_kit.png', NULL, NULL, NULL, 'Malaga CF-away_kit.png', NULL, NULL, NULL),
+(15, 'RCD Espanyol', 'Los Periquitos \nBlanquiazules', 'Sergio Gonzalez', 1900, 'Estadi Cornella-El Prat', 40500, 'Barcelona', 'Joan Collet', '2014-12-04 16:29:29', '2014-12-04 16:29:29', 'RCD Espanyol.png', NULL, NULL, NULL, 'RCD Espanyol-home_kit.png', NULL, NULL, NULL, 'RCD Espanyol-away_kit.png', NULL, NULL, NULL),
+(16, 'RC Deportivo', 'Depor\nBlanquiazules', 'Victor Fernandez', 1906, 'Riazor', 34611, 'A Coruna', 'Tino Fernandez', '2014-12-04 16:31:31', '2014-12-04 16:31:31', 'RC Deportivo.png', NULL, NULL, NULL, 'RC Deportivo-home_kit.png', NULL, NULL, NULL, 'RC Deportivo-away_kit.png', NULL, NULL, NULL),
+(17, 'Rayo Vallecano', 'Rayo', 'Jesus Munoz', 1903, 'Campo de Futbol de Vallecas', 15000, 'Madrid', 'Raul Martin Presa', '2014-12-04 16:33:59', '2014-12-04 16:33:59', 'Rayo Vallecano.png', NULL, NULL, NULL, 'Rayo Vallecano-home_kit.png', NULL, NULL, NULL, 'Rayo Vallecano-away_kit.png', NULL, NULL, NULL),
+(18, 'Real Madrid', 'Los Merengues, \nLos Blancos', 'Carlo Ancelotti', 1902, 'Santiago Bernabeu', 85354, 'Madrid', 'Florentino Perez', '2014-12-06 10:37:45', '2014-12-06 10:37:45', 'Real Madrid.png', NULL, NULL, NULL, 'Real Madrid-home_kit.png', NULL, NULL, NULL, 'Real Madrid-away_kit.png', NULL, NULL, NULL),
+(19, 'Real Sociedad', 'Txuri-urdin', 'David Moyes', 1909, 'Anoeta', 32076, 'Donostia-San Sebastian', '', '2014-12-06 10:41:50', '2014-12-06 10:41:50', 'Real Sociedad.png', NULL, NULL, NULL, 'Real Sociedad-home_kit.png', NULL, NULL, NULL, 'Real Sociedad-away_kit.png', NULL, NULL, NULL),
+(20, 'SD Eibar', '', 'Gaizka Garitano', 194, 'Ipurua', 5250, 'Eibar', '', '2014-12-06 10:43:47', '2014-12-06 10:43:47', 'SD Eibar.png', NULL, NULL, NULL, 'SD Eibar-home_kit.png', NULL, NULL, NULL, 'SD Eibar-away_kit.png', NULL, NULL, NULL),
+(21, 'Sevilla', '', 'Unai Emery', 1905, 'Ramon Sanchez Pizjuan', 45500, 'Seville', 'Jose Castro Carmona', '2014-12-06 10:45:46', '2014-12-06 10:45:46', 'Sevilla.png', NULL, NULL, NULL, 'Sevilla-home_kit.png', NULL, NULL, NULL, 'Sevilla-away_kit.png', NULL, NULL, NULL),
+(22, 'UD Almeria', '', 'Francisco Javier Rodriguez Vilchez', 1989, 'Estadio del Mediterraneo', 22000, 'Almeria', '\nAlfonso Garcia', '2014-12-06 10:49:45', '2014-12-06 10:49:45', 'UD Almeria.png', NULL, NULL, NULL, 'UD Almeria-home_kit.png', NULL, NULL, NULL, 'UD Almeria-away_kit.png', NULL, NULL, NULL),
+(23, 'Valencia', 'Los Ches', 'Nuno Espirito Santo', 1919, 'Mestalla', 55000, 'Valencia', 'Amadeo Salvo', '2014-12-06 15:05:01', '2014-12-06 15:05:01', 'Valencia.png', NULL, NULL, NULL, 'Valencia-home_kit.png', NULL, NULL, NULL, 'Valencia-away_kit.png', NULL, NULL, NULL),
+(24, 'Villarreal', 'El Submarino Amarillo', 'Marcelino Garcia Toral', 1923, 'El Madrigal', 25000, 'Villarreal', 'Fernando Roig', '2014-12-06 15:09:45', '2014-12-06 15:09:45', 'Villarreal.png', NULL, NULL, NULL, 'Villarreal-home_kit.png', NULL, NULL, NULL, 'Villarreal-away_kit.png', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `histories`
+--
+
+CREATE TABLE IF NOT EXISTS `histories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `year` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `club_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_histories_on_club_id` (`club_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=56 ;
+
+--
+-- Dumping data for table `histories`
+--
+
+INSERT INTO `histories` (`id`, `name`, `year`, `club_id`, `created_at`, `updated_at`) VALUES
+(1, 'La Liga', '1984, 1983, 1956, 1943, 1936, 1934, 1931, 1930', 1, '2014-12-04 12:41:42', '2014-12-04 12:41:42'),
+(2, 'Copa del Rey', '1984, 1973, 1969, 1958, 1956, 1955, 1950, 1945, 1944, 1943, 1933, 1932, 1931, 1930, 1923, 1921, 1916, 1915, 1914, 1904, 1903', 1, '2014-12-04 12:41:42', '2014-12-04 12:41:42'),
+(3, 'La Liga', '1996, 1977, 1973, 1970, 1966, 1951, 1950, 1941, 1940', 2, '2014-12-04 12:42:03', '2014-12-04 12:42:03'),
+(4, 'Copa del Rey', '2013, 1996, 1992, 1991, 1985, 1976, 1972, 1965, 1961, 1960', 2, '2014-12-04 12:42:03', '2014-12-04 12:42:03'),
+(5, 'Supercopa de Espana', '2014', 2, '2014-12-04 12:42:03', '2014-12-04 12:42:03'),
+(6, 'European Super Cup', '2012, 2010', 2, '2014-12-04 12:42:04', '2014-12-04 12:42:04'),
+(7, 'European Cup ', '2012, 2010', 2, '2014-12-04 12:42:04', '2014-12-04 12:42:04'),
+(8, 'La Liga', '2013, 2011, 2010, 2009, 2006, 2005, 1999, 1998, 1994, 1993, 1992, 1991, 1985, 1974, 1960, 1959, 1953, 1952, 1949, 1948, 1945, 1929', 3, '2014-12-04 12:44:02', '2014-12-04 12:44:02'),
+(9, 'Copa del Rey', '2012, 2009, 1998, 1997, 1990, 1988, 1983, 1981, 1978, 1971, 1968, 1963, 1959, 1957, 1953, 1952, 1951, 1942, 1928, 1926, 1925, 1922, 1920, 1912, 1910, 1902', 3, '2014-12-04 12:44:02', '2014-12-04 12:44:02'),
+(10, 'Supercopa de Espana', '2013, 2011, 2010, 2009, 2006, 2005, 1996, 1994, 1992, 1991, 1983', 3, '2014-12-04 12:44:02', '2014-12-04 12:44:02'),
+(11, 'European Super Cup', '2011, 2009, 1997, 1992', 3, '2014-12-04 12:44:03', '2014-12-04 12:44:03'),
+(12, 'Champions League ', '2011, 2009, 2006, 1992', 3, '2014-12-04 12:44:03', '2014-12-04 12:44:03'),
+(13, 'FIFA club World cup', '2013, 2011, 2009', 3, '2014-12-04 12:44:03', '2014-12-04 12:44:03'),
+(14, 'Copa Federacion', '2012', 3, '2014-12-04 12:44:03', '2014-12-04 12:44:03'),
+(15, 'Segunda Division', '1992, 1982, 1936', 4, '2014-12-04 12:49:31', '2014-12-04 12:49:31'),
+(20, 'Segunda Division', '2004', 13, '2014-12-04 13:57:05', '2014-12-04 13:57:05'),
+(21, 'Segunda B III', '1995', 13, '2014-12-04 13:57:05', '2014-12-04 13:57:05'),
+(22, 'Copa del Rey', '1937', 13, '2014-12-04 13:57:05', '2014-12-04 13:57:05'),
+(23, 'Segunda Division', '1999, 1988', 14, '2014-12-04 13:59:05', '2014-12-04 13:59:05'),
+(24, 'Copa Federacion', '1947', 14, '2014-12-04 13:59:05', '2014-12-04 13:59:05'),
+(25, 'Segunda Division', '1994', 15, '2014-12-04 16:29:29', '2014-12-04 16:29:29'),
+(26, 'Copa del Rey', '2006, 2000, 1940, 1929', 15, '2014-12-04 16:29:29', '2014-12-04 16:29:29'),
+(27, 'Segunda Division', '2012', 16, '2014-12-04 16:31:32', '2014-12-04 16:31:32'),
+(28, 'La Liga', '2000', 16, '2014-12-04 16:31:32', '2014-12-04 16:31:32'),
+(29, 'Copa del Rey', '1995, 2002', 16, '2014-12-04 16:31:32', '2014-12-04 16:31:32'),
+(30, 'Supercopa de Espana', '2002, 2000, 1995', 16, '2014-12-04 16:31:32', '2014-12-04 16:31:32'),
+(31, 'Segunda B I', '2008', 17, '2014-12-04 16:33:59', '2014-12-04 16:33:59'),
+(32, 'La Liga', '2012, 2008, 2007, 2003, 2001, 1997, 1995, 1990, 1989, 1988, 1987, 1986, 1980, 1979, 1978, 1976, 1975, 1972, 1969, 1968, 1967, 1965, 1964, 1963, 1962, 1961, 1958, 1957, 1955, 1954, 1933', 18, '2014-12-06 10:37:45', '2014-12-06 10:37:45'),
+(33, 'Copa del Rey', '2014, 2011, 1993, 1989, 1982, 1980, 1975, 1974, 1970, 1962, 1947, 1946, 1936, 1934, 1917, 1908, 1907, 1906, 1905', 18, '2014-12-06 10:37:46', '2014-12-06 10:37:46'),
+(34, 'European Super Cup', '2014, 2002', 18, '2014-12-06 10:37:46', '2014-12-06 10:37:46'),
+(35, 'Champions League', '2014, 2002, 2000, 1998, 1966, 1960, 1959, 1958, 1957, 1956', 18, '2014-12-06 10:37:46', '2014-12-06 10:37:46'),
+(36, 'Supercopa de Espana', '2008, 2003, 2001, 1997, 1993, 1990, 1989', 18, '2014-12-06 10:37:46', '2014-12-06 10:37:46'),
+(37, 'Europa League', '1986, 1985', 18, '2014-12-06 10:37:46', '2014-12-06 10:37:46'),
+(38, 'La Liga', '1982, 1981', 19, '2014-12-06 10:41:50', '2014-12-06 10:41:50'),
+(39, 'Copa del Rey', '1987, 1909', 19, '2014-12-06 10:41:50', '2014-12-06 10:41:50'),
+(40, 'Segunda Division', '2010', 19, '2014-12-06 10:41:50', '2014-12-06 10:41:50'),
+(41, 'Supercopa de Espana', '1982', 19, '2014-12-06 10:41:50', '2014-12-06 10:41:50'),
+(42, 'Europa League', '1986, 1985', 19, '2014-12-06 10:41:50', '2014-12-06 10:41:50'),
+(43, 'Segunda Division', '2014, 1929', 20, '2014-12-06 10:43:48', '2014-12-06 10:43:48'),
+(44, 'Segunda Division', '2001', 21, '2014-12-06 10:45:46', '2014-12-06 10:45:46'),
+(45, 'La Liga', '1946', 21, '2014-12-06 10:45:46', '2014-12-06 10:45:46'),
+(46, 'Europa League', '2014, 2007, 2006', 21, '2014-12-06 10:45:46', '2014-12-06 10:45:46'),
+(47, 'Copa del Rey', '2010, 2007, 1948, 1939, 1935', 21, '2014-12-06 10:45:46', '2014-12-06 10:45:46'),
+(48, 'Supercopa de Espana', '2007', 21, '2014-12-06 10:45:46', '2014-12-06 10:45:46'),
+(49, 'European Super Cup', '2006', 21, '2014-12-06 10:45:46', '2014-12-06 10:45:46'),
+(50, 'La Liga', '2004, 2002, 1971, 1947, 1944, 1942', 23, '2014-12-06 15:05:01', '2014-12-06 15:05:01'),
+(51, 'Copa del Rey', '2008, 1999, 1979, 1967, 1954, 1949, 1941', 23, '2014-12-06 15:05:01', '2014-12-06 15:05:01'),
+(52, 'Segunda Division', '1987, 1931', 23, '2014-12-06 15:05:01', '2014-12-06 15:05:01'),
+(53, 'European Super Cup', '2004, 1980', 23, '2014-12-06 15:05:01', '2014-12-06 15:05:01'),
+(54, 'Europa League', '2004', 23, '2014-12-06 15:05:01', '2014-12-06 15:05:01'),
+(55, 'Supercopa de Espana', '1999', 23, '2014-12-06 15:05:01', '2014-12-06 15:05:01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `members`
+--
+
+CREATE TABLE IF NOT EXISTS `members` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `student_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `idol` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `photo_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `photo_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `photo_file_size` int(11) DEFAULT NULL,
+  `photo_updated_at` datetime DEFAULT NULL,
+  `role` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `members`
+--
+
+INSERT INTO `members` (`id`, `name`, `student_id`, `email`, `phone`, `idol`, `created_at`, `updated_at`, `photo_file_name`, `photo_content_type`, `photo_file_size`, `photo_updated_at`, `role`) VALUES
+(1, 'Đinh Văn Trang', '4c1101040196', 'trangdv@outlook.com', '01693 280 409', 'Messi', '2014-11-28 03:46:37', '2014-12-01 01:34:07', 'damvinhhung.jpg', 'image/jpeg', 9474, '2014-11-28 03:46:36', 'Trưởng nhóm, lập trình chính');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `players`
+--
+
+CREATE TABLE IF NOT EXISTS `players` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `nation` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `height` decimal(10,0) DEFAULT NULL,
+  `weight` decimal(10,0) DEFAULT NULL,
+  `position` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `leg` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `level` decimal(10,0) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `club_id` int(11) DEFAULT NULL,
+  `number` int(11) DEFAULT NULL,
+  `photo_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `photo_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `photo_file_size` int(11) DEFAULT NULL,
+  `photo_updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_players_on_club_id` (`club_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=521 ;
+
+--
+-- Dumping data for table `players`
+--
+
+INSERT INTO `players` (`id`, `name`, `dob`, `nation`, `height`, `weight`, `position`, `leg`, `level`, `created_at`, `updated_at`, `club_id`, `number`, `photo_file_name`, `photo_content_type`, `photo_file_size`, `photo_updated_at`) VALUES
+(1, 'Gorka IRAIZOZ', '1981-03-06', 'Tây Ban Nha', '191', '92', 'Thủ môn', 'Phải', '88', '2014-12-04 12:41:42', '2014-12-04 12:41:42', 1, 1, 'Gorka IRAIZOZ.jpg', NULL, NULL, NULL),
+(2, 'Iago Herrerin Buisan', '1988-01-25', 'Tây Ban Nha', '188', '82', 'Thủ môn', 'Phải', '84', '2014-12-04 12:41:42', '2014-12-04 12:41:42', 1, 13, 'Iago Herrerin.jpg', NULL, NULL, NULL),
+(3, 'Jon Aurtenetxe Borde', '1981-01-03', 'Tây Ban Nha', '182', '82', 'Hậu vệ', 'Trái', '88', '2014-12-04 12:41:42', '2014-12-04 12:41:42', 1, 3, 'Jon Aurtenetxe.jpg', NULL, NULL, NULL),
+(4, 'Mikel Balenziaga Oruesagasti', '1988-02-29', 'Tây Ban Nha', '177', '76', 'Hậu vệ, Tiền vệ', 'Trái', '88', '2014-12-04 12:41:43', '2014-12-04 12:41:43', 1, 24, 'Mikel Balenziaga.jpg', NULL, NULL, NULL),
+(5, 'Aymeric Laporte', '1994-05-27', 'Pháp', '189', '87', 'Hậu vệ', 'Trái', '88', '2014-12-04 12:41:43', '2014-12-04 12:41:43', 1, 4, 'Aymeric Laporte.jpg', NULL, NULL, NULL),
+(6, 'Mikel San Jose', '1989-05-30', 'Tây Ban Nha', '186', '77', 'Hậu vệ trung tâm, Tiền vệ phòng ngự', 'Phải', '88', '2014-12-04 12:41:43', '2014-12-04 12:41:43', 1, 6, 'Mikel San Jose.jpg', NULL, NULL, NULL),
+(7, 'Carlos Gurpegui', '1980-08-19', 'Tây Ban Nha', '181', '77', 'Hậu vệ trung tâm, Tiền vệ phòng ngự ', 'Phải', '87', '2014-12-04 12:41:43', '2014-12-04 12:41:43', 1, 18, 'Carlos Gurpegui.jpg', NULL, NULL, NULL),
+(8, 'Xabier Etxeita', '1987-10-31', 'Tây Ban Nha', '185', '79', 'Hậu vệ trung tâm, Tiền vệ phòng ngự', 'Phải', '85', '2014-12-04 12:41:43', '2014-12-04 12:41:43', 1, 16, 'Xabier Etxeita.jpg', NULL, NULL, NULL),
+(9, 'Andoni Iraola', '1982-06-22', 'Tây Ban Nha', '182', '74', 'Hậu vệ cánh phải, tiền vệ cánh phải ', 'Phải', '90', '2014-12-04 12:41:43', '2014-12-04 12:41:43', 1, 15, 'Andoni Iraola.jpg', NULL, NULL, NULL),
+(10, 'Oscar de Marcos', '1989-04-10', 'Tây Ban Nha', '180', '76', 'Hậu vệ cánh phải, Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '88', '2014-12-04 12:41:43', '2014-12-04 12:41:43', 1, 10, 'Oscar de Marcos.jpg', NULL, NULL, NULL),
+(11, 'Benat Etxebarria', '1987-02-19', 'Tây Ban Nha', '175', '73', 'Tiền vệ phòng ngự, Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '90', '2014-12-04 12:41:43', '2014-12-04 12:41:43', 1, 7, 'Benat Etxebarria.jpg', NULL, NULL, NULL),
+(12, 'Ander Iturraspe', '1989-03-08', 'Tây Ban Nha', '187', '74', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '90', '2014-12-04 12:41:43', '2014-12-04 12:41:43', 1, 8, 'Ander Iturraspe.jpg', NULL, NULL, NULL),
+(13, 'Mikel Rico', '1984-11-04', 'Tây Ban Nha', '178', '76', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '89', '2014-12-04 12:41:43', '2014-12-04 12:41:43', 1, 17, 'Mikel Rico.jpg', NULL, NULL, NULL),
+(14, 'Erik Moran', '1991-05-25', 'Tây Ban Nha', '187', '75', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '82', '2014-12-04 12:41:43', '2014-12-04 12:41:43', 1, 5, 'Erik Moran.jpg', NULL, NULL, NULL),
+(15, 'Unai Lopez ', '1995-12-30', 'Tây Ban Nha', '169', '64', 'Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải, Trái', '78', '2014-12-04 12:41:43', '2014-12-04 12:41:43', 1, 29, 'Lopez Unai.jpg', NULL, NULL, NULL),
+(16, 'Iker Muniain', '1992-12-19', 'Tây Ban Nha', '168', '63', 'Tiền vệ tấn công, Tiền đạo cánh', 'Phải', '90', '2014-12-04 12:41:43', '2014-12-04 12:41:43', 1, 19, 'Iker Muniain.jpg', NULL, NULL, NULL),
+(17, 'Ibai Gomez', '1989-11-11', 'Tây Ban Nha', '177', '72', 'Tiền vệ tấn công, Tiền đạo cánh', 'Phải', '88', '2014-12-04 12:41:43', '2014-12-04 12:41:43', 1, 11, 'Ibai Gomez.jpg', NULL, NULL, NULL),
+(18, 'Markel Susaeta', '1987-12-14', 'Tây Ban Nha', '197', '68', 'Tiền vệ tấn công, Tiền đạo cánh phải', 'Phải', '90', '2014-12-04 12:41:43', '2014-12-04 12:41:43', 1, 14, 'Markel Susaeta.jpg', NULL, NULL, NULL),
+(19, 'Gaizka Toquero', '1984-08-09', 'Tây Ban Nha', '182', '79', 'Tiền vệ tấn công, Tiền đạo', 'Phải', '86', '2014-12-04 12:41:43', '2014-12-04 12:41:43', 1, 2, 'Gaizka Toquero.jpg', NULL, NULL, NULL),
+(20, 'Borja Viguera', '1987-03-26', 'Tây Ban Nha', '183', '74', 'Tiền vệ tấn công, Tiền đạo', 'Phải', '85', '2014-12-04 12:41:43', '2014-12-04 12:41:43', 1, 21, 'Borja Viguera.jpg', NULL, NULL, NULL),
+(21, 'Aritz Aduriz', '1981-02-11', 'Tây Ban Nha', '181', '75', 'Tiền đạo', 'Phải', '89', '2014-12-04 12:41:43', '2014-12-04 12:41:43', 1, 20, 'Aritz Aduriz.jpg', NULL, NULL, NULL),
+(22, 'Enrique Sola', '1986-02-25', 'Tây Ban Nha', '185', '83', 'Tiền đạo', 'Phải', '87', '2014-12-04 12:41:43', '2014-12-04 12:41:43', 1, 9, 'Enrique Sola.jpg', NULL, NULL, NULL),
+(23, 'Guillermo Fernandez Hierro', '1993-05-23', 'Tây Ban Nha', '178', '71', 'Tiền đạo', 'Phải', '80', '2014-12-04 12:41:44', '2014-12-04 12:41:44', 1, 22, 'Guillermo Fernandez Hierro.jpg', NULL, NULL, NULL),
+(24, 'Jon Etxaniz', '1991-01-10', 'Tây Ban Nha', '187', '76', 'Tiền đạo', 'Phải', '78', '2014-12-04 12:41:44', '2014-12-04 12:41:44', 1, NULL, 'Jon Etxaniz.jpg', NULL, NULL, NULL),
+(25, 'Miguel Angel Moya', '1984-04-02', 'Tây Ban Nha', '189', '82', 'Thủ môn', 'Phải', '88', '2014-12-04 12:42:04', '2014-12-04 12:42:04', 2, 1, 'Miguel Angel Moya.jpg', NULL, NULL, NULL),
+(26, 'Jan Oblak', '1993-01-07', 'Slovenia', '188', '77', 'Thủ môn', 'Phải', '87', '2014-12-04 12:42:04', '2014-12-04 12:42:04', 2, 13, 'Jan Oblak.jpg', NULL, NULL, NULL),
+(27, 'Cristian Ansaldi', '1986-09-20', 'Argentina', '178', '83', 'Hậu vệ, Tiền vệ cánh trái', 'Phải, Trái', '89', '2014-12-04 12:42:04', '2014-12-04 12:42:04', 2, 15, 'Cristian Ansaldi.jpg', NULL, NULL, NULL),
+(28, 'Guilherme Siqueira', '1986-04-28', 'Brazil', '183', '78', 'Hậu vệ cánh trái, Tiền vệ cánh trái', 'Trái', '89', '2014-12-04 12:42:04', '2014-12-04 12:42:04', 2, 3, 'Guilherme Siqueira.jpg', NULL, NULL, NULL),
+(29, 'Diego Godin', '1986-02-16', 'Uruguay', '186', '78', 'Hậu vệ', 'Phải', '92', '2014-12-04 12:42:04', '2014-12-04 12:42:04', 2, 2, 'Diego Godin.jpg', NULL, NULL, NULL),
+(30, 'Joao Miranda', '1984-09-07', 'Brazil', '185', '78', 'Hậu vệ', 'Phải', '91', '2014-12-04 12:42:04', '2014-12-04 12:42:04', 2, 23, 'Joao Miranda.jpg', NULL, NULL, NULL),
+(31, 'Saul Niguez', '1994-11-21', 'Tây Ban Nha', '182', '69', 'Hậu vệ trung tâm, Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Trái', '87', '2014-12-04 12:42:04', '2014-12-04 12:42:04', 2, 17, 'Saul Niguez.jpg', NULL, NULL, NULL),
+(32, 'Jose Gimenez', '1995-01-20', 'Uruguay', '185', '85', 'Hậu vệ trung tâm, Tiền vệ phòng ngự', 'Phải', '83', '2014-12-04 12:42:04', '2014-12-04 12:42:04', 2, 24, 'Jose Gimenez.jpg', NULL, NULL, NULL),
+(33, 'Lucas Francois Bernard', '1996-02-14', 'Pháp', '180', '75', 'Hậu vệ', 'Phải', '76', '2014-12-04 12:42:04', '2014-12-04 12:42:04', 2, NULL, 'Lucas Francois Bernard.jpg', NULL, NULL, NULL),
+(34, 'Juan Francisco Torres', '1985-01-09', 'Tây Ban Nha', '181', '72', 'Hậu vệ cánh phải, Tiền vệ cánh phải', 'Phải', '91', '2014-12-04 12:42:04', '2014-12-04 12:42:04', 2, 20, 'Juan Francisco Torres.jpg', NULL, NULL, NULL),
+(35, 'Jesus Gamez', '1985-04-10', 'Tây Ban Nha', '182', '77', 'Hậu vệ cánh phải', 'Phải', '89', '2014-12-04 12:42:04', '2014-12-04 12:42:04', 2, 18, 'Jesus Gamez.jpg', NULL, NULL, NULL),
+(36, 'Gabriel Fernandez', '1983-07-10', 'Tây Ban Nha', '179', '73', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '92', '2014-12-04 12:42:04', '2014-12-04 12:42:04', 2, 14, 'Gabriel Fernandez.jpg', NULL, NULL, NULL),
+(37, 'Mario Suarez Mata', '1987-02-24', 'Tây Ban Nha', '188', '80', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '90', '2014-12-04 12:42:04', '2014-12-04 12:42:04', 2, 4, 'Mario Suarez Mata.jpg', NULL, NULL, NULL),
+(38, 'Tiago Mendes', '1981-05-02', 'Bồ Đào Nha', '183', '71', 'Tiền vệ phòng ngự, Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '89', '2014-12-04 12:42:04', '2014-12-04 12:42:04', 2, 5, 'Tiago Mendes.jpg', NULL, NULL, NULL),
+(39, 'Koke', '1992-01-08', 'Tây Ban Nha', '178', '73', 'Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '92', '2014-12-04 12:42:05', '2014-12-04 12:42:05', 2, 6, 'Koke.jpg', NULL, NULL, NULL),
+(40, 'Raul Garcia', '1986-07-11', 'Tây Ban Nha', '183', '80', 'Tiền vệ trung tâm, Tiền vệ cánh phải, Tiền vệ tấn công', 'Phải', '90', '2014-12-04 12:42:05', '2014-12-04 12:42:05', 2, 8, 'Raul Garcia.jpg', NULL, NULL, NULL),
+(41, 'Antoine Griezmann', '1991-03-21', 'Pháp', '176', '68', 'Tiền vệ tấn công, Tiền đạo cánh', 'Trái', '91', '2014-12-04 12:42:05', '2014-12-04 12:42:05', 2, 7, 'Antoine Griezmann.jpg', NULL, NULL, NULL),
+(42, 'Arda Turan', '1987-01-31', 'Thổ Nhĩ Kì', '177', '76', 'Tiền vệ tấn công', 'Phải, Trái', '91', '2014-12-04 12:42:05', '2014-12-04 12:42:05', 2, 10, 'Arda Turan.jpg', NULL, NULL, NULL),
+(43, 'Cristian Rodriguez', '1985-09-30', 'Uruguay', '178', '81', 'Tiền vệ tấn công, Tiền đạo cánh', 'Trái', '86', '2014-12-04 12:42:05', '2014-12-04 12:42:05', 2, 21, 'Cristian Rodriguez.jpg', NULL, NULL, NULL),
+(44, 'Raul Jimenez', '1991-05-05', 'Mexico', '185', '76', 'Tiền vệ tấn công, Tiền đạo cánh trái', 'Phải', '86', '2014-12-04 12:42:05', '2014-12-04 12:42:05', 2, 11, 'Raul Jimenez.jpg', NULL, NULL, NULL),
+(45, 'Alessio Cerci', '1987-07-23', 'Ý', '180', '78', 'Tiền vệ tấn công, Tiền đạo', 'Trái', '90', '2014-12-04 12:42:05', '2014-12-04 12:42:05', 2, 22, 'Alessio Cerci.jpg', NULL, NULL, NULL),
+(46, 'Mario Mandzukic', '1986-05-27', 'Croatia', '187', '72', 'Tiền đạo', 'Phải', '92', '2014-12-04 12:42:05', '2014-12-04 12:42:05', 2, 9, 'Mario Mandzukic.jpg', NULL, NULL, NULL),
+(47, 'Hector Hernandez', '1995-09-14', 'Tây Ban Nha', '180', '75', 'Tiền đạo', 'Phải', '78', '2014-12-04 12:42:05', '2014-12-04 12:42:05', 2, 27, 'Hector Hernandez.jpg', NULL, NULL, NULL),
+(48, 'Marc-Andre ter Stegen', '1992-04-30', 'Đức', '189', '84', 'Thủ môn', 'Phải', '89', '2014-12-04 12:44:04', '2014-12-04 12:44:04', 3, 1, 'Marc-Andre ter Stegen.jpg', NULL, NULL, NULL),
+(49, 'Claudio Bravo', '1983-04-13', 'Chi Lê', '185', '84', 'Thủ môn', 'Phải', '89', '2014-12-04 12:44:04', '2014-12-04 12:44:04', 3, 13, 'Claudio Bravo.jpg', NULL, NULL, NULL),
+(50, 'Jordi Masip', '1989-01-03', 'Tây Ban Nha', '180', '70', 'Thủ môn', 'Phải', '83', '2014-12-04 12:44:04', '2014-12-04 12:44:04', 3, 25, 'Jordi Masip.jpg', NULL, NULL, NULL),
+(51, 'Jordi Alba', '1989-03-21', 'Tây Ban Nha', '172', '69', 'Hậu vệ cánh trái, Tiền vệ cánh trái', 'Trái', '92', '2014-12-04 12:44:04', '2014-12-04 12:44:04', 3, 18, 'Jordi Alba.jpg', NULL, NULL, NULL),
+(52, 'Adriano Correia', '1984-10-26', 'Brazil', '172', '67', 'Hậu vệ cánh , Tiền vệ cánh', 'Trái', '91', '2014-12-04 12:44:04', '2014-12-04 12:44:04', 3, 21, 'Adriano Correia.jpg', NULL, NULL, NULL),
+(53, 'Jeremy Mathieu', '1983-10-29', 'Pháp', '190', '82', 'Hậu vệ trung tâm, Hậu vệ cánh trái', 'Trái', '90', '2014-12-04 12:44:04', '2014-12-04 12:44:04', 3, 24, 'Jeremy Mathieu.jpg', NULL, NULL, NULL),
+(54, 'Thomas Vermaelen', '1985-11-14', 'Bỉ', '180', '75', 'Hậu vệ trung tâm, Hậu vệ cánh trái', 'Trái', '90', '2014-12-04 12:44:04', '2014-12-04 12:44:04', 3, 23, 'Thomas Vermaelen.jpg', NULL, NULL, NULL),
+(55, 'Martin Montoya', '1991-04-14', 'Tây Ban Nha', '174', '74', 'Hậu vệ cánh, Tiền vệ cánh phải ', 'Phải', '88', '2014-12-04 12:44:05', '2014-12-04 12:44:05', 3, 2, 'Martin Montoya.jpg', NULL, NULL, NULL),
+(56, 'Sergio Busquets', '1988-07-16', 'Tây Ban Nha', '189', '73', 'Hậu vệ trung tâm, Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '95', '2014-12-04 12:44:05', '2014-12-04 12:44:05', 3, 5, 'Sergio Busquets.jpg', NULL, NULL, NULL),
+(57, 'Gerard Pique', '1987-02-02', 'Tây Ban Nha', '192', '85', 'Hậu vệ trung tâm ', 'Phải', '95', '2014-12-04 12:44:05', '2014-12-04 12:44:05', 3, 3, 'Gerard Pique.jpg', NULL, NULL, NULL),
+(58, 'Javier Mascherano', '1984-06-08', 'Argentina', '174', '84', 'Hậu vệ trung tâm, Tiền vệ phòng ngự', 'Phải', '93', '2014-12-04 12:44:05', '2014-12-04 12:44:05', 3, 14, 'Javier Mascherano.jpg', NULL, NULL, NULL),
+(59, 'Marc Bartra', '1991-01-15', 'Tây Ban Nha', '181', '70', 'Hậu vệ trung tâm, Hậu vệ cánh phải', 'Phải', '88', '2014-12-04 12:44:05', '2014-12-04 12:44:05', 3, 15, 'Marc Bartra.jpg', NULL, NULL, NULL),
+(60, 'Dani Alves', '1983-05-06', 'Brazil', '173', '64', 'Hậu vệ cánh phải, Tiền vệ cánh phải', 'Phải', '93', '2014-12-04 12:44:05', '2014-12-04 12:44:05', 3, 22, 'Dani Alves.jpg', NULL, NULL, NULL),
+(61, 'Douglas Pereira dos Santos', '1990-08-06', 'Brazil', '171', '63', 'Hậu vệ cánh phải, Tiền vệ cánh phải', 'Phải', '86', '2014-12-04 12:44:05', '2014-12-04 12:44:05', 3, 16, 'Douglas Pereira dos Santos.jpg', NULL, NULL, NULL),
+(62, 'Andres Iniesta', '1984-05-11', 'Tây Ban Nha', '170', '65', 'Tiền vệ trung tâm, Tiền vệ tấn công ', 'Phải', '97', '2014-12-04 12:44:05', '2014-12-04 12:44:05', 3, 8, 'Andres Iniesta.jpg', NULL, NULL, NULL),
+(63, 'Xavi Hernandez ', '1980-01-25', 'Tây Ban Nha', '170', '68', 'Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '95', '2014-12-04 12:44:05', '2014-12-04 12:44:05', 3, 6, 'Xavi Hernandez.jpg', NULL, NULL, NULL),
+(64, 'Ivan Rakitic', '1988-03-10', 'Croatia', '184', '80', 'Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải, Trái', '92', '2014-12-04 12:44:05', '2014-12-04 12:44:05', 3, 4, 'Ivan Rakitic.jpg', NULL, NULL, NULL),
+(65, 'Sergio Roberto', '1992-02-07', 'Tây Ban Nha', '177', '70', 'Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '87', '2014-12-04 12:44:05', '2014-12-04 12:44:05', 3, 20, 'Sergio Roberto.jpg', NULL, NULL, NULL),
+(66, 'Rafinha Alcantara', '1993-02-12', 'Brazil', '177', '73', 'Tiền vệ trung tâm, Tiền vệ tấn công', 'Trái', '87', '2014-12-04 12:44:05', '2014-12-04 12:44:05', 3, 12, 'Rafinha Alcantara.jpg', NULL, NULL, NULL),
+(67, 'Pedro Rodriguez', '1987-07-28', 'Tây Ban Nha', '169', '64', 'Tiền vệ tấn công, Tiền đạo cánh', 'Phải, Trái', '93', '2014-12-04 12:44:05', '2014-12-04 12:44:05', 3, 7, 'Pedro Rodriguez.jpg', NULL, NULL, NULL),
+(68, 'Neymar Junior', '1992-02-05', 'Brazil', '175', '70', 'Tiền vệ tấn công, Tiền đạo', 'Phải, Trái', '93', '2014-12-04 12:44:05', '2014-12-04 12:44:05', 3, 11, 'Neymar Junior.jpg', NULL, NULL, NULL),
+(69, 'Lionel Messi', '1987-06-24', 'Argentina', '169', '67', 'Tiền vệ tấn công, Tiền đạo', 'Trái', '99', '2014-12-04 12:44:06', '2014-12-04 12:44:06', 3, 10, 'Lionel Messi.jpg', NULL, NULL, NULL),
+(70, 'Luis Suarez', '1987-01-24', 'Uruguay', '182', '81', 'Tiền vệ tấn công, Tiền đạo', 'Phải', '85', '2014-12-04 12:44:06', '2014-12-04 12:44:06', 3, 9, 'Luis Suarez.jpg', NULL, NULL, NULL),
+(71, 'Munir El Haddadi', '1995-09-01', 'Tây Ban Nha', '172', '62', 'Tiền đạo', 'Trái', '82', '2014-12-04 12:44:06', '2014-12-04 12:44:06', 3, 31, 'Munir El Haddadi.jpg', NULL, NULL, NULL),
+(72, 'Sandro Ramirez', '1995-07-09', 'Tây Ban Nha', '175', '60', 'Tiền đạo', 'Phải', '82', '2014-12-04 12:44:06', '2014-12-04 12:44:06', 3, 29, 'Sandro Ramirez.jpg', NULL, NULL, NULL),
+(73, 'Sergio Alvarez Conde', '1986-08-03', 'Tây Ban Nha', '179', '75', 'Thủ môn', 'Phải', '83', '2014-12-04 12:49:32', '2014-12-04 12:49:32', 4, 1, 'Sergio Alvarez Conde.jpg', NULL, NULL, NULL),
+(74, 'Ruben Blanco Veiga', '1995-07-25', 'Tây Ban Nha', '186', '75', 'Thủ môn', 'Phải', '78', '2014-12-04 12:49:32', '2014-12-04 12:49:32', 4, 13, 'Ruben Blanco Veiga.jpg', NULL, NULL, NULL),
+(75, 'Jonathan Castro Otto', '1994-03-03', 'Tây Ban Nha', '175', '70', 'Hậu vệ cánh', 'Phải', '86', '2014-12-04 12:49:32', '2014-12-04 12:49:32', 4, 19, 'Jonathan Castro Otto.jpg', NULL, NULL, NULL),
+(76, 'Carles Planas', '1991-03-04', 'Tây Ban Nha', '173', '76', 'Hậu vệ trung tâm, Hậu vệ cánh trái', 'Trái', '85', '2014-12-04 12:49:32', '2014-12-04 12:49:32', 4, 21, 'Carles Planas.jpg', NULL, NULL, NULL),
+(77, 'Andreu Fontas', '1989-11-14', 'Tây Ban Nha', '181', '72', 'Hậu vệ trung tâm, Tiền vệ phòng ngự ', 'Trái', '86', '2014-12-04 12:49:32', '2014-12-04 12:49:32', 4, 3, 'Andreu Fontas.jpg', NULL, NULL, NULL),
+(78, 'Gustavo Cabral', '1985-10-14', 'Argentina', '182', '80', 'Hậu vệ trung tâm', 'Phải', '85', '2014-12-04 12:49:32', '2014-12-04 12:49:32', 4, 22, 'Gustavo Cabral.jpg', NULL, NULL, NULL),
+(79, 'Sergi Gomez', '1992-07-28', 'Tây Ban Nha', '187', '80', 'Hậu vệ trung tâm', 'Phải', '83', '2014-12-04 12:49:32', '2014-12-04 12:49:32', 4, 20, 'Sergi Gomez.jpg', NULL, NULL, NULL),
+(80, 'David Costas', '1995-03-26', 'Tây Ban Nha', '181', '74', 'Hậu vệ trung tâm', 'Phải', '82', '2014-12-04 12:49:32', '2014-12-04 12:49:32', 4, 15, 'David Costas.jpg', NULL, NULL, NULL),
+(81, 'Hugo Mallo', '1991-06-22', 'Tây Ban Nha', '173', '69', 'Hậu vệ cánh phải', 'Phải', '87', '2014-12-04 12:49:32', '2014-12-04 12:49:32', 4, 2, 'Hugo Mallo.jpg', NULL, NULL, NULL),
+(82, 'Alex Lopez', '1988-11-11', 'Tây Ban Nha', '175', '64', 'Tiền vệ phòng ngự, Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '87', '2014-12-04 12:49:32', '2014-12-04 12:49:32', 4, 8, 'Alex Lopez.jpg', NULL, NULL, NULL),
+(83, 'Borja Oubina', '1982-05-17', 'Tây Ban Nha', '183', '75', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '86', '2014-12-04 12:49:32', '2014-12-04 12:49:32', 4, 4, 'Borja Oubina.jpg', NULL, NULL, NULL),
+(84, 'Nemanja Radoja', '1993-02-06', 'Serbia', '186', '77', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Trái', '83', '2014-12-04 12:49:32', '2014-12-04 12:49:32', 4, 6, 'Nemanja Radoja.jpg', NULL, NULL, NULL),
+(85, 'Levy Madinda', '1992-06-11', 'Gabon', '182', '77', 'Tiền vệ phòng ngự, Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '82', '2014-12-04 12:49:32', '2014-12-04 12:49:32', 4, 17, 'Levy Madinda.jpg', NULL, NULL, NULL),
+(86, 'Borja Fernandez', '1991-08-16', 'Tây Ban Nha', '177', '71', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '78', '2014-12-04 12:49:32', '2014-12-04 12:49:32', 4, 28, 'Borja Fernandez.jpg', NULL, NULL, NULL),
+(87, 'Augusto Fernandez ', '1986-04-10', 'Argentina', '177', '71', 'Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '88', '2014-12-04 12:49:32', '2014-12-04 12:49:32', 4, 24, 'Augusto Fernandez.jpg', NULL, NULL, NULL),
+(88, 'Nolito Manuel Duran', '1986-10-15', 'Tây Ban Nha', '172', '73', 'Tiền vệ tấn công, Tiền đạo cánh', 'Phải', '88', '2014-12-04 12:49:32', '2014-12-04 12:49:32', 4, 10, 'Nolito Manuel Duran.jpg', NULL, NULL, NULL),
+(89, 'Michael Krohn-Dehli', '1983-06-06', 'Đan Mạch', '170', '71', 'Tiền vệ tấn công', 'Phải, Trái', '88', '2014-12-04 12:49:32', '2014-12-04 12:49:32', 4, 23, 'Michael Krohn-Dehli.jpg', NULL, NULL, NULL),
+(90, 'Fabian Orellana', '1986-01-27', 'Chi Lê', '170', '68', 'Tiền vệ tấn công, Tiền đạo cánh', 'Phải', '87', '2014-12-04 12:49:32', '2014-12-04 12:49:32', 4, 14, 'Fabian Orellana.jpg', NULL, NULL, NULL),
+(91, 'Pedro Pablo Hernandez', '1986-10-24', 'Chi Lê', '184', '79', 'Tiền vệ tấn công', 'Trái', '85', '2014-12-04 12:49:32', '2014-12-04 12:49:32', 4, 5, 'Pedro Pablo Hernandez.jpg', NULL, NULL, NULL),
+(92, 'Santiago Mina', '1995-02-17', 'Tây Ban Nha', '177', '71', 'Tiền vệ tấn công, Tiền đạo cánh phải, Tiền đạo', 'Phải', '82', '2014-12-04 12:49:32', '2014-12-04 12:49:32', 4, 7, 'Santiago Mina.jpg', NULL, NULL, NULL),
+(93, 'Charles Dias de Oliveira', '1984-04-04', 'Brazil', '179', '75', 'Tiền đạo', 'Phải', '87', '2014-12-04 12:49:33', '2014-12-04 12:49:33', 4, 9, 'Charles Dias de Oliveira.jpg', NULL, NULL, NULL),
+(94, 'Joaquin Larrivey', '1984-08-20', 'Argentina', '185', '82', 'Tiền đạo', 'Phải', '87', '2014-12-04 12:49:33', '2014-12-04 12:49:33', 4, 11, 'Joaquin Larrivey.jpg', NULL, NULL, NULL),
+(130, 'Mikel Saizar', '1983-01-18', 'Tây Ban Nha', '190', '87', 'Thủ môn', 'Phải', '80', '2014-12-04 13:30:15', '2014-12-04 13:30:15', 7, 13, 'Mikel Saizar.jpg', NULL, NULL, NULL),
+(131, 'Juan Carlos Martin Corral', '1988-01-20', 'Tây Ban Nha', '187', '81', 'Thủ môn', 'Phải', '80', '2014-12-04 13:30:15', '2014-12-04 13:30:15', 7, 1, 'Juan Carlos Martin Corral.jpg', NULL, NULL, NULL),
+(132, 'Jose Angel Crespo', '1987-02-09', 'Tây Ban Nha', '183', '70', 'Hậu vệ cánh', 'Phải', '83', '2014-12-04 13:30:15', '2014-12-04 13:30:15', 7, 3, 'Jose Angel Crespo.jpg', NULL, NULL, NULL),
+(133, 'Daniel Pinillos', '1992-10-22', 'Tây Ban Nha', '182', '77', 'Hậu vệ cánh trái', 'Trái', '78', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, 29, 'Daniel Pinillos.jpg', NULL, NULL, NULL),
+(134, 'Inigo Lopez Montana', '1982-07-23', 'Tây Ban Nha', '185', '72', 'Hậu vệ trung tâm', 'Phải', '85', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, 12, 'Inigo Lopez Montana.jpg', NULL, NULL, NULL),
+(135, 'David Omar Rodriguez Barrera', '1989-01-27', 'Tây Ban Nha', '187', '73', 'Hậu vệ trung tâm, Tiền vệ phòng ngự', 'Phải', '83', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, 15, 'David Omar Rodriguez Barrera.jpg', NULL, NULL, NULL),
+(136, 'Aleksandar Pantic', '1992-04-11', 'Serbia', '184', '78', 'Hậu vệ trung tâm, Hậu vệ cánh phải', 'Phải', '83', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, 2, 'Aleksandar Pantic.jpg', NULL, NULL, NULL),
+(137, 'Iago Bouzon', '1983-03-17', 'Tây Ban Nha', '183', '78', 'Hậu vệ trung tâm, Hậu vệ cánh phải', 'Phải', '83', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, 4, 'Iago Bouzon.jpg', NULL, NULL, NULL),
+(138, 'Eduard Campabadal', '1993-01-26', 'Tây Ban Nha', '177', '72', 'Hậu vệ trung tâm, Hậu vệ cánh phải', 'Phải', '78', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, 33, 'Eduard Campabadal.jpg', NULL, NULL, NULL),
+(139, 'Adrian Gunino', '1989-02-03', 'Uruguay', '167', '64', 'Hậu vệ cánh phải, Tiền vệ cánh phải', 'Phải', '85', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, 17, 'Adrian Gunino.jpg', NULL, NULL, NULL),
+(140, 'Luis Eduardo Delgado', '1984-12-04', 'Tây Ban Nha', '179', '75', 'Hậu vệ cánh phải, Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '83', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, 6, 'Luis Eduardo Delgado.jpg', NULL, NULL, NULL),
+(141, 'Fausto Rossi', '1990-12-03', 'Ý', '175', '60', 'Tiền vệ phòng ngự, Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '85', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, 7, 'Fausto Rossi.jpg', NULL, NULL, NULL),
+(142, 'Aritz Lopez Garai', '1980-11-06', 'Tây Ban Nha', '182', '82', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '84', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, 22, 'Aritz Lopez Garai.jpg', NULL, NULL, NULL),
+(143, 'Patrick Ekeng', '1990-03-26', 'Cameroon', '178', '74', 'Tiền vệ phòng ngự, Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '82', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, 5, 'Patrick Ekeng.jpg', NULL, NULL, NULL),
+(144, 'Damian Petkoff ', '1990-05-24', 'Argentina', '176', '74', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Trái', '78', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, NULL, 'Damian Petkoff.jpg', NULL, NULL, NULL),
+(145, 'Juanlu Gomez', '1980-05-08', 'Tây Ban Nha', '172', '70', 'Tiền vệ tấn công, Tiền vệ cánh trái', 'Trái', '86', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, NULL, 'Juanlu Gomez.jpg', NULL, NULL, NULL),
+(146, 'Fede Vico', '1994-07-04', 'Tây Ban Nha', '176', '70', 'Tiền vệ tấn công, Tiền vệ cánh trái', 'Trái', '83', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, 35, 'Fede Vico.jpg', NULL, NULL, NULL),
+(147, 'Jose Maria Lopez De Silva Sanchez', '1983-01-02', 'Tây Ban Nha', '170', '66', 'Tiền vệ cánh', 'Phải', '83', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, 19, 'Jose Maria Lopez De Silva Sanchez.jpg', NULL, NULL, NULL),
+(148, 'Miguel Angel Nieto', '1986-01-12', 'Tây Ban Nha', '183', '77', 'Tiền vệ cánh', 'Phải', '80', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, NULL, 'Miguel Angel Nieto.jpg', NULL, NULL, NULL),
+(149, 'Abel Gomez Moreno', '1982-02-20', 'Tây Ban Nha', '181', '73', 'Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '85', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, 23, 'Abel Gomez Moreno.jpg', NULL, NULL, NULL),
+(150, 'Carlos Caballero Perez', '1984-10-05', 'Tây Ban Nha', '178', '75', 'Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '83', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, 21, 'Carlos Caballero Perez.jpg', NULL, NULL, NULL),
+(151, 'Jose Carlos Fernandez Vazquez', '1987-07-17', 'Tây Ban Nha', '177', '68', 'Tiền vệ tấn công', 'Trái', '87', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, NULL, 'Jose Carlos Fernandez Vazquez.jpg', NULL, NULL, NULL),
+(152, 'Federico Cartabia', '1993-01-20', 'Argentina', '170', '65', 'Tiền vệ tấn công', 'Trái', '86', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, 10, 'Federico Cartabia.jpg', NULL, NULL, NULL),
+(153, 'Ryder Matos', '1993-02-27', 'Brazil', '179', '71', 'Tiền vệ tấn công, Tiền đạo cánh', 'Phải', '85', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, 20, 'Ryder Matos.jpg', NULL, NULL, NULL),
+(154, 'Fidel Chaves de la Torre', '1989-10-27', 'Tây Ban Nha', '179', '70', 'Tiền vệ tấn công cánh, Tiền đạo cánh', 'Trái', '85', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, 16, 'Fidel Chaves de la Torre.jpg', NULL, NULL, NULL),
+(155, 'Jose Luis Gomez', '1990-08-17', 'Tây Ban Nha', '176', '72', 'Tiền đạo cánh', 'Phải', '79', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, NULL, 'Jose Luis Gomez.jpg', NULL, NULL, NULL),
+(156, 'Borja Garcia Freire', '1990-11-02', 'Tây Ban Nha', '176', '72', 'Tiền vệ tấn công', 'Trái', '85', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, 18, 'Borja Garcia Freire.jpg', NULL, NULL, NULL),
+(157, 'Mike Havenaar', '1987-05-20', 'Nhật Bản', '194', '81', 'Tiền vệ tấn công, Tiền đạo', 'Trái', '85', '2014-12-04 13:30:16', '2014-12-04 13:30:16', 7, 24, 'Mike Havenaar.jpg', NULL, NULL, NULL),
+(158, 'Nabil Ghilas', '1990-04-20', 'Algeria', '183', '85', 'Tiền đạo', 'Phải', '85', '2014-12-04 13:30:17', '2014-12-04 13:30:17', 7, 14, 'Nabil Ghilas.jpg', NULL, NULL, NULL),
+(159, 'Xisco Jimenez', '1986-06-26', 'Tây Ban Nha', '190', '84', 'Tiền đạo', 'Phải', '83', '2014-12-04 13:30:17', '2014-12-04 13:30:17', 7, 9, 'Xisco Jimenez.jpg', NULL, NULL, NULL),
+(160, 'Przemyslaw Tyton', '1987-05-23', 'Ba Lan', '195', '80', 'Thủ môn', 'Phải', '86', '2014-12-04 13:42:08', '2014-12-04 13:42:08', 8, 25, 'Przemyslaw Tyton.jpg', NULL, NULL, NULL),
+(161, 'Manu Herrera', '1981-09-29', 'Tây Ban Nha', '182', '75', 'Thủ môn', 'Phải', '84', '2014-12-04 13:42:08', '2014-12-04 13:42:08', 8, 1, 'Manu Herrera.jpg', NULL, NULL, NULL),
+(162, 'Damian Suarez', '1988-04-27', 'Uruguay', '173', '68', 'Hậu vệ cánh, Tiền vệ cánh phải', 'Phải', '86', '2014-12-04 13:42:08', '2014-12-04 13:42:08', 8, 2, 'Damian Suarez.jpg', NULL, NULL, NULL),
+(163, 'Domingo Cisma', '1982-02-09', 'Tây Ban Nha', '184', '78', 'Hậu vệ cánh trái, Tiền vệ cánh trái', 'Trái', '86', '2014-12-04 13:42:08', '2014-12-04 13:42:08', 8, 5, 'Domingo Cisma.jpg', NULL, NULL, NULL),
+(164, 'Edu Albacar', '1979-11-16', 'Tây Ban Nha', '177', '71', 'Hậu vệ cánh trái, Tiền vệ cánh trái', 'Trái', '85', '2014-12-04 13:42:08', '2014-12-04 13:42:08', 8, 21, 'Edu Albacar.jpg', NULL, NULL, NULL),
+(165, 'David Lomban', '1987-06-05', 'Tây Ban Nha', '188', '84', 'Hậu vệ trung tâm', 'Phải', '85', '2014-12-04 13:42:09', '2014-12-04 13:42:09', 8, 4, 'David Lomban.jpg', NULL, NULL, NULL),
+(166, 'Enzo Roco', '1994-11-21', 'Chi Lê', '188', '82', 'Hậu vệ trung tâm', 'Phải', '84', '2014-12-04 13:42:09', '2014-12-04 13:42:09', 8, 3, 'Enzo Roco.jpg', NULL, NULL, NULL),
+(167, 'Sergio Pelegrin', '1979-04-18', 'Tây Ban Nha', '185', '80', 'Hậu vệ trung tâm', 'Trái', '84', '2014-12-04 13:42:09', '2014-12-04 13:42:09', 8, 18, 'Sergio Pelegrin.jpg', NULL, NULL, NULL),
+(168, 'Jose Angel', '1989-03-02', 'Tây Ban Nha', '186', '75', 'Hậu vệ trung tâm, Tiền vệ phòng ngự', 'Phải', '78', '2014-12-04 13:42:09', '2014-12-04 13:42:09', 8, 14, 'Jose Angel.jpg', NULL, NULL, NULL),
+(169, 'Adrian Gonzalez Morales', '1988-05-25', 'Tây Ban Nha', '184', '75', 'Tiền vệ phòng ngự, Tiền vệ trung tâm, Tiền vệ cánh trái, Tiền vệ tấn công', 'Trái', '86', '2014-12-04 13:42:09', '2014-12-04 13:42:09', 8, 8, 'Adrian Gonzalez Morales.jpg', NULL, NULL, NULL),
+(170, 'Gaby Mudingayi', '1985-10-01', 'Bỉ', '180', '70', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '85', '2014-12-04 13:42:09', '2014-12-04 13:42:09', 8, NULL, 'Gaby Mudingayi.jpg', NULL, NULL, NULL),
+(171, 'Pedro Mosquera', '1988-04-21', 'Tây Ban Nha', '183', '77', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Trái', '85', '2014-12-04 13:42:09', '2014-12-04 13:42:09', 8, 6, 'Pedro Mosquera.jpg', NULL, NULL, NULL),
+(172, 'Alberto Rivera Pizarro', '1978-02-19', 'Tây Ban Nha', '170', '69', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải, Trái', '84', '2014-12-04 13:42:09', '2014-12-04 13:42:09', 8, NULL, 'Alberto Rivera Pizarro.jpg', NULL, NULL, NULL),
+(173, 'Faycal Fajr', '1988-08-01', 'Ma-rốc', '178', '72', 'Tiền vệ phòng ngự, Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '84', '2014-12-04 13:42:09', '2014-12-04 13:42:09', 8, 20, 'Faycal Fajr.jpg', NULL, NULL, NULL),
+(174, 'Mario Pasalic', '1995-02-09', 'Croatia', '186', '78', 'Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải, Trái', '84', '2014-12-04 13:42:09', '2014-12-04 13:42:09', 8, 24, 'Mario Pasalic.jpg', NULL, NULL, NULL),
+(175, 'Michael Anaba', '1993-12-30', 'Ghana', '180', '70', 'Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '77', '2014-12-04 13:42:09', '2014-12-04 13:42:09', 8, 23, 'Michael Anaba.jpg', NULL, NULL, NULL),
+(176, 'Victor Rodriguez Romero', '1989-07-23', 'Tây Ban Nha', '170', '70', 'Tiền vệ tấn công, Tiền đạo cánh', 'Phải', '85', '2014-12-04 13:42:09', '2014-12-04 13:42:09', 8, 17, 'Victor Rodriguez Romero.jpg', NULL, NULL, NULL),
+(177, 'Garry Rodrigues', '1990-11-27', 'Cáp Ve', '175', '69', 'Tiền vệ tấn công, Tiền đạo cánh', 'Phải', '84', '2014-12-04 13:42:09', '2014-12-04 13:42:09', 8, 11, 'Garry Rodrigues.jpg', NULL, NULL, NULL),
+(178, 'Aaron Niguez', '1989-04-26', 'Tây Ban Nha', '170', '69', 'Tiền vệ tấn công, Tiền đạo cánh', 'Phải', '83', '2014-12-04 13:42:09', '2014-12-04 13:42:09', 8, 7, 'Aaron Niguez.jpg', NULL, NULL, NULL),
+(179, 'Alvaro Gimenez', '1991-05-19', 'Tây Ban Nha', '182', '75', 'Tiền vệ tấn công, Tiền đạo cánh trái, Tiền đạo', 'Trái', '82', '2014-12-04 13:42:09', '2014-12-04 13:42:09', 8, 19, 'Alvaro Gimenez.jpg', NULL, NULL, NULL),
+(180, 'Ferran Corominas', '1983-01-05', 'Tây Ban Nha', '175', '70', 'Tiền vệ tấn công, Tiền đạo cánh phải, Tiền đạo', 'Phải', '85', '2014-12-04 13:42:09', '2014-12-04 13:42:09', 8, 10, 'Ferran Corominas.jpg', NULL, NULL, NULL),
+(181, 'Cristian Herrera', '1991-03-13', 'Tây Ban Nha', '186', '79', 'Tiền vệ tấn công, Tiền đạo cánh, Tiền đạo', 'Phải', '83', '2014-12-04 13:42:09', '2014-12-04 13:42:09', 8, 9, 'Cristian Herrera.jpg', NULL, NULL, NULL),
+(182, 'Jonathas de Jesus', '1989-03-06', 'Brazil', '190', '81', 'Tiền đạo', 'Phải', '84', '2014-12-04 13:42:09', '2014-12-04 13:42:09', 8, 22, 'Jonathas de Jesus.jpg', NULL, NULL, NULL),
+(202, 'Vicente Guaita', '1987-01-10', 'Tây Ban Nha', '190', '80', 'Thủ môn', 'Phải', '80', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, 25, 'Vicente Guaita.jpg', NULL, NULL, NULL),
+(203, 'Jordi Codina', '1982-04-27', 'Tây Ban Nha', '188', '79', 'Thủ môn', 'Phải', '85', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, 13, 'Jordi Codina.jpg', NULL, NULL, NULL),
+(204, 'Jonathan Lopez', '1981-04-16', 'Tây Ban Nha', '182', '77', 'Thủ môn', 'Phải', '80', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, 1, 'Jonathan Lopez.jpg', NULL, NULL, NULL),
+(205, 'Javier Olmedo Lopez', '1994-04-14', 'Tây Ban Nha', '186', '78', 'Thủ môn', 'Phải', '75', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, NULL, 'Javier Olmedo Lopez.jpg', NULL, NULL, NULL),
+(206, 'Roberto Lago', '1985-08-30', 'Tây Ban Nha', '178', '70', 'Hậu vệ cánh trái, Tiền vệ cánh trái', 'Trái', '87', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, 3, 'Roberto Lago.jpg', NULL, NULL, NULL),
+(207, 'Sergio Escudero Palomo', '1989-09-02', 'Tây Ban Nha', '176', '72', 'Hậu vệ cánh trái', 'Trái', '85', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, 18, 'Sergio Escudero Palomo.jpg', NULL, NULL, NULL),
+(208, 'Alvaro Arroyo', '1988-07-22', 'Tây Ban Nha', '180', '71', 'Hậu vệ cánh', 'Phải', '83', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, 12, 'Alvaro Arroyo.jpg', NULL, NULL, NULL),
+(209, 'Alexis Ruano', '1985-08-04', 'Tây Ban Nha', '183', '75', 'Hậu vệ trung tâm', 'Phải', '88', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, 2, 'Alexis Ruano.jpg', NULL, NULL, NULL),
+(210, 'Edinaldo Gomes Pereira', '1988-08-25', 'Brazil', '187', '86', 'Hậu vệ trung tâm', 'Phải', '85', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, 5, 'Edinaldo Gomes Pereira.jpg', NULL, NULL, NULL),
+(211, 'Emiliano Velazquez', '1994-04-30', 'Uruguay', '185', '68', 'Hậu vệ trung tâm', 'Phải', '82', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, 4, 'Emiliano Velazquez.jpg', NULL, NULL, NULL),
+(212, 'Alejandro Perez Navarro', '1991-08-11', 'Tây Ban Nha', '189', '80', 'Hậu vệ trung tâm', 'Phải', '82', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, NULL, 'Alejandro Perez Navarro.jpg', NULL, NULL, NULL),
+(213, 'Eduardo Paya Monje', '1992-09-21', 'Tây Ban Nha', '180', '72', 'Hậu vệ cánh phải, Hậu vệ trung tâm, Tiền vệ phòng ngự', 'Phải', '77', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, 30, 'Eduardo Paya Monje.jpg', NULL, NULL, NULL),
+(214, 'Juan Valera Espin', '1984-12-21', 'Tây Ban Nha', '184', '76', 'Hậu vệ cánh phải, Tiền vệ cánh phải', 'Phải', '87', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, 20, 'Juan Valera Espin.jpg', NULL, NULL, NULL),
+(215, 'Medhi Lacen', '1984-03-15', 'Algeria', '176', '60', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Trái', '86', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, 8, 'Medhi Lacen.jpg', NULL, NULL, NULL),
+(216, 'Juan Rodriguez ', '1982-04-01', 'Tây Ban Nha', '185', '72', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '85', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, 22, 'Juan Rodriguez.jpg', NULL, NULL, NULL),
+(217, 'Miguel Alfonso Herrero', '1988-07-29', 'Tây Ban Nha', '181', '73', 'Tiền vệ trung tâm, Tiền vệ tấn công, Tiền vệ cánh phải', 'Phải', '87', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, 21, 'Miguel Alfonso Herrero.jpg', NULL, NULL, NULL),
+(218, 'Jorge Sammir Cruz', '1987-04-23', 'Croatia', '178', '77', 'Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '86', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, 6, 'Jorge Sammir Cruz.jpg', NULL, NULL, NULL),
+(219, 'Fredy Hinestroza', '1990-04-05', 'Colombia', '175', '70', 'Tiền vệ trung tâm, Tiền vệ tấn công', 'Trái', '82', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, 23, 'Fredy Hinestroza.jpg', NULL, NULL, NULL),
+(220, 'Angel Lafita', '1984-08-07', 'Tây Ban Nha', '187', '73', 'Tiền vệ tấn công', 'Phải', '87', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, 7, 'Angel Lafita.jpg', NULL, NULL, NULL),
+(221, 'Pablo Sarabia', '1992-05-11', 'Tây Ban Nha', '174', '70', 'Tiền vệ tấn công, Tiền đạo cánh', 'Trái', '87', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, 10, 'Pablo Sarabia.jpg', NULL, NULL, NULL),
+(222, 'Diego Castro', '1982-07-02', 'Tây Ban Nha', '174', '70', 'Tiền vệ tấn công, Tiền đạo cánh', 'Phải', '87', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, 17, 'Diego Castro.jpg', NULL, NULL, NULL),
+(223, 'Karim Yoda', '1987-10-25', 'Pháp', '182', '73', 'Tiền vệ tấn công', 'Trái', '82', '2014-12-04 13:49:58', '2014-12-04 13:49:58', 11, 11, 'Karim Yoda.jpg', NULL, NULL, NULL),
+(224, 'Pedro Leon', '1986-11-24', 'Tây Ban Nha', '182', '70', 'Tiền vệ tấn công', 'Phải', '88', '2014-12-04 13:49:59', '2014-12-04 13:49:59', 11, 14, 'Pedro Leon.jpg', NULL, NULL, NULL),
+(225, 'Ivan Lopez Alvarez', '1994-06-29', 'Tây Ban Nha', '178', '74', 'Tiền vệ tấn công cánh phải, Tiền đạo cánh phải', 'Phải', '78', '2014-12-04 13:49:59', '2014-12-04 13:49:59', 11, 26, 'Ivan Lopez Alvarez.jpg', NULL, NULL, NULL),
+(226, 'Alvaro Vazquez', '1991-04-27', 'Tây Ban Nha', '182', '76', 'Tiền đạo', 'Phải', '87', '2014-12-04 13:49:59', '2014-12-04 13:49:59', 11, 9, 'Alvaro Vazquez.jpg', NULL, NULL, NULL),
+(227, 'Baba Diawara', '1988-01-17', 'Senegal', '185', '79', 'Tiền đạo', 'Phải', '86', '2014-12-04 13:49:59', '2014-12-04 13:49:59', 11, 15, 'Baba Diawara.jpg', NULL, NULL, NULL),
+(228, 'Roberto Fernandez Alvarellos', '1979-01-25', 'Tây Ban Nha', '181', '76', 'Thủ môn', 'Phải', '86', '2014-12-04 13:55:01', '2014-12-04 13:55:01', 12, 13, 'Roberto Fernandez Alvarellos.jpg', NULL, NULL, NULL),
+(229, 'Oier Olazabal', '1989-09-14', 'Tây Ban Nha', '191', '95', 'Thủ môn', 'Trái', '83', '2014-12-04 13:55:01', '2014-12-04 13:55:01', 12, 1, 'Oier Olazabal.jpg', NULL, NULL, NULL),
+(230, 'Stole Dimitrievski', '1993-12-25', 'Cộng hòa Macedonia', '183', '81', 'Thủ môn', 'Phải', '79', '2014-12-04 13:55:01', '2014-12-04 13:55:01', 12, 35, 'Stole Dimitrievski.jpg', NULL, NULL, NULL),
+(231, 'Dimitri Foulquier', '1993-03-23', 'Pháp', '183', '77', 'Hậu vệ cánh. Tiền vệ cánh phải ', 'Phải', '85', '2014-12-04 13:55:01', '2014-12-04 13:55:01', 12, 22, 'Dimitri Foulquier.jpg', NULL, NULL, NULL),
+(232, 'Luis Martins', '1992-06-10', 'Bồ Đào Nha', '176', '65', 'Hậu vệ cánh trái, Tiền vệ cánh trái, Tiền vệ công cánh trái', 'Trái', '85', '2014-12-04 13:55:01', '2014-12-04 13:55:01', 12, 3, 'Luis Martins.jpg', NULL, NULL, NULL),
+(233, 'Matias Campos', '1989-06-22', 'Chi Lê', '175', '70', 'Hậu vệ trung tâm, Tiền vệ phòng ngự, Tiền vệ cánh trái', 'Trái', '85', '2014-12-04 13:55:01', '2014-12-04 13:55:01', 12, NULL, 'Matias Campos.jpg', NULL, NULL, NULL),
+(234, 'Valber Huerta', '1993-08-26', 'Chi Lê', '185', '78', 'Hậu vệ trung tâm, Hậu vệ cánh trái', 'Phải', '78', '2014-12-04 13:55:01', '2014-12-04 13:55:01', 12, NULL, 'Valber Huerta.jpg', NULL, NULL, NULL),
+(235, 'Dany Nounkeu', '1986-04-11', 'Cameroon', '184', '85', 'Hậu vệ trung tâm, Hậu vệ cánh phải', 'Phải', '87', '2014-12-04 13:55:01', '2014-12-04 13:55:01', 12, 12, 'Dany Nounkeu.jpg', NULL, NULL, NULL),
+(236, 'Jeison Murillo', '1992-05-27', 'Colombia', '184', '78', 'Hậu vệ trung tâm', 'Phải', '86', '2014-12-04 13:55:01', '2014-12-04 13:55:01', 12, 24, 'Jeison Murillo.jpg', NULL, NULL, NULL),
+(237, 'Pape Diakhate', '1984-06-21', 'Senegal', '184', '75', 'Hậu vệ trung tâm', 'Phải', '86', '2014-12-04 13:55:01', '2014-12-04 13:55:01', 12, NULL, 'Pape Diakhate.jpg', NULL, NULL, NULL),
+(238, 'Diego Mainz', '1982-12-29', 'Tây Ban Nha', '184', '78', 'Hậu vệ trung tâm', 'Phải, Trái', '85', '2014-12-04 13:55:01', '2014-12-04 13:55:01', 12, 5, 'Diego Mainz.jpg', NULL, NULL, NULL),
+(239, 'Jean-Sylvain Babin', '1986-10-14', 'Martinique', '182', '84', 'Hậu vệ trung tâm, Tiền vệ phòng ngự', 'Phải', '84', '2014-12-04 13:55:01', '2014-12-04 13:55:01', 12, 6, 'Jean-Sylvain Babin.jpg', NULL, NULL, NULL),
+(240, 'Allan Nyom', '1988-05-10', 'Cameroon', '188', '80', 'Hậu vệ cánh phải', 'Phải', '88', '2014-12-04 13:55:01', '2014-12-04 13:55:01', 12, 2, 'Allan Nyom.jpg', NULL, NULL, NULL),
+(241, 'Javi Marquez', '1986-05-11', 'Tây Ban Nha', '174', '71', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Trái', '87', '2014-12-04 13:55:01', '2014-12-04 13:55:01', 12, 8, 'Javi Marquez.jpg', NULL, NULL, NULL),
+(242, 'Manuel Iturra', '1984-06-23', 'Chi Lê', '173', '71', 'Tiền vệ phòng ngự, Tiền vệ trung tâm, Tiền vệ cánh phải', 'Phải', '87', '2014-12-04 13:55:01', '2014-12-04 13:55:01', 12, 16, 'Manuel Iturrajpg', NULL, NULL, NULL),
+(243, 'Fran Rico', '1987-08-03', 'Tây Ban Nha', '178', '68', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '86', '2014-12-04 13:55:02', '2014-12-04 13:55:02', 12, 4, 'Fran Rico.jpg', NULL, NULL, NULL),
+(244, 'Abdoul Sissoko', '1990-02-20', 'Pháp', '180', '68', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '84', '2014-12-04 13:55:02', '2014-12-04 13:55:02', 12, 17, 'Abdoul Sissoko.jpg', NULL, NULL, NULL),
+(245, 'Hector Yuste', '1988-01-12', 'Tây Ban Nha', '190', '83', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '83', '2014-12-04 13:55:02', '2014-12-04 13:55:02', 12, 7, 'Hector Yuste.jpg', NULL, NULL, NULL),
+(246, 'Eddy Silvestre Pascual Israfilov', NULL, 'Tây Ban Nha', '191', '75', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '82', '2014-12-04 13:55:02', '2014-12-04 13:55:02', 12, 14, 'Eddy Silvestre Pascual Israfilov.jpg', NULL, NULL, NULL),
+(247, 'Francisco Medina Luna', '1981-05-26', 'Tây Ban Nha', '180', '78', 'Tiền vệ tấn công, Tiền đạo cánh', 'Trái', '88', '2014-12-04 13:55:02', '2014-12-04 13:55:02', 12, 10, 'Francisco Medina Luna.jpg', NULL, NULL, NULL),
+(248, 'Juan Carlos', '1990-03-30', 'Tây Ban Nha', '178', '69', 'Tiền đạo cánh trái', 'Trái', '86', '2014-12-04 13:55:02', '2014-12-04 13:55:02', 12, 20, 'Juan Carlos.jpg', NULL, NULL, NULL),
+(249, 'Dani Benitez', '1987-04-07', 'Tây Ban Nha', '181', '69', 'Tiền đạo cánh trái', 'Trái', '86', '2014-12-04 13:55:02', '2014-12-04 13:55:02', 12, NULL, 'Dani Benitez.jpg', NULL, NULL, NULL),
+(250, 'Youssef El-Arabi', '1987-02-03', 'Ma-rốc', '180', '70', 'Tiền vệ tấn công, Tiền đạo', 'Phải', '88', '2014-12-04 13:55:02', '2014-12-04 13:55:02', 12, 9, 'Youssef El-Arabi.jpg', NULL, NULL, NULL),
+(251, 'Daniel Larsson', '1987-01-25', 'Thụy Điển', '176', '77', 'Tiền vệ tấn công, Tiền đạo cánh phải, Tiền đạo', 'Phải', '85', '2014-12-04 13:55:02', '2014-12-04 13:55:02', 12, 19, 'Daniel Larsson.jpg', NULL, NULL, NULL),
+(252, 'Ruben Rochina', '1991-03-23', 'Tây Ban Nha', '182', '76', 'Tiền vệ tấn công , Tiền đạo', 'Trái', '83', '2014-12-04 13:55:02', '2014-12-04 13:55:02', 12, 23, 'Ruben Rochina.jpg', NULL, NULL, NULL),
+(253, 'Ivan Sanchez Rico Soto', '1980-08-11', 'Tây Ban Nha', '187', '84', 'Tiền đạo cánh, Tiền đạo', 'Trái', '86', '2014-12-04 13:55:02', '2014-12-04 13:55:02', 12, 11, 'Ivan Sanchez Rico Soto.jpg', NULL, NULL, NULL),
+(254, 'Jhon Cordoba', '1993-05-10', 'Colombia', '186', '85', 'Tiền đạo', 'Phải', '83', '2014-12-04 13:55:02', '2014-12-04 13:55:02', 12, 18, 'Jhon Cordoba.jpg', NULL, NULL, NULL),
+(255, 'Alfredo Ortuno', '1991-01-21', 'Tây Ban Nha', '183', '80', 'Tiền đạo', 'Phải', '81', '2014-12-04 13:55:02', '2014-12-04 13:55:02', 12, 21, 'Alfredo Ortuno.jpg', NULL, NULL, NULL),
+(256, 'Darwin Machis', '1993-02-07', 'Venezuela', '174', '70', 'Tiền đạo', 'Phải', '80', '2014-12-04 13:55:02', '2014-12-04 13:55:02', 12, 27, 'Darwin Machis.jpg', NULL, NULL, NULL),
+(257, 'Isaac Success', '1996-01-07', 'Nigeria', '186', '65', 'Tiền đạo', 'Phải', '76', '2014-12-04 13:55:02', '2014-12-04 13:55:02', 12, 29, 'Isaac Success.jpg', NULL, NULL, NULL),
+(258, 'Diego Marino', '1990-05-09', 'Tây Ban Nha', '185', '75', 'Thủ môn', 'Phải', '85', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 13, 'Diego Marino.jpg', NULL, NULL, NULL),
+(259, 'Jesus Fernandez Collado', '1988-06-11', 'Tây Ban Nha', '190', '77', 'Thủ môn', 'Trái', '82', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 1, 'Jesus Fernandez Collado.jpg', NULL, NULL, NULL),
+(260, 'Juanfran Garcia', '1976-07-15', 'Tây Ban Nha', '182', '73', 'Hậu vệ trung tâm, Hậu vệ cánh trái, Tiền vệ cánh trái', 'Trái', '87', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 12, 'Juanfran Garcia.jpg', NULL, NULL, NULL),
+(261, 'Pedro Lopez Munoz', '1983-11-07', 'Tây Ban Nha', '174', '73', 'Hậu vệ cánh. Tiền vệ cánh phải ', 'Phải', '86', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 19, 'Pedro Lopez Munoz.jpg', NULL, NULL, NULL),
+(262, 'Nikolaos Karabelas', '1984-12-20', 'Hi Lạp', '180', '72', 'Hậu vệ trung tâm, Hậu vệ cánh trái', 'Trái', '85', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 15, 'Nikolaos Karabelas.jpg', NULL, NULL, NULL),
+(263, 'Antonio Garcia Aranda', '1989-11-07', 'Tây Ban Nha', '179', '69', 'Hậu vệ cánh trái', 'Trái', '78', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 3, 'Antonio Garcia Aranda.jpg', NULL, NULL, NULL),
+(264, 'Loukas Vyntra', '1981-02-05', 'Hi Lạp', '184', '76', 'Hậu vệ trung tâm, Hậu vệ cánh phải, Tiền vệ phòng ngự', 'Phải', '87', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 6, 'Loukas Vyntra.jpg', NULL, NULL, NULL),
+(265, 'David Navarro', '1980-05-25', 'Tây Ban Nha', '195', '77', 'Hậu vệ trung tâm', 'Phải', '87', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 4, 'David Navarro.jpg', NULL, NULL, NULL),
+(266, 'Issam El Adoua', '1986-12-09', 'Ma-rốc', '189', '76', 'Hậu vệ trung tâm, Tiền vệ phòng ngự', 'Phải', '85', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 16, 'Issam El Adoua.jpg', NULL, NULL, NULL),
+(267, 'Hector Rodas', '1988-03-07', 'Tây Ban Nha', '190', '80', 'Hậu vệ trung tâm, Hậu vệ cánh phải', 'Phải', '85', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 5, 'Hector Rodas.jpg', NULL, NULL, NULL),
+(268, 'Ivan Lopez Mendoza', '1993-08-23', 'Tây Ban Nha', '175', '69', 'Hậu vệ cánh phải', 'Phải', '78', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 2, 'Ivan Lopez Mendoza.jpg', NULL, NULL, NULL),
+(269, 'Simao Mate Junior', '1988-07-23', 'Mozambique', '178', '78', 'Tiền vệ phòng ngự, Tiền vệ trung tâm,', 'Phải', '87', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 24, 'Simao Mate Junior.jpg', NULL, NULL, NULL),
+(270, 'Papakouli Diop', '1986-03-19', 'Senegal', '180', '73', 'Tiền vệ phòng ngự', 'Phải', '87', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 23, 'Papakouli Diop.jpg', NULL, NULL, NULL),
+(271, 'Mohamed Sissoko', '1985-01-22', 'Mali', '192', '63', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '87', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 22, 'Mohamed Sissoko.jpg', NULL, NULL, NULL),
+(272, 'Victor Perez Alonso', '1988-01-12', 'Tây Ban Nha', '176', '71', 'Tiền vệ phòng ngự, Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '86', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 20, 'Victor Perez Alonsojpg', NULL, NULL, NULL),
+(273, 'Andreas Ivanschitz', '1983-10-15', 'Áo', '184', '82', 'Tiền vệ trung tâm, Tiền vệ cánh trái, Tiền vệ tấn công', 'Trái', '88', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 21, 'Andreas Ivanschitz.jpg', NULL, NULL, NULL),
+(274, 'Jaime Gavilan', '1985-05-12', 'Tây Ban Nha', '178', '71', 'Tiền vệ cánh trái, Tiền vệ tấn công', 'Trái', '86', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 14, 'Jaime Gavilan.jpg', NULL, NULL, NULL),
+(275, 'Victor Camarasa', '1994-05-28', 'Tây Ban Nha', '183', '76', 'Tiền vệ trung tâm', 'Phải', '80', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 26, 'Victor Camarasa.jpg', NULL, NULL, NULL),
+(276, 'Jordi Xumetra', '1985-10-24', 'Tây Ban Nha', '172', '70', 'Tiền vệ cánh phải', 'Phải', '86', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 17, 'Jordi Xumetra.jpg', NULL, NULL, NULL),
+(277, 'Ruben Garcia Santos', '1993-07-14', 'Tây Ban Nha', '171', '72', 'Tiền vệ tấn công, Tiền đạo cánh trái, Tiền đạo', 'Phải, Trái', '87', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 10, 'Ruben Garcia Santos.jpg', NULL, NULL, NULL),
+(278, 'Nabil El Zhar', '1986-08-27', 'Ma-rốc', '175', '66', 'Tiền đạo cánh', 'Phải, Trái', '86', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 8, 'Nabil El Zhar.jpg', NULL, NULL, NULL),
+(279, 'Rafael Martins', '1989-03-17', 'Brazil', '177', '74', 'Tiền đạo, Tiền đạo cánh trái', 'Phải', '84', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 9, 'Rafael Martins.jpg', NULL, NULL, NULL),
+(280, 'Victor Casadesus', '1985-02-28', 'Tây Ban Nha', '180', '77', 'Tiền vệ tấn công, Tiền đạo', 'Phải', '87', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 18, 'Victor Casadesus.jpg', NULL, NULL, NULL),
+(281, 'Jose Luis Morales Nogales', '1987-07-23', 'Tây Ban Nha', '180', '70', 'Tiền vệ tấn công, Tiền đạo', 'Phải', '82', '2014-12-04 13:57:06', '2014-12-04 13:57:06', 13, 11, 'Jose Luis Morales Nogales.jpg', NULL, NULL, NULL),
+(282, 'David Barral', '1983-05-10', 'Tây Ban Nha', '179', '82', 'Tiền đạo', 'Phải', '87', '2014-12-04 13:57:07', '2014-12-04 13:57:07', 13, 7, 'David Barral.jpg', NULL, NULL, NULL),
+(283, 'Guillermo Ochoa', '1985-07-13', 'Mexico', '183', '73', 'Thủ môn', 'Phải', '89', '2014-12-04 13:59:05', '2014-12-04 13:59:05', 14, 13, 'Guillermo Ochoa.jpg', NULL, NULL, NULL),
+(284, 'Idriss Carlos Kameni', '1984-02-18', 'Cameroon', '186', '86', 'Thủ môn', 'Phải', '86', '2014-12-04 13:59:05', '2014-12-04 13:59:05', 14, 1, 'Idriss Carlos Kameni.jpg', NULL, NULL, NULL);
+INSERT INTO `players` (`id`, `name`, `dob`, `nation`, `height`, `weight`, `position`, `leg`, `level`, `created_at`, `updated_at`, `club_id`, `number`, `photo_file_name`, `photo_content_type`, `photo_file_size`, `photo_updated_at`) VALUES
+(285, 'Arthur Boka', '1983-04-02', 'Bờ Biển Ngà', '166', '67', 'Hậu vệ cánh trái, Tiền vệ cánh trái, Tiền vệ phòng ngự', 'Trái', '87', '2014-12-04 13:59:05', '2014-12-04 13:59:05', 14, 19, 'Arthur Boka.jpg', NULL, NULL, NULL),
+(286, 'Roberto Rosales', '1988-11-20', 'Venezuela', '174', '73', 'Hậu vệ cánh, Tiền vệ cánh phải', 'Phải', '87', '2014-12-04 13:59:05', '2014-12-04 13:59:05', 14, 18, 'Roberto Rosales.jpg', NULL, NULL, NULL),
+(287, 'Vitorino Antunes', '1987-04-01', 'Bồ Đào Nha', '175', '69', 'Hậu vệ cánh trái, Tiền vệ cánh trái', 'Trái', '87', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 5, 'Vitorino Antunes.jpg', NULL, NULL, NULL),
+(288, 'Miguel Torres Gomez', '1986-01-28', 'Tây Ban Nha', '183', '76', 'Hậu vệ trung tâm, Hậu vệ cánh', 'Phải', '87', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 23, 'Miguel Torres Gomez.jpg', NULL, NULL, NULL),
+(289, 'Jose Manuel Casado', '1986-08-09', 'Tây Ban Nha', '184', '78', 'Hậu vệ trung tâm, Hậu vệ cánh trái, Tiền vệ cánh trái', 'Trái', '86', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 20, 'Jose Manuel Casado.jpg', NULL, NULL, NULL),
+(290, 'Sergio Sanchez Ortega', '1986-04-03', 'Tây Ban Nha', '185', '78', 'Hậu vệ trung tâm, Hậu vệ cánh', 'Phải', '87', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 21, 'Sergio Sanchez Ortega.jpg', NULL, NULL, NULL),
+(291, 'Weligton Oliveira', '1979-08-26', 'Brazil', '186', '71', 'Hậu vệ trung tâm', 'Trái', '87', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 3, 'Weligton Oliveira.jpg', NULL, NULL, NULL),
+(292, 'Marcos Angeleri', '1982-08-30', 'Argentina', '182', '68', 'Hậu vệ cánh phải, Hậu vệ trung tâm', 'Phải', '86', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 15, 'Marcos Angeleri.jpg', NULL, NULL, NULL),
+(293, 'Flavio Nunes Ferreira', '1991-10-19', 'Bồ Đào Nha', '180', '75', 'Hậu vệ trung tâm, Tiền vệ phòng ngự', 'Phải', '84', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 4, 'Flavio Nunes Ferreira.jpg', NULL, NULL, NULL),
+(294, 'Roberto Chen', '1994-05-24', 'Panama', '182', '77', 'Hậu vệ cánh phải, Hậu vệ trung tâm', 'Phải', '78', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, NULL, 'Roberto Chen.jpg', NULL, NULL, NULL),
+(295, 'Ignacio Camacho', '1990-05-04', 'Tây Ban Nha', '182', '80', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '88', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 6, 'Ignacio Camacho.jpg', NULL, NULL, NULL),
+(296, 'Fernando Tissone', '1986-07-24', 'Argentina', '182', '75', 'Tiền vệ phòng ngự, Tiền vệ trung tâm,', 'Phải', '87', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 12, 'Fernando Tissone.jpg', NULL, NULL, NULL),
+(297, 'Sergio Paulo Barbosa Valente ', '1980-07-27', 'Bồ Đào Nha', '174', '72', 'Tiền vệ phòng ngự, Tiền vệ trung tâm, Tiền vệ cánh trái', 'Trái', '87', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 17, 'Sergio Paulo Barbosa Valente.jpg', NULL, NULL, NULL),
+(298, 'Jose Luis Garcia Del Pozo', '1991-01-11', 'Tây Ban Nha', '183', '74', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '86', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 14, 'Jose Luis Garcia Del Pozo.jpg', NULL, NULL, NULL),
+(299, 'Sergi Darder', '1993-12-22', 'Tây Ban Nha', '180', '67', 'Tiền vệ phòng ngự, Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '85', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 30, 'Sergi Darder.jpg', NULL, NULL, NULL),
+(300, 'Pablo Perez', '1985-05-10', 'Argentina', '179', '71', 'Tiền vệ trung tâm, Tiền vệ cánh phaỉ, Tiền vệ tấn công', 'Phải', '85', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 11, 'Pablo Perez.jpg', NULL, NULL, NULL),
+(301, 'Nordin Amrabat', '1987-03-31', 'Ma-rốc', '178', '77', 'Tiền vệ tấn công, Tiền đạo cánh', 'Phải, Trái', '87', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 2, 'Nordin Amrabat.jpg', NULL, NULL, NULL),
+(302, 'Luis Alberto', '1992-09-28', 'Tây Ban Nha', '182', '70', 'Tiền vệ tấn công, Tiền đạo cánh, Tiền đạo', 'Phải', '85', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 22, 'Luis Alberto.jpg', NULL, NULL, NULL),
+(303, 'Samuel Garcia Sanchez', '1990-06-13', 'Tây Ban Nha', '179', '73', 'Tiền vệ tấn công, Tiền đạo cánh, Tiền đạo', 'Trái', '84', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 7, 'Samuel Garcia Sanchez.jpg', NULL, NULL, NULL),
+(304, 'Juan Pablo Anor', '1994-01-24', 'Venezuela', '171', '60', 'Tiền vệ tấn công, Tiền đạo cánh trái', 'Trái', '77', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 28, 'Juan Pablo Anor.jpg', NULL, NULL, NULL),
+(305, 'Samuel Castillejo', '1995-01-18', 'Tây Ban Nha', '179', '61', 'Tiền vệ tấn công, Tiền đạo cánh, Tiền đạo', 'Trái', '77', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 29, 'Samuel Castillejo.jpg', NULL, NULL, NULL),
+(306, 'Francisco Portillo Soler', '1990-06-13', 'Tây Ban Nha', '169', '69', 'Tiền vệ tấn công, Tiền vệ cánh phải', 'Phải', '87', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 8, 'Francisco Portillo Soler.jpg', NULL, NULL, NULL),
+(307, 'Juan Miguel Jimenez', '1993-05-20', 'Tây Ban Nha', '170', '63', 'Tiền vệ tấn công, Tiền đạo cánh, Tiền đạo', 'Phải', '83', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 26, 'Juan Miguel Jimenez.jpg', NULL, NULL, NULL),
+(308, 'Ricardo Horta', '1994-09-15', 'Bồ Đào Nha', '173', '71', 'Tiền đạo cánh phải', 'Phải', '83', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 10, 'Ricardo Horta.jpg', NULL, NULL, NULL),
+(309, 'Roque Santa Cruz', '1981-08-16', 'Paraguay', '189', '80', 'Tiền đạo', 'Phải', '87', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 9, 'Roque Santa Cruz.jpg', NULL, NULL, NULL),
+(310, 'Ezequiel Rescaldani', '1992-06-11', 'Argentina', '188', '83', 'Tiền đạo', 'Trái', '83', '2014-12-04 13:59:06', '2014-12-04 13:59:06', 14, 16, 'Ezequiel Rescaldani.jpg', NULL, NULL, NULL),
+(311, 'Abraham Gonzalez', '1985-07-16', 'Tây Ban Nha', '179', '75', 'Tiền vệ tấn công', 'Phải, Trái', '84', '2014-12-04 16:29:29', '2014-12-04 16:29:29', 15, 10, 'Abraham Gonzalez.jpg', NULL, NULL, NULL),
+(312, 'Alex Fernandez', '1992-10-15', 'Tây Ban Nha', '182', '75', 'Tiền vệ trung tâm', 'Phải', '84', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 7, 'Alex Fernandez.jpg', NULL, NULL, NULL),
+(313, 'Alvaro Gonzalez', '1990-01-08', 'Tây Ban Nha', '180', '68', 'Hậu vệ cánh phải', 'Phải', '87', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 22, 'Alvaro Gonzalez.jpg', NULL, NULL, NULL),
+(314, 'Anaitz Arbilla', '1987-05-15', 'Tây Ban Nha', '177', '75', 'Hậu vệ cánh, Tiền vệ trung tâm', 'Phải', '86', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 23, 'Anaitz Arbilla.jpg', NULL, NULL, NULL),
+(315, 'Christian Stuani', '1986-10-12', 'Uruguay', '183', '70', 'Tiền vệ tấn công, Tiền đạo', 'Phải', '87', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 8, 'Christian Stuani.jpg', NULL, NULL, NULL),
+(316, 'Diego Colotto', '1981-03-10', 'Argentina', '184', '81', 'Hậu vệ trung tâm', 'Phải', '87', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 19, 'Diego Colotto.jpg', NULL, NULL, NULL),
+(317, 'Felipe Caicedo', '1988-09-05', 'Ecuador', '185', '81', 'Tiền đạo', 'Trái', '88', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 20, 'Felipe Caicedo.jpg', NULL, NULL, NULL),
+(318, 'Felipe Mattioni', '1988-10-15', 'Brazil', '177', '72', 'Hậu vệ cánh phải, Tiền vệ cánh phải', 'Phải', '83', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 2, 'Felipe Mattioni.jpg', NULL, NULL, NULL),
+(319, 'German Parreno', '1993-02-16', 'Tây Ban Nha', '189', '78', 'Thủ môn', 'Phải', '78', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 1, 'German Parreno.jpg', NULL, NULL, NULL),
+(320, 'Hector Moreno', '1988-01-17', 'Mexico', '185', '81', 'Hậu vệ trung tâm', 'Trái', '88', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 15, 'Hector Moreno.jpg', NULL, NULL, NULL),
+(321, 'Javi Lopez', '1986-01-21', 'Tây Ban Nha', '180', '74', 'Hậu vệ cánh phải, Tiền vệ cánh phải, Tiền vệ trung tâm', 'Phải', '87', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 16, 'Javi Lopez.jpg', NULL, NULL, NULL),
+(322, 'Jose Canas', '1987-05-27', 'Tây Ban Nha', '177', '64', 'Tiền vệ trung tâm', 'Phải', '87', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 14, 'Jose Canas.jpg', NULL, NULL, NULL),
+(323, 'Juan Rafael Fuentes', '1990-01-05', 'Tây Ban Nha', '177', '72', 'Hậu vệ trung tâm, Hậu vệ cánh trái', 'Trái', '86', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 18, 'Juan Rafael Fuentes.jpg', NULL, NULL, NULL),
+(324, 'Kiko Casilla', '1986-10-02', 'Tây Ban Nha', '191', '84', 'Thủ môn', 'Phải', '88', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 13, 'Kiko Casilla.jpg', NULL, NULL, NULL),
+(325, 'Manuel Lanzarote Bruno', '1984-01-20', 'Tây Ban Nha', '178', '69', 'Tiền vệ tấn công, Tiền đạo cánh', 'Trái', '84', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 11, 'Manuel Lanzarote Bruno.jpg', NULL, NULL, NULL),
+(326, 'Paco Montanes', '1986-10-08', 'Tây Ban Nha', '172', '74', 'Tiền vệ tấn công, Tiền đạo', 'Phải', '86', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 24, 'Paco Montanes.jpg', NULL, NULL, NULL),
+(327, 'Pau Lopez', '1994-12-13', 'Tây Ban Nha', '188', '74', 'Thủ môn', 'Phải', '78', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 25, 'Pau Lopez.jpg', NULL, NULL, NULL),
+(328, 'Raul Rodriguez', '1987-09-22', 'Tây Ban Nha', '183', '74', 'Hậu vệ trung tâm, Hậu vệ cánh phải', 'Phải', '86', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 3, 'Raul Rodriguez.jpg', NULL, NULL, NULL),
+(329, 'Salva Sevilla', '1984-03-18', 'Tây Ban Nha', '182', '69', 'Tiền vệ tấn công, Tiền vệ cánh', 'Phải', '87', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 6, 'Salva Sevilla.jpg', NULL, NULL, NULL),
+(330, 'Sergio Garcia', '1983-06-09', 'Tây Ban Nha', '174', '72', 'Tiền vệ tấn công, Tiền đạo', 'Phải', '87', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 9, 'Sergio Garcia.jpg', NULL, NULL, NULL),
+(331, 'Victor Alvarez Delgado', '1993-03-14', 'Tây Ban Nha', '178', '69', 'Hậu vệ cánh trái, Tiền vệ cánh trái', 'Trái', '83', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 5, 'Victor Alvarez Delgado.jpg', NULL, NULL, NULL),
+(332, 'Victor Sanchez Mata', '1987-09-08', 'Tây Ban Nha', '180', '73', 'Hậu vệ cánh phải, Tiền vệ trung tâm', 'Phải', '87', '2014-12-04 16:29:30', '2014-12-04 16:29:30', 15, 4, 'Victor Sanchez Mata.jpg', NULL, NULL, NULL),
+(333, 'Alberto Lopo', '1980-05-05', 'Tây Ban Nha', '186', '71', 'Hậu vệ trung tâm', 'Phải', '85', '2014-12-04 16:31:32', '2014-12-04 16:31:32', 16, 23, 'Alberto Lopo.jpg', NULL, NULL, NULL),
+(334, 'Alejandro Bergantinos Garcia', '1985-06-07', 'Tây Ban Nha', '177', '71', 'Tiền vệ trung tâm', 'Phải', '86', '2014-12-04 16:31:32', '2014-12-04 16:31:32', 16, 4, 'Alejandro Bergantinos Garcia.jpg', NULL, NULL, NULL),
+(335, 'Cezary Wilk', '1986-02-12', 'Ba Lan', '182', '76', 'Tiền vệ trung tâm', 'Phải, Trái', '84', '2014-12-04 16:31:32', '2014-12-04 16:31:32', 16, 20, 'Cezary Wilk.jpg', NULL, NULL, NULL),
+(336, 'Dani Iglesias', '1995-07-17', 'Tây Ban Nha', '180', '71', 'Tiền đạo', 'Phải', '76', '2014-12-04 16:31:32', '2014-12-04 16:31:32', 16, NULL, 'Dani Iglesias.jpg', NULL, NULL, NULL),
+(337, 'Fabricio Agosto Ramirez', '1987-12-31', 'Tây Ban Nha', '180', '67', 'Thủ môn', 'Phải', '83', '2014-12-04 16:31:32', '2014-12-04 16:31:32', 16, 13, 'Fabricio Agosto Ramirez.jpg', NULL, NULL, NULL),
+(338, 'German Lux', '1982-06-07', 'Argentina', '186', '77', 'Thủ môn', 'Phải', '85', '2014-12-04 16:31:32', '2014-12-04 16:31:32', 16, 1, 'German Lux.jpg', NULL, NULL, NULL),
+(339, 'Haris Medunjanin', '1985-03-08', 'Bosnia & Herzegovina', '188', '78', 'Tiền vệ trung tâm', 'Trái', '87', '2014-12-04 16:31:32', '2014-12-04 16:31:32', 16, 8, 'Haris Medunjanin.jpg', NULL, NULL, NULL),
+(340, 'Helder Postiga', '1982-08-02', 'Bồ Đào Nha', '180', '79', 'Tiền đạo', 'Phải', '88', '2014-12-04 16:31:32', '2014-12-04 16:31:32', 16, 9, 'Helder Postiga.jpg', NULL, NULL, NULL),
+(341, 'Isaac Cuenca', '1991-04-27', 'Tây Ban Nha', '181', '74', 'Tiền vệ cánh, Tiền đạo cánh', 'Phải, Trái', '86', '2014-12-04 16:31:32', '2014-12-04 16:31:32', 16, 14, 'Isaac Cuenca.jpg', NULL, NULL, NULL),
+(342, 'Jose Toche', '1983-01-01', 'Tây Ban Nha', '186', '78', 'Tiền đạo', 'Phải', '84', '2014-12-04 16:31:32', '2014-12-04 16:31:32', 16, 18, 'Jose Toche.jpg', NULL, NULL, NULL),
+(343, 'Juan CARLOS', '1991-03-15', 'Tây Ban Nha', '184', '72', 'Tiền vệ tấn công', 'Phải', '80', '2014-12-04 16:31:32', '2014-12-04 16:31:32', 16, 25, 'Juan CARLOS.jpg', NULL, NULL, NULL),
+(344, 'Juan Dominguez', '1990-01-08', 'Tây Ban Nha', '181', '71', 'Tiền vệ trung tâm', 'Phải', '85', '2014-12-04 16:31:33', '2014-12-04 16:31:33', 16, 10, 'Juan Dominguez.jpg', NULL, NULL, NULL),
+(345, 'Laureano Sanabria Ruiz', '1985-03-22', 'Tây Ban Nha', '166', '68', 'Hậu vệ cánh phải', 'Phải', '85', '2014-12-04 16:31:33', '2014-12-04 16:31:33', 16, 15, 'Laureano Sanabria Ruiz.jpg', NULL, NULL, NULL),
+(346, 'Luis Pinto', '1985-05-05', 'Bồ Đào Nha', '175', '63', 'Hậu vệ cánh trái, Tiền vệ cánh trái', 'Trái', '83', '2014-12-04 16:31:33', '2014-12-04 16:31:33', 16, 16, 'Luis Pinto.jpg', NULL, NULL, NULL),
+(347, 'Manuel Pablo', '1976-01-25', 'Tây Ban Nha', '176', '80', 'Hậu vệ cánh phải', 'Phải', '86', '2014-12-04 16:31:33', '2014-12-04 16:31:33', 16, 2, 'Manuel Pablo.jpg', NULL, NULL, NULL),
+(348, 'Marcos Remeseiro', '1992-07-21', 'Tây Ban Nha', '180', '68', 'Tiền vệ tấn công', 'Phải, Trái', '75', '2014-12-04 16:31:33', '2014-12-04 16:31:33', 16, NULL, 'Marcos Remeseiro.jpg', NULL, NULL, NULL),
+(349, 'Modibo Diakite', '1987-03-02', 'Pháp', '192', '84', 'Hậu vệ trung tâm', 'Phải', '87', '2014-12-04 16:31:33', '2014-12-04 16:31:33', 16, 21, 'Modibo Diakite.jpg', NULL, NULL, NULL),
+(350, 'Pablo Insua', '1993-09-09', 'Tây Ban Nha', '185', '71', 'Hậu vệ trung tâm', 'Phải', '84', '2014-12-04 16:31:33', '2014-12-04 16:31:33', 16, 5, 'Pablo Insua.jpg', NULL, NULL, NULL),
+(351, 'Rafael Veloso', '1993-11-03', 'Bồ Đào Nha', '192', '80', 'Thủ môn', 'Phải', '77', '2014-12-04 16:31:33', '2014-12-04 16:31:33', 16, NULL, 'Rafael Veloso.jpg', NULL, NULL, NULL),
+(352, 'Roberto Canella', '1988-02-07', 'Tây Ban Nha', '180', '68', 'Hậu vệ cánh trái, Tiền vệ cánh trái', 'Trái', '87', '2014-12-04 16:31:33', '2014-12-04 16:31:33', 16, 3, 'Roberto Canella.jpg', NULL, NULL, NULL),
+(353, 'Santi Taboada', '1993-01-22', 'Tây Ban Nha', '181', '73', 'Tiền vệ trung tâm', 'Phải', '77', '2014-12-04 16:31:33', '2014-12-04 16:31:33', 16, NULL, 'Santi Taboada.jpg', NULL, NULL, NULL),
+(354, 'Stefan Deak', '1991-03-23', 'Serbia', '191', '80', 'Hậu vệ trung tâm, Hậu vệ cánh trái', 'Trái', '77', '2014-12-04 16:31:33', '2014-12-04 16:31:33', 16, 34, 'Stefan Deak.jpg', NULL, NULL, NULL),
+(355, 'Adrian Embarba Blazquez', '1992-05-07', 'Tây Ban Nha', '178', '74', 'Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '78', '2014-12-04 16:33:59', '2014-12-04 16:33:59', 17, 29, 'Adrian Embarba Blazquez.jpg', NULL, NULL, NULL),
+(356, 'Alberto Bueno', '1988-03-20', 'Tây Ban Nha', '178', '65', 'Tiền vệ tấn công, Tiền đạo', 'Phải', '87', '2014-12-04 16:33:59', '2014-12-04 16:33:59', 17, 23, 'Alberto Bueno.jpg', NULL, NULL, NULL),
+(357, 'Alex Moreno', '1993-06-08', 'Tây Ban Nha', '177', '68', 'Tiền vệ cánh trái, Tiền đạo cánh trái', 'Trái', '80', '2014-12-04 16:33:59', '2014-12-04 16:33:59', 17, NULL, 'Alex Moreno.jpg', NULL, NULL, NULL),
+(358, 'Alex Pozuelo', '1991-09-20', 'Tây Ban Nha', '170', '63', 'Tiền vệ tấn công, Tiền đạo cánh', 'Phải, Trái', '86', '2014-12-04 16:33:59', '2014-12-04 16:33:59', 17, 24, 'Alex Pozuelo.jpg', NULL, NULL, NULL),
+(359, 'Antonio Amaya', '1983-05-30', 'Tây Ban Nha', '192', '85', 'Hậu vệ trung tâm', 'Phải', '87', '2014-12-04 16:33:59', '2014-12-04 16:33:59', 17, 4, 'Antonio Amaya.jpg', NULL, NULL, NULL),
+(360, 'Antonio Martinez', '1979-12-17', 'Tây Ban Nha', '186', '85', 'Thủ môn', 'Phải', '85', '2014-12-04 16:34:00', '2014-12-04 16:34:00', 17, NULL, 'Antonio Martinez.jpg', NULL, NULL, NULL),
+(361, 'Cristian Alvarez', '1985-11-13', 'Argentina', '186', '88', 'Thủ môn', 'Phải', '86', '2014-12-04 16:34:00', '2014-12-04 16:34:00', 17, 13, 'Cristian Alvarez.jpg', NULL, NULL, NULL),
+(362, 'David Cobeno', '1982-04-06', 'Tây Ban Nha', '187', '82', 'Thủ môn', 'Phải', '84', '2014-12-04 16:34:00', '2014-12-04 16:34:00', 17, 1, 'David Cobeno.jpg', NULL, NULL, NULL),
+(363, 'Emiliano Insua', '1989-01-07', 'Argentina', '179', '85', 'Hậu vệ cánh trái, Tiền vệ cánh trái', 'Trái', '88', '2014-12-04 16:34:00', '2014-12-04 16:34:00', 17, 14, 'Emiliano Insua.jpg', NULL, NULL, NULL),
+(364, 'Jorge Morcillo', '1986-03-11', 'Tây Ban Nha', '185', '81', 'Hậu vệ trung tâm, Hậu vệ cánh trái', 'Trái', '83', '2014-12-04 16:34:00', '2014-12-04 16:34:00', 17, 20, 'Jorge Morcillo.jpg', NULL, NULL, NULL),
+(365, 'Jose Quini', '1989-11-30', 'Tây Ban Nha', '179', '70', 'Hậu vệ cánh phải, Tiền vệ tấn công', 'Phải', '82', '2014-12-04 16:34:00', '2014-12-04 16:34:00', 17, 17, 'Jose Quini.jpg', NULL, NULL, NULL),
+(366, 'Jozabed', '1991-03-08', 'Tây Ban Nha', '180', '65', 'Tiền vệ trung tâm', 'Phải', '83', '2014-12-04 16:34:00', '2014-12-04 16:34:00', 17, 21, 'Jozabed.jpg', NULL, NULL, NULL),
+(367, 'Lass Bangoura', '1992-03-30', 'Ghinê', '174', '71', 'Tiền vệ tấn công, Tiền đạo', 'Phải', '87', '2014-12-04 16:34:00', '2014-12-04 16:34:00', 17, 7, 'Lass Bangoura.jpg', NULL, NULL, NULL),
+(368, 'Manucho', '1984-03-07', 'Angola', '187', '83', 'Tiền đạo', 'Trái', '86', '2014-12-04 16:34:00', '2014-12-04 16:34:00', 17, 9, 'Manucho.jpg', NULL, NULL, NULL),
+(369, 'NACHO Martinez', '1989-03-07', 'Tây Ban Nha', '177', '65', 'Hậu vệ cánh trái, Tiền vệ cánh trái', 'Trái', '84', '2014-12-04 16:34:00', '2014-12-04 16:34:00', 17, 3, 'NACHO Martinez.jpg', NULL, NULL, NULL),
+(370, 'Raul Baena', '1989-03-02', 'Tây Ban Nha', '179', '73', 'Tiền vệ trung tâm', 'Phải', '86', '2014-12-04 16:34:00', '2014-12-04 16:34:00', 17, 8, 'Raul Baena.jpg', NULL, NULL, NULL),
+(371, 'Roberto Trashorras', '1981-02-28', 'Tây Ban Nha', '175', '71', 'Tiền vệ tấn công', 'Phải', '88', '2014-12-04 16:34:00', '2014-12-04 16:34:00', 17, 10, 'Roberto Trashorras.jpg', NULL, NULL, NULL),
+(372, 'tito roman', '1985-07-11', 'Tây Ban Nha', '174', '62', 'Hậu vệ trung tâm, Hậu vệ cánh phải', 'Phải', '87', '2014-12-04 16:34:00', '2014-12-04 16:34:00', 17, 2, 'tito roman.jpg', NULL, NULL, NULL),
+(373, 'Ze Castro', '1983-01-13', 'Bồ Đào Nha', '183', '76', 'Hậu vệ trung tâm, Tiền vệ trung tâm', 'Phải', '85', '2014-12-04 16:34:00', '2014-12-04 16:34:00', 17, 18, 'Ze Castro.jpg', NULL, NULL, NULL),
+(374, 'Alvaro Arbeloa', '1983-01-17', 'Tây Ban Nha', '183', '79', 'Hậu vệ cánh', 'Phải', '91', '2014-12-06 10:37:46', '2014-12-06 10:37:46', 18, 17, 'Alvaro Arbeloa.jpg', NULL, NULL, NULL),
+(375, 'Alvaro Medran', '1994-03-15', 'Tây Ban Nha', '176', '68', 'Tiền vệ tấn công', 'Phải', '78', '2014-12-06 10:37:46', '2014-12-06 10:37:46', 18, 26, 'Alvaro Medran.jpg', NULL, NULL, NULL),
+(376, 'Cristiano Ronaldo', '1985-02-05', 'Bồ Đào Nha', '185', '80', 'Tiền vệ tấn công, Tiền đạo', 'Phải, Trái', '98', '2014-12-06 10:37:46', '2014-12-06 10:37:46', 18, 7, 'Cristiano Ronaldo.jpg', NULL, NULL, NULL),
+(377, 'Daniel Carvajal', '1992-01-11', 'Tây Ban Nha', '173', '70', 'Hậu vệ cánh phải', 'Phải', '90', '2014-12-06 10:37:46', '2014-12-06 10:37:46', 18, 15, 'Daniel Carvajal.jpg', NULL, NULL, NULL),
+(378, 'Fabio Coentrao', '1988-03-11', 'Bồ Đào Nha', '178', '66', 'Hậu vệ cánh trái', 'Trái', '91', '2014-12-06 10:37:46', '2014-12-06 10:37:46', 18, 5, 'Fabio Coentrao.jpg', NULL, NULL, NULL),
+(379, 'Gareth Bale', '1989-07-16', 'Xứ Wales', '183', '74', 'Tiền vệ tấn công, Tiền đạo cánh', 'Trái', '94', '2014-12-06 10:37:46', '2014-12-06 10:37:46', 18, 11, 'Gareth Bale.jpg', NULL, NULL, NULL),
+(380, 'Iker Casillas', '1981-05-20', 'Tây Ban Nha', '182', '85', 'Thủ môn', 'Trái', '93', '2014-12-06 10:37:46', '2014-12-06 10:37:46', 18, 1, 'Iker Casillas.jpg', NULL, NULL, NULL),
+(381, 'Isco', '1992-04-21', 'Tây Ban Nha', '176', '74', 'Tiền vệ tấn công', 'Phải', '91', '2014-12-06 10:37:46', '2014-12-06 10:37:46', 18, 23, 'Isco.jpg', NULL, NULL, NULL),
+(382, 'James Rodriguez', '1991-07-12', 'Colombia', '180', '75', 'Tiền vệ tấn công, Tiền đạo cánh', 'Trái', '91', '2014-12-06 10:37:46', '2014-12-06 10:37:46', 18, 10, 'James Rodriguez.jpg', NULL, NULL, NULL),
+(383, 'Javier Hernandez', '1988-06-01', 'Mexico', '175', '62', 'Tiền đạo', 'Phải, Trái', '91', '2014-12-06 10:37:46', '2014-12-06 10:37:46', 18, 14, 'Javier Hernandez.jpg', NULL, NULL, NULL),
+(384, 'Jese Rodriguez', '1993-02-26', 'Tây Ban Nha', '178', '72', 'Tiền vệ cánh, Tiền đạo cánh', 'Phải', '87', '2014-12-06 10:37:47', '2014-12-06 10:37:47', 18, 20, 'Jese Rodriguez.jpg', NULL, NULL, NULL),
+(385, 'Karim Benzema', '1987-12-17', 'Pháp', '184', '84', 'Tiền đạo', 'Phải, Trái', '93', '2014-12-06 10:37:47', '2014-12-06 10:37:47', 18, 9, 'Karim Benzema.jpg', NULL, NULL, NULL),
+(386, 'Keylor Navas', '1986-12-15', 'Costa Rica', '184', '78', 'Thủ môn', 'Phải', '89', '2014-12-06 10:37:47', '2014-12-06 10:37:47', 18, 13, 'Keylor Navas.jpg', NULL, NULL, NULL),
+(387, 'Luka Modric', '1985-09-09', 'Croatia', '175', '67', 'Tiền vệ trung tâm', 'Phải, Trái', '94', '2014-12-06 10:37:47', '2014-12-06 10:37:47', 18, 19, 'Luka Modric.jpg', NULL, NULL, NULL),
+(388, 'Marcelo Vieira', '1988-05-12', 'Brazil', '172', '73', 'Hậu vệ cánh trái', 'Trái', '93', '2014-12-06 10:37:47', '2014-12-06 10:37:47', 18, 12, 'Marcelo Vieira.jpg', NULL, NULL, NULL),
+(389, 'Nacho Fernandez', '1990-01-13', 'Tây Ban Nha', '179', '75', 'Hậu vệ trung tâm, Hậu vệ cánh', 'Phải', '87', '2014-12-06 10:37:47', '2014-12-06 10:37:47', 18, 18, 'Nacho Fernandez.jpg', NULL, NULL, NULL),
+(390, 'Pepe Ferreira', '1983-02-26', 'Bồ Đào Nha', '187', '81', 'Hậu vệ trung tâm', 'Phải', '92', '2014-12-06 10:37:47', '2014-12-06 10:37:47', 18, 3, 'Pepe Ferreira.jpg', NULL, NULL, NULL),
+(391, 'Raphael Varane', '1993-04-25', 'Pháp', '191', '85', 'Hậu vệ trung tâm', 'Phải', '90', '2014-12-06 10:37:47', '2014-12-06 10:37:47', 18, 2, 'Raphael Varane.jpg', NULL, NULL, NULL),
+(392, 'Sami Khedira', '1987-04-04', 'Đức', '189', '83', 'Tiền vệ trung tâm', 'Phải', '92', '2014-12-06 10:37:47', '2014-12-06 10:37:47', 18, 6, 'Sami Khedira.jpg', NULL, NULL, NULL),
+(393, 'Sergio Ramos', '1986-03-30', 'Tây Ban Nha', '183', '81', 'Hậu vệ trung tâm, Hậu vệ cánh', 'Phải', '95', '2014-12-06 10:37:47', '2014-12-06 10:37:47', 18, 4, 'Sergio Ramos.jpg', NULL, NULL, NULL),
+(394, 'Toni Kroos', '1990-01-04', 'Đức', '182', '78', 'Tiền vệ trung tâm', 'Phải, Trái', '93', '2014-12-06 10:37:47', '2014-12-06 10:37:47', 18, 8, 'Toni Kroos.jpg', NULL, NULL, NULL),
+(395, 'Alberto de la Bella', '1985-12-02', 'Tây Ban Nha', '182', '78', 'Hậu vệ cánh trái, Tiền vệ cánh trái', 'Trái', '89', '2014-12-06 10:41:50', '2014-12-06 10:41:50', 19, 24, 'Alberto de la Bella.jpg', NULL, NULL, NULL),
+(396, 'Alfred Finnbogason', '1989-02-01', 'Ai-xơ-len', '184', '80', 'Tiền vệ tấn công, Tiền đạo', 'Phải', '88', '2014-12-06 10:41:50', '2014-12-06 10:41:50', 19, 7, 'Alfred Finnbogason.jpg', NULL, NULL, NULL),
+(397, 'Carlos Martinez', '1986-04-09', 'Tây Ban Nha', '188', '78', 'Hậu vệ cánh phải, Tiền vệ cánh phải', 'Phải', '89', '2014-12-06 10:41:50', '2014-12-06 10:41:50', 19, 2, 'Carlos Martinez.jpg', NULL, NULL, NULL),
+(398, 'Carlos Vela', '1989-03-01', 'Mexico', '177', '75', 'Tiền vệ tấn công, Tiền đạo', 'Trái', '91', '2014-12-06 10:41:50', '2014-12-06 10:41:50', 19, 11, 'Carlos Vela.jpg', NULL, NULL, NULL),
+(399, 'Daniel Estrada', '1987-01-03', 'Tây Ban Nha', '177', '68', 'Hậu vệ cánh phải, Tiền vệ cánh phải', 'Phải', '86', '2014-12-06 10:41:50', '2014-12-06 10:41:50', 19, 22, 'Daniel Estrada.jpg', NULL, NULL, NULL),
+(400, 'David Zurutuza', '1989-07-19', 'Tây Ban Nha', '184', '70', 'Tiền vệ tấn công', 'Phải', '88', '2014-12-06 10:41:50', '2014-12-06 10:41:50', 19, 17, 'David Zurutuza.jpg', NULL, NULL, NULL),
+(401, 'Enaut Zubikarai', '1984-02-26', 'Tây Ban Nha', '185', '73', 'Thủ môn', 'Trái', '83', '2014-12-06 10:41:51', '2014-12-06 10:41:51', 19, 13, 'Enaut Zubikarai.jpg', NULL, NULL, NULL),
+(402, 'Esteban Granero', '1987-07-02', 'Tây Ban Nha', '180', '75', 'Tiền vệ tấn công, Tiền vệ cánh', 'Phải', '89', '2014-12-06 10:41:51', '2014-12-06 10:41:51', 19, 8, 'Esteban Granero.jpg', NULL, NULL, NULL),
+(403, 'Geronimo Rulli', '1992-05-20', 'Argentina', '189', '82', 'Thủ môn', 'Phải', '85', '2014-12-06 10:41:51', '2014-12-06 10:41:51', 19, 1, 'Geronimo Rulli.jpg', NULL, NULL, NULL),
+(404, 'Gonzalo Castro', '1984-09-14', 'Uruguay', '176', '70', 'Tiền vệ tấn công, Tiền đạo cánh', 'Trái', '88', '2014-12-06 10:41:51', '2014-12-06 10:41:51', 19, 18, 'Gonzalo Castro.jpg', NULL, NULL, NULL),
+(405, 'Gorka Elustondo', '1987-03-18', 'Tây Ban Nha', '182', '73', 'Hậu vệ trung tâm, Tiền vệ trung tâm', 'Phải', '86', '2014-12-06 10:41:51', '2014-12-06 10:41:51', 19, 4, 'Gorka Elustondo.jpg', NULL, NULL, NULL),
+(406, 'Imanol Agirretxe', '1987-02-24', 'Tây Ban Nha', '184', '74', 'Tiền đạo', 'Phải', '88', '2014-12-06 10:41:51', '2014-12-06 10:41:51', 19, 9, 'Imanol Agirretxe.jpg', NULL, NULL, NULL),
+(407, 'Inigo Martinez', '1991-05-17', 'Tây Ban Nha', '181', '77', 'Hậu vệ trung tâm', 'Trái', '89', '2014-12-06 10:41:51', '2014-12-06 10:41:51', 19, 6, 'Inigo Martinez.jpg', NULL, NULL, NULL),
+(408, 'Ion Ansotegi', '1982-07-13', 'Tây Ban Nha', '185', '75', 'Hậu vệ trung tâm', 'Phải', '86', '2014-12-06 10:41:51', '2014-12-06 10:41:51', 19, 15, 'Ion Ansotegi.jpg', NULL, NULL, NULL),
+(409, 'Jon Gaztanaga', '1991-06-28', 'Tây Ban Nha', '182', '78', 'Hậu vệ trung tâm', 'Trái', '80', '2014-12-06 10:41:51', '2014-12-06 10:41:51', 19, 23, 'Jon Gaztanaga.jpg', NULL, NULL, NULL),
+(410, 'Joseba Zaldua', '1992-06-24', 'Tây Ban Nha', '176', '71', 'Hậu vệ cánh phải', 'Phải', '83', '2014-12-06 10:41:51', '2014-12-06 10:41:51', 19, 20, 'Joseba Zaldua.jpg', NULL, NULL, NULL),
+(411, 'Markel Bergara', '1986-05-05', 'Tây Ban Nha', '180', '74', 'Tiền vệ trung tâm', 'Phải', '87', '2014-12-06 10:41:51', '2014-12-06 10:41:51', 19, 5, 'Markel Bergara.jpg', NULL, NULL, NULL),
+(412, 'Mikel Gonzalez Martinez', '1985-09-24', 'Tây Ban Nha', '186', '74', 'Hậu vệ trung tâm', 'Phải', '88', '2014-12-06 10:41:51', '2014-12-06 10:41:51', 19, 3, 'Mikel Gonzalez Martinez.jpg', NULL, NULL, NULL),
+(413, 'Ruben Pardo', '1992-10-22', 'Tây Ban Nha', '169', '75', 'Tiền vệ trung tâm', 'Phải', '87', '2014-12-06 10:41:51', '2014-12-06 10:41:51', 19, 14, 'Ruben Pardo.jpg', NULL, NULL, NULL),
+(414, 'Sergio Canales', '1991-02-16', 'Tây Ban Nha', '179', '70', 'Tiền vệ tấn công', 'Trái', '87', '2014-12-06 10:41:51', '2014-12-06 10:41:51', 19, 16, 'Sergio Canales.jpg', NULL, NULL, NULL),
+(415, 'Xabi Prieto', '1983-08-29', 'Tây Ban Nha', '185', '74', 'Tiền vệ tấn công, Tiền vệ cánh phải', 'Phải', '90', '2014-12-06 10:41:51', '2014-12-06 10:41:51', 19, 10, 'Xabi Prieto.jpg', NULL, NULL, NULL),
+(416, 'Yuri Berchiche', '1990-02-10', 'Tây Ban Nha', '180', '77', 'Hậu vệ cánh trái', 'Trái', '83', '2014-12-06 10:41:51', '2014-12-06 10:41:51', 19, 19, 'Yuri Berchiche.jpg', NULL, NULL, NULL),
+(417, 'Ander Capa', '1992-02-08', 'Tây Ban Nha', '176', '68', 'Tiền vệ cánh phải, Tiền đạo cánh phải', 'Phải', '80', '2014-12-06 10:43:48', '2014-12-06 10:43:48', 20, 7, 'Ander Capa.jpg', NULL, NULL, NULL),
+(418, 'Angel Luis Rodriguez', '1987-04-26', 'Tây Ban Nha', '172', '63', 'Tiền đạo', 'Phải', '85', '2014-12-06 10:43:48', '2014-12-06 10:43:48', 20, 9, 'Angel Luis Rodriguez.jpg', NULL, NULL, NULL),
+(419, 'Borja Ekiza', '1988-03-06', 'Tây Ban Nha', '180', '73', 'Hậu vệ trung tâm', 'Phải', '87', '2014-12-06 10:43:48', '2014-12-06 10:43:48', 20, 5, 'Borja Ekiza.jpg', NULL, NULL, NULL),
+(420, 'Dani Nieto', '1991-05-04', 'Tây Ban Nha', '173', '60', 'Tiền vệ tấn công, Tiền đạo cánh', 'Trái', '83', '2014-12-06 10:43:48', '2014-12-06 10:43:48', 20, 11, 'Dani Nieto.jpg', NULL, NULL, NULL),
+(421, 'Dejan Lekic', '1985-06-07', 'Serbia', '193', '88', 'Tiền đạo', 'Phải', '85', '2014-12-06 10:43:48', '2014-12-06 10:43:48', 20, 15, 'Dejan Lekic.jpg', NULL, NULL, NULL),
+(422, 'Derek Boateng', '1983-05-02', 'Ghana', '180', '82', 'Tiền vệ trung tâm', 'Phải', '85', '2014-12-06 10:43:48', '2014-12-06 10:43:48', 20, 18, 'Derek Boateng.jpg', NULL, NULL, NULL),
+(423, 'Eneko Boveda', '1988-12-14', 'Tây Ban Nha', '180', '77', 'Hậu vệ trung tâm, Hậu vệ cánh', 'Phải', '80', '2014-12-06 10:43:48', '2014-12-06 10:43:48', 20, 2, 'Eneko Boveda.jpg', NULL, NULL, NULL),
+(424, 'Jaime Jimenez Merlo', '1980-12-10', 'Tây Ban Nha', '188', '78', 'Thủ môn', 'Phải', '83', '2014-12-06 10:43:48', '2014-12-06 10:43:48', 20, 25, 'Jaime Jimenez Merlo.jpg', NULL, NULL, NULL),
+(425, 'Javi Lara', '1985-12-04', 'Tây Ban Nha', '179', '71', 'Tiền vệ tấn công', 'Phải', '82', '2014-12-06 10:43:48', '2014-12-06 10:43:48', 20, 23, 'Javi Lara.jpg', NULL, NULL, NULL),
+(426, 'Jon Errasti', '1988-06-06', 'Tây Ban Nha', '178', '75', 'Tiền vệ trung tâm', 'Phải', '83', '2014-12-06 10:43:48', '2014-12-06 10:43:48', 20, 8, 'Jon Errasti.jpg', NULL, NULL, NULL),
+(427, 'Manuel Castellano', '1989-03-27', 'Tây Ban Nha', '176', '70', 'Hậu vệ cánh', 'Phải', '82', '2014-12-06 10:43:48', '2014-12-06 10:43:48', 20, NULL, 'Manuel Castellano.jpg', NULL, NULL, NULL),
+(428, 'Mikel Arruabarrena', '1983-02-09', 'Tây Ban Nha', '188', '83', 'Tiền đạo', 'Phải', '82', '2014-12-06 10:43:48', '2014-12-06 10:43:48', 20, 10, 'Mikel Arruabarrena.jpg', NULL, NULL, NULL),
+(429, 'Raul Albentosa', '1988-09-07', 'Tây Ban Nha', '193', '89', 'Hậu vệ trung tâm', 'Phải', '82', '2014-12-06 10:43:48', '2014-12-06 10:43:48', 20, 6, 'Raul Albentosa.jpg', NULL, NULL, NULL),
+(430, 'Saul Berjon', '1986-05-24', 'Tây Ban Nha', '178', '85', 'Tiền vệ cánh, Tiền đạo cánh', 'Phải', '84', '2014-12-06 10:43:48', '2014-12-06 10:43:48', 20, 21, 'Saul Berjon.jpg', NULL, NULL, NULL),
+(431, 'Txema Anibarro', '1979-07-26', 'Tây Ban Nha', '188', '78', 'Hậu vệ trung tâm, Tiền vệ trung tâm', 'Phải', '79', '2014-12-06 10:43:48', '2014-12-06 10:43:48', 20, 4, 'Txema Anibarro.jpg', NULL, NULL, NULL),
+(432, 'Xabi Iruretagoien', '1986-03-31', 'Tây Ban Nha', '180', '74', 'Thủ môn', 'Phải', '83', '2014-12-06 10:43:48', '2014-12-06 10:43:48', 20, 1, 'Xabi Iruretagoien.jpg', NULL, NULL, NULL),
+(433, 'Aleix Vidal', '1989-08-21', 'Tây Ban Nha', '176', '70', 'Tiền vệ cánh, Tiền đạo cánh', 'Phải', '86', '2014-12-06 10:45:46', '2014-12-06 10:45:46', 21, 22, 'Aleix Vidal.jpg', NULL, NULL, NULL),
+(434, 'Alejandro Arribas', '1989-05-01', 'Tây Ban Nha', '182', '75', 'Hậu vệ trung tâm, Hậu vệ cánh phải', 'Phải', '87', '2014-12-06 10:45:46', '2014-12-06 10:45:46', 21, 24, 'Alejandro Arribas.jpg', NULL, NULL, NULL),
+(435, 'Benoit Tremoulinas', '1985-12-28', 'Pháp', '173', '64', 'Hậu vệ cánh trái, Tiền vệ cánh trái', 'Phải', '89', '2014-12-06 10:45:47', '2014-12-06 10:45:47', 21, 2, 'Benoit Tremoulinas.jpg', NULL, NULL, NULL),
+(436, 'Beto', '1982-05-01', 'Bồ Đào Nha', '180', '80', 'Thủ môn', 'Phải', '89', '2014-12-06 10:45:47', '2014-12-06 10:45:47', 21, 13, 'Beto.jpg', NULL, NULL, NULL),
+(437, 'Carlos Bacca', '1986-09-08', 'Colombia', '181', '77', 'Tiền đạo', 'Phải', '90', '2014-12-06 10:45:47', '2014-12-06 10:45:47', 21, 9, 'Carlos Bacca.jpg', NULL, NULL, NULL),
+(438, 'Coke', '1987-04-26', 'Tây Ban Nha', '182', '78', 'Hậu vệ cánh phải, Tiền vệ cánh phải', 'Phải', '88', '2014-12-06 10:45:47', '2014-12-06 10:45:47', 21, 23, 'Coke.jpg', NULL, NULL, NULL),
+(439, 'Daniel Carrico', '1991-07-01', 'Bồ Đào Nha', '171', '62', 'Hậu vệ cánh', 'Phải', '86', '2014-12-06 10:45:47', '2014-12-06 10:45:47', 21, 6, 'Daniel Carrico.jpg', NULL, NULL, NULL),
+(440, 'Diogo Figueiras', '1980-12-10', 'Tây Ban Nha', '188', '78', 'Thủ môn', 'Phải', '83', '2014-12-06 10:45:47', '2014-12-06 10:45:47', 21, 5, 'Diogo Figueiras.jpg', NULL, NULL, NULL),
+(441, 'Ever Banega', '1988-06-29', 'Argentina', '174', '69', 'Tiền vệ tấn công', 'Phải', '90', '2014-12-06 10:45:47', '2014-12-06 10:45:47', 21, 19, 'Ever Banega.jpg', NULL, NULL, NULL),
+(442, 'Fernando Navarro', '1982-06-25', 'Tây Ban Nha', '178', '70', 'Hậu vệ trung tâm, Hậu vệ cánh trái', 'Trái', '89', '2014-12-06 10:45:47', '2014-12-06 10:45:47', 21, 3, 'Fernando Navarro.jpg', NULL, NULL, NULL),
+(443, 'Grzegorz Krychowiak-sua', '1990-01-29', 'Ba Lan', '186', '83', 'Hậu vệ trung tâm, Tiền vệ trung tâm', 'Phải', '87', '2014-12-06 10:45:47', '2014-12-06 10:45:47', 21, 4, 'Grzegorz Krychowiak-sua.jpg', NULL, NULL, NULL),
+(444, 'Kevin Gameiro', '1987-05-09', 'Pháp', '172', '70', 'Tiền đạo', 'Phải', '90', '2014-12-06 10:45:47', '2014-12-06 10:45:47', 21, 7, 'Kevin Gameiro.jpg', NULL, NULL, NULL),
+(445, 'Mariano Barbosa', '1984-07-27', 'Argentina', '190', '80', 'Thủ môn', 'Phải', '85', '2014-12-06 10:45:47', '2014-12-06 10:45:47', 21, 1, 'Mariano Barbosa.jpg', NULL, NULL, NULL),
+(446, 'Mbia', '1986-05-20', 'Cameroon', '187', '78', 'Hậu vệ trung tâm, Hậu vệ cánh phải, Tiền vệ trung tâm', 'Phải', '89', '2014-12-06 10:45:47', '2014-12-06 10:45:47', 21, 25, 'Mbia.jpg', NULL, NULL, NULL),
+(447, 'Nicolas Pareja', '1984-01-19', 'Argentina', '182', '70', 'Hậu vệ trung tâm', 'Phải', '88', '2014-12-06 10:45:47', '2014-12-06 10:45:47', 21, 21, 'Nicolas Pareja.jpg', NULL, NULL, NULL),
+(448, 'Sebastian Cristoforo', '1993-08-23', 'Uruguay', '174', '65', 'Tiền vệ trung tâm', 'Phải', '84', '2014-12-06 10:45:47', '2014-12-06 10:45:47', 21, 8, 'Sebastian Cristoforo.jpg', NULL, NULL, NULL),
+(449, 'Sergio Rico', '1986-03-31', 'Tây Ban Nha', '180', '74', 'Thủ môn', 'Phải', '83', '2014-12-06 10:45:47', '2014-12-06 10:45:47', 21, 29, 'Sergio Rico.jpg', NULL, NULL, NULL),
+(450, 'Timothee Kolodziejczak', '1991-10-01', 'Pháp', '185', '75', 'Hậu vệ trung tâm, Hậu vệ cánh trái, Tiền vệ cánh trái', 'Trái', '87', '2014-12-06 10:45:47', '2014-12-06 10:45:47', 21, 15, 'Sebastian Cristoforo.jpg', NULL, NULL, NULL),
+(451, 'Vicente Iborra', '1988-01-16', 'Tây Ban Nha', '190', '76', 'Tiền vệ trung tâm', 'Phải', '88', '2014-12-06 10:45:48', '2014-12-06 10:45:48', 21, 12, 'Vicente Iborra.jpg', NULL, NULL, NULL),
+(452, 'Victor Machin Perez', '1989-11-02', 'Tây Ban Nha', '183', '80', 'Tiền vệ tấn công, Tiền đạo cánh', 'Trái', '88', '2014-12-06 10:45:48', '2014-12-06 10:45:48', 21, 20, 'Victor Machin Perez.jpg', NULL, NULL, NULL),
+(453, 'Jose Antonio Reyes', '1983-09-01', 'Tây Ban Nha', '176', '76', 'Tiền vệ tấn công, Tiền đạo cánh', 'Trái', '89', '2014-12-06 10:45:48', '2014-12-06 10:45:48', 21, 10, 'Jose Antonio Reyes.jpg', NULL, NULL, NULL),
+(454, 'Angel Trujillo', '1987-09-08', 'Tây Ban Nha', '179', '79', 'Hậu vệ trung tâm', 'Phải', '85', '2014-12-06 10:49:45', '2014-12-06 10:49:45', 22, 5, 'Angel Trujillo.jpg', NULL, NULL, NULL),
+(455, 'Casin QUIQUE', '1990-05-16', 'Tây Ban Nha', '175', '67', 'Tiền đạo', 'Phải', '80', '2014-12-06 10:49:45', '2014-12-06 10:49:45', 22, 11, 'Casin QUIQUE.jpg', NULL, NULL, NULL),
+(456, 'Edgar Mendez', '1991-04-30', 'Tây Ban Nha', '187', '78', 'Tiền vệ tấn công', 'Trái', '80', '2014-12-06 10:49:45', '2014-12-06 10:49:45', 22, 17, 'Edgar Mendez.jpg', NULL, NULL, NULL),
+(457, 'Fernando Soriano', '1979-09-24', 'Tây Ban Nha', '177', '68', 'Tiền vệ trung tâm', 'Phải', '86', '2014-12-06 10:49:45', '2014-12-06 10:49:45', 22, 23, 'Fernando Soriano.jpg', NULL, NULL, NULL),
+(458, 'Fran Velez', '1991-06-23', 'Tây Ban Nha', '180', '75', 'Hậu vệ trung tâm, Tiền vệ trung tâm', 'Phải', '78', '2014-12-06 10:49:45', '2014-12-06 10:49:45', 22, 3, 'Fran Velez.jpg', NULL, NULL, NULL),
+(459, 'Jonathan Zongo', '1992-12-02', 'Burkina Faso', '183', '72', 'Tiền đạo', 'Phải', '82', '2014-12-06 10:49:45', '2014-12-06 10:49:45', 22, 19, 'Jonathan Zongo.jpg', NULL, NULL, NULL),
+(460, 'Jose Manuel Jimenez Ortiz', '1981-12-21', 'Tây Ban Nha', '175', '72', 'Hậu vệ cánh trái, Tiền vệ cánh trái', 'Trái', '85', '2014-12-06 10:49:45', '2014-12-06 10:49:45', 22, NULL, 'Jose Manuel Jimenez Ortiz.jpg', NULL, NULL, NULL),
+(461, 'Julian Cuesta', '1991-03-28', 'Tây Ban Nha', '195', '91', 'Thủ môn', 'Phải', '78', '2014-12-06 10:49:45', '2014-12-06 10:49:45', 22, 1, 'Julian Cuesta.jpg', NULL, NULL, NULL),
+(462, 'Khaloua Hicham', '1995-05-07', 'Ma-rốc', '177', '68', 'Tiền đạo', 'Phải', '78', '2014-12-06 10:49:45', '2014-12-06 10:49:45', 22, NULL, 'Khaloua Hicham.jpg', NULL, NULL, NULL),
+(463, 'Mauro dos Santos', '1989-07-07', 'Argentina', '180', '76', 'Hậu vệ trung tâm, Hậu vệ cánh phải', 'Phải', '84', '2014-12-06 10:49:45', '2014-12-06 10:49:45', 22, 6, 'Mauro dos Santos.jpg', NULL, NULL, NULL),
+(464, 'Michel Macedo', '1990-02-15', 'Brazil', '182', '76', 'Hậu vệ cánh phải, Tiền vệ cánh phải', 'Phải', '84', '2014-12-06 10:49:45', '2014-12-06 10:49:45', 22, 2, 'Michel Macedo.jpg', NULL, NULL, NULL),
+(465, 'Miguel Corona', '1981-02-12', 'Tây Ban Nha', '174', '68', 'Tiền vệ trung tâm', 'Phải', '85', '2014-12-06 10:49:45', '2014-12-06 10:49:45', 22, 15, 'Miguel Corona.jpg', NULL, NULL, NULL),
+(466, 'Ramon Azeez', '1992-12-12', 'Nigeria', '170', '67', 'Tiền vệ tấn công', 'Phải', '84', '2014-12-06 10:49:45', '2014-12-06 10:49:45', 22, 31, 'Ramon Azeez.jpg', NULL, NULL, NULL),
+(467, 'Sebastian Dubarbier', '1986-02-19', 'Argentina', '179', '74', 'Hậu vệ cánh trái, Tiền vệ cánh trái', 'Trái', '86', '2014-12-06 10:49:46', '2014-12-06 10:49:46', 22, 16, 'Sebastian Dubarbier.jpg', NULL, NULL, NULL),
+(468, 'Stanley Okoro', '1992-12-08', 'Nigeria', '171', '68', 'Tiền đạo', 'Phải', '77', '2014-12-06 10:49:46', '2014-12-06 10:49:46', 22, NULL, 'Stanley Okoro.jpg', NULL, NULL, NULL),
+(469, 'Teerasil Dangda', '1988-06-06', 'Thái Lan', '181', '73', 'Tiền đạo', 'Phải', '78', '2014-12-06 10:49:46', '2014-12-06 10:49:46', 22, 18, 'Tomer Hemed.jpg', NULL, NULL, NULL),
+(470, 'Tomer Hemed', '1987-05-02', 'Isarel', '184', '81', 'Tiền đạo', 'Phải', '87', '2014-12-06 10:49:46', '2014-12-06 10:49:46', 22, 10, 'Sebastian Cristoforo.jpg', NULL, NULL, NULL),
+(471, 'Ximo Navarro', '1990-01-23', 'Tây Ban Nha', '177', '70', 'Hậu vệ trung tâm, Hậu vệ cánh phải', 'Phải', '85', '2014-12-06 10:49:46', '2014-12-06 10:49:46', 22, 4, 'Ximo Navarro.jpg', NULL, NULL, NULL),
+(472, 'Diego Alves', '1985-06-24', 'Brazil', '188', '83', 'Thủ môn', 'Trái', '90', '2014-12-06 15:05:01', '2014-12-06 15:05:01', 23, 1, 'Diego Alves.jpg', NULL, NULL, NULL),
+(473, 'Yoel Rodriguez Oterino', '1988-08-28', 'Tây Ban Nha', '186', '78', 'Thủ môn', 'Phải', '86', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 13, 'Yoel Rodriguez Oterino.jpg', NULL, NULL, NULL),
+(474, 'Lucas Orban', '1989-02-03', 'Argentina', '185', '77', 'Hậu vệ trung tâm, Hậu vệ cánh trái', 'Trái', '87', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 6, 'Lucas Orban.jpg', NULL, NULL, NULL),
+(475, 'Jose Luis Gaya', '1995-05-25', 'Tây Ban Nha', '178', '75', 'Hậu vệ cánh trái, Tiền vệ cánh trái', 'Trái', '82', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 31, 'Jose Luis Gaya.jpg', NULL, NULL, NULL),
+(476, 'Nicolas Otamendi', '1988-02-12', 'Argentina', '184', '75', 'Hậu vệ trung tâm, Hậu vệ cánh phải', 'Phải', '89', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 23, 'Nicolas Otamendi.jpg', NULL, NULL, NULL),
+(477, 'Javi Fuego', '1984-01-04', 'Tây Ban Nha', '181', '76', 'Hậu vệ trung tâm, Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '88', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 18, 'Javi Fuego.jpg', NULL, NULL, NULL),
+(478, 'Shkodran Mustafi', '1992-04-17', 'Đức', '184', '82', 'Hậu vệ trung tâm, Hậu vệ cánh phải', 'Phải', '87', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 5, 'Shkodran Mustafi.jpg', NULL, NULL, NULL),
+(479, 'Ruben Vezo', '1994-04-25', 'Bồ Đào Nha', '184', '76', 'Hậu vệ trung tâm', 'Phải', '83', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 3, 'Ruben Vezo.jpg', NULL, NULL, NULL),
+(480, 'Joao Pereira', '1984-02-25', 'Bồ Đào Nha', '172', '64', 'Hậu vệ cánh phải, Tiền vệ cánh phải', 'Phải', '90', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 12, 'Joao Pereira.jpg', NULL, NULL, NULL),
+(481, 'Antonio Barragan', '1987-06-12', 'Tây Ban Nha', '182', '76', 'Hậu vệ cánh phải, Tiền vệ cánh phải', 'Phải', '86', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 19, 'Antonio Barragan.jpg', NULL, NULL, NULL),
+(482, 'Joao Cancelo', '1994-05-27', 'Bồ Đào Nha', '180', '66', 'Hậu vệ cánh phải', 'Phải', '80', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 2, 'Joao Cancelo.jpg', NULL, NULL, NULL),
+(483, 'Daniel Parejo', '1989-04-16', 'Tây Ban Nha', '180', '75', 'Tiền vệ phòng ngự, Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '90', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 10, 'Daniel Parejo.jpg', NULL, NULL, NULL),
+(484, 'Bruno Zuculini', '1993-04-02', 'Argentina', '181', '74', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '86', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 16, 'Bruno Zuculini.jpg', NULL, NULL, NULL),
+(485, 'Andre Gomes', '1993-07-30', 'Bồ Đào Nha', '188', '83', 'Tiền vệ phòng ngự, Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '86', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 21, 'Andre Gomes.jpg', NULL, NULL, NULL),
+(486, 'Filipe Augusto', '1993-08-12', 'Brazil', '182', '75', 'Tiền vệ phòng ngự, Tiền vệ trung tâm, Tiền vệ tấn công', 'Trái', '82', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 4, 'Filipe Augusto.jpg', NULL, NULL, NULL),
+(487, 'Sofiane Feghouli', '1989-12-26', 'Algeria', '178', '71', 'Tiền vệ tấn công', 'Phải, Trái', '90', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 8, 'Sofiane Feghouli.jpg', NULL, NULL, NULL),
+(488, 'Pablo Piatti', '1989-03-31', 'Argentina', '163', '63', 'Tiền vệ tấn công, Tiền đạo cánh', 'Phải, Trái', '88', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 11, 'Pablo Piatti.jpg', NULL, NULL, NULL),
+(489, 'Carles Gil', '1992-11-22', 'Tây Ban Nha', '170', '69', 'Tiền vệ tấn công, Tiền đạo cánh', 'Trái', '86', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 22, 'Carles Gil.jpg', NULL, NULL, NULL),
+(490, 'Rodrigo De Paul', '1994-05-24', 'Argentina', '178', '78', 'Tiền vệ tấn công, Tiền đạo cánh', 'Phải', '85', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 20, 'Rodrigo De Paul.jpg', NULL, NULL, NULL),
+(491, 'Rodrigo Moreno', '1991-03-06', 'Tây Ban Nha', '182', '79', 'Tiền vệ tấn công, Tiền đạo cánh phải', 'Trái', '89', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 17, 'Rodrigo Moreno.jpg', NULL, NULL, NULL),
+(492, 'Roberto Ibanez', '1993-03-22', 'Tây Ban Nha', '180', '66', 'Tiền đạo cánh phải', 'Phải', '78', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 27, 'Roberto Ibanez.jpg', NULL, NULL, NULL),
+(493, 'Alvaro Negredo', '1985-08-20', 'Tây Ban Nha', '186', '85', 'Tiền đạo', 'Trái', '91', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 7, 'Alvaro Negredo.jpg', NULL, NULL, NULL),
+(494, 'Paco Alcacer', '1993-08-30', 'Tây Ban Nha', '183', '74', 'Tiền đạo', 'Phải, Trái', '87', '2014-12-06 15:05:02', '2014-12-06 15:05:02', 23, 9, 'Paco Alcacer.jpg', NULL, NULL, NULL),
+(495, 'Sergio Asenjo', '1989-06-28', 'Tây Ban Nha', '189', '70', 'Thủ môn', 'Phải', '88', '2014-12-06 15:09:46', '2014-12-06 15:09:46', 24, 1, 'Sergio Asenjo.jpg', NULL, NULL, NULL),
+(496, 'JJuan Carlos Sanchez', '1987-07-27', 'Tây Ban Nha', '180', '78', 'Thủ môn', 'Phải', '85', '2014-12-06 15:09:46', '2014-12-06 15:09:46', 24, 25, 'JJuan Carlos Sanchez.jpg', NULL, NULL, NULL),
+(497, 'Jaume Costa', '1988-03-18', 'Tây Ban Nha', '169', '67', 'Hậu vệ cánh, Tiền vệ cánh trái', 'Trái', '87', '2014-12-06 15:09:46', '2014-12-06 15:09:46', 24, 18, 'Jaume Costa.jpg', NULL, NULL, NULL),
+(498, 'Jose Antonio Dorado', '1982-07-10', 'Tây Ban Nha', '180', '69', 'Hậu vệ trung tâm, Hậu vệ cánh trái', 'Trái', '86', '2014-12-06 15:09:46', '2014-12-06 15:09:46', 24, 16, 'Jose Antonio Dorado.jpg', NULL, NULL, NULL),
+(499, 'Bojan Jokic', '1986-05-17', 'Slovenia', '176', '75', 'Hậu vệ cánh trái, Tiền vệ cánh trái', 'Trái', '86', '2014-12-06 15:09:46', '2014-12-06 15:09:46', 24, 3, 'Bojan Jokic.jpg', NULL, NULL, NULL),
+(500, 'Adrian Marin', '1997-01-09', 'Tây Ban Nha', '178', '74', 'Hậu vệ cánh trái', 'Trái', '77', '2014-12-06 15:09:46', '2014-12-06 15:09:46', 24, 28, 'Adrian Marin.jpg', NULL, NULL, NULL),
+(501, 'Mateo Musacchio', '1990-08-26', 'Argentina', '182', '80', 'Hậu vệ trung tâm', 'Phải', '89', '2014-12-06 15:09:46', '2014-12-06 15:09:46', 24, 5, 'Mateo Musacchio.jpg', NULL, NULL, NULL),
+(502, 'Victor Ruiz', '1989-01-25', 'Tây Ban Nha', '184', '80', 'Hậu vệ trung tâm', 'Trái', '88', '2014-12-06 15:09:46', '2014-12-06 15:09:46', 24, 15, 'Victor Ruiz.jpg', NULL, NULL, NULL),
+(503, 'Gabriel Paulista', '1990-11-26', 'Brazil', '187', '76', 'Hậu vệ trung tâm', 'Phải', '85', '2014-12-06 15:09:47', '2014-12-06 15:09:47', 24, 20, 'Gabriel Paulista.jpg', NULL, NULL, NULL),
+(504, 'Marcos Mauro', '1991-01-09', 'Argentina', '187', '79', 'Hậu vệ trung tâm', 'Phải', '78', '2014-12-06 15:09:47', '2014-12-06 15:09:47', 24, 17, 'Marcos Mauro.jpg', NULL, NULL, NULL),
+(505, 'Antonio Rukavina', '1984-01-26', 'Serbia', '177', '74', 'Hậu vệ cánh phải', 'Phải', '87', '2014-12-06 15:09:47', '2014-12-06 15:09:47', 24, 22, 'Antonio Rukavina.jpg', NULL, NULL, NULL),
+(506, 'Mario Gaspar Perez', '1990-11-24', 'Tây Ban Nha', '178', '71', 'Hậu vệ cánh phải', 'Phải', '87', '2014-12-06 15:09:47', '2014-12-06 15:09:47', 24, 2, 'Mario Gaspar Perez.jpg', NULL, NULL, NULL),
+(507, 'Bruno Soriano', '1984-06-12', 'Tây Ban Nha', '179', '70', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Trái', '90', '2014-12-06 15:09:47', '2014-12-06 15:09:47', 24, 21, 'Bruno Soriano.jpg', NULL, NULL, NULL),
+(508, 'Tomas Pina Isla', '1987-10-14', 'Tây Ban Nha', '185', '78', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '88', '2014-12-06 15:09:47', '2014-12-06 15:09:47', 24, 4, 'Tomas Pina Isla.jpg', NULL, NULL, NULL),
+(509, 'Jonathan dos Santos ', '1990-04-26', 'Mexico', '180', '74', 'Tiền vệ phòng ngự, Tiền vệ trung tâm', 'Phải', '86', '2014-12-06 15:09:47', '2014-12-06 15:09:47', 24, 6, 'Jonathan dos Santos.jpg', NULL, NULL, NULL),
+(510, 'Manu Trigueros', '1991-10-17', 'Tây Ban Nha', '178', '70', 'Tiền vệ trung tâm, Tiền vệ tấn công', 'Phải', '87', '2014-12-06 15:09:47', '2014-12-06 15:09:47', 24, 14, 'Manu Trigueros.jpg', NULL, NULL, NULL),
+(511, 'Javier Espinosa', '1992-09-19', 'Tây Ban Nha', '174', '66', 'Tiền vệ trung tâm', 'Phải', '83', '2014-12-06 15:09:47', '2014-12-06 15:09:47', 24, 24, 'Javier Espinosa.jpg', NULL, NULL, NULL),
+(512, 'Giovani dos Santos', '1989-05-11', 'Mexico', '174', '78', 'Tiền vệ tấn công, Tiền đạo', 'Trái', '89', '2014-12-06 15:09:47', '2014-12-06 15:09:47', 24, 9, 'Giovani dos Santos.jpg', NULL, NULL, NULL),
+(513, 'Ruben Gracia', '1981-08-03', 'Tây Ban Nha', '180', '75', 'Tiền vệ tấn công', 'Phải', '88', '2014-12-06 15:09:47', '2014-12-06 15:09:47', 24, 10, 'Ruben Gracia.jpg', NULL, NULL, NULL),
+(514, 'Hernan Perez', '1989-02-25', 'Paraguay', '180', '77', 'Tiền vệ tấn công', 'Phải', '85', '2014-12-06 15:09:47', '2014-12-06 15:09:47', 24, 11, 'Hernan Perez.jpg', NULL, NULL, NULL),
+(515, 'Moises Gomez Bordonado', '1994-10-20', 'Tây Ban Nha', '174', '65', 'Tiền vệ tấn công', 'Phải', '85', '2014-12-06 15:09:47', '2014-12-06 15:09:47', 24, 19, 'Moises Gomez Bordonado.jpg', NULL, NULL, NULL),
+(516, 'Denis Cheryshev', '1990-12-26', 'Nga', '179', '74', 'Tiền vệ tấn công, Tiền đạo cánh trái, Tiền đạo', 'Trái', '85', '2014-12-06 15:09:47', '2014-12-06 15:09:47', 24, 17, 'Denis Cheryshev.jpg', NULL, NULL, NULL),
+(517, 'Luciano Vietto', '1993-12-05', 'Argentina', '173', '68', 'Tiền vệ tấn công, Tiền đạo cánh trái, Tiền đạo', 'Trái', '85', '2014-12-06 15:09:47', '2014-12-06 15:09:47', 24, 7, 'Luciano Vietto.jpg', NULL, NULL, NULL),
+(518, 'Matias Nahuel', '1996-10-22', 'Tây Ban Nha', '179', '71', 'Tiền vệ tấn công, Tiền đạo', 'Phải', '80', '2014-12-06 15:09:47', '2014-12-06 15:09:47', 24, NULL, 'Matias Nahuel.jpg', NULL, NULL, NULL),
+(519, 'Ikechukwu Uche', '1984-01-05', 'Nigeria', '171', '74', 'Tiền đạo cánh phải, Tiền đạo', 'Phải', '87', '2014-12-06 15:09:48', '2014-12-06 15:09:48', 24, 8, 'Ikechukwu Uche.jpg', NULL, NULL, NULL);
+INSERT INTO `players` (`id`, `name`, `dob`, `nation`, `height`, `weight`, `position`, `leg`, `level`, `created_at`, `updated_at`, `club_id`, `number`, `photo_file_name`, `photo_content_type`, `photo_file_size`, `photo_updated_at`) VALUES
+(520, 'Gerard Moreno', '1992-04-07', 'Tây Ban Nha', '177', '75', 'Tiền đạo', 'Trái', '83', '2014-12-06 15:09:48', '2014-12-06 15:09:48', 24, 23, 'Gerard Moreno.jpg', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `schema_migrations`
+--
+
+CREATE TABLE IF NOT EXISTS `schema_migrations` (
+  `version` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  UNIQUE KEY `unique_schema_migrations` (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `schema_migrations`
+--
+
+INSERT INTO `schema_migrations` (`version`) VALUES
+('20141101034906'),
+('20141101035725'),
+('20141101035728'),
+('20141110143830'),
+('20141110144948'),
+('20141110145518'),
+('20141110145815'),
+('20141110150455'),
+('20141121161504'),
+('20141121183503'),
+('20141125154752'),
+('20141125161423'),
+('20141125161445'),
+('20141127082403'),
+('20141127082558'),
+('20141127103044'),
+('20141127111811'),
+('20141127111855'),
+('20141127111936'),
+('20141128033329'),
+('20141128033706'),
+('20141201012934');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `settings`
+--
+
+CREATE TABLE IF NOT EXISTS `settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `facebook` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `twitter` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `googleplus` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `footer_text` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `data_source` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `banner_home_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `banner_home_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `banner_home_file_size` int(11) DEFAULT NULL,
+  `banner_home_updated_at` datetime DEFAULT NULL,
+  `banner_single_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `banner_single_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `banner_single_file_size` int(11) DEFAULT NULL,
+  `banner_single_updated_at` datetime DEFAULT NULL,
+  `banner_search_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `banner_search_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `banner_search_file_size` int(11) DEFAULT NULL,
+  `banner_search_updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`id`, `facebook`, `twitter`, `googleplus`, `footer_text`, `data_source`, `created_at`, `updated_at`, `banner_home_file_name`, `banner_home_content_type`, `banner_home_file_size`, `banner_home_updated_at`, `banner_single_file_name`, `banner_single_content_type`, `banner_single_file_size`, `banner_single_updated_at`, `banner_search_file_name`, `banner_search_content_type`, `banner_search_file_size`, `banner_search_updated_at`) VALUES
+(1, 'facebook.com', 'twitter.com', 'googleplus.com', 'By Trang Dinh Van © 2014', 'Bản quyền dữ liệu tham khảo thuộc http://vi.soccerwiki.org/', NULL, '2014-11-28 03:09:38', 'la_liga_banner.jpg', 'image/jpeg', 189596, '2014-11-28 03:08:30', 'la_liga_banner.jpg', 'image/jpeg', 189596, '2014-11-28 03:09:37', 'la_liga_banner.jpg', 'image/jpeg', 189596, '2014-11-28 03:09:38');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `encrypted_password` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `reset_password_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `reset_password_sent_at` datetime DEFAULT NULL,
+  `remember_created_at` datetime DEFAULT NULL,
+  `sign_in_count` int(11) NOT NULL DEFAULT '0',
+  `current_sign_in_at` datetime DEFAULT NULL,
+  `last_sign_in_at` datetime DEFAULT NULL,
+  `current_sign_in_ip` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_sign_in_ip` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_users_on_email` (`email`),
+  UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
